@@ -1,16 +1,22 @@
 package com.example.hopsguide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class SearchActivity extends ActionBarActivity {
+	
+	private List<Hops> hops;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);
+		hops = new ArrayList<Hops>();
 	}
 
 	@Override
@@ -18,6 +24,10 @@ public class SearchActivity extends ActionBarActivity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
+	}
+	
+	public Hops getHops(String name){
+		return null;
 	}
 
 	@Override
