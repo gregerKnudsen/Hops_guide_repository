@@ -14,5 +14,8 @@
     <string name="title_activity_search_screen">SearchActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_search">Search</string>
+    <string name="searchBoxDescription">Search box</string>
+    <string name="arrowButtonDescription">Arrow for showing search results</string>
+    <string name="arrowButtonLabel">↓</string>
 
 </resources>
