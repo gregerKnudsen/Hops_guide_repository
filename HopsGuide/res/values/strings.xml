@@ -11,5 +11,7 @@
     <string name="browseButtonDescription">Button for browsing</string>
     <string name="searchButtonLabel">Search</string>
     <string name="browseButtonLabel">Browse</string>
+    <string name="title_activity_search_screen">SearchActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>
