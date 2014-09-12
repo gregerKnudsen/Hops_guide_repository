@@ -18,26 +18,6 @@
         android:contentDescription="@string/welcome"
         android:src="@drawable/app_icon" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="43dp"
-        android:contentDescription="@string/searchButtonDescription"
-        android:text="@string/searchButtonLabel" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="28dp"
-        android:contentDescription="@string/browseButtonDescription"
-        android:text="@string/browseButtonLabel" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -54,8 +34,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="34dp"
         android:text="@string/information"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:contentDescription="@string/searchButtonDescription"
+        android:text="@string/searchButtonLabel" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignRight="@+id/imageView1"
+        android:layout_marginBottom="17dp"
+        android:contentDescription="@string/browseButtonDescription"
+        android:text="@string/browseButtonLabel" />
 
 </RelativeLayout>
