@@ -1,17 +1,25 @@
 package com.example.hopsguide;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.view.*;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+	
+	private Button button1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        button1 = (Button) findViewById(R.id.button1);
+        button1.setOnClickListener(this);
     }
 
     @Override
@@ -32,4 +40,17 @@ public class MainActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    private void button1Click(){
+    	startActivity(new Intent("search_activity"));
+    }
+    
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+		case R.id.button1 : 
+			button1Click();
+			break;
+		}
+	}
 }

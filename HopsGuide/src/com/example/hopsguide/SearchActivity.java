@@ -39,7 +39,9 @@ public class SearchActivity extends ActionBarActivity {
 		return hops.get(name);
 	}
 
-	public void displayHops(String name){
+	public void displayHops(){
+		EditText textField = (EditText) findViewById(R.id.editText1);
+		String name = textField.getText().toString();
 		Hops hops = getHops(name);
 		EditText editText = (EditText) findViewById(R.id.editText2);
 		if(hops != null){

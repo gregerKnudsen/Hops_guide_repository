@@ -30,6 +30,7 @@
         android:layout_marginRight="46dp"
         android:layout_marginTop="22dp"
         android:contentDescription="@string/searchInputButtonDescription"
+        android:onClick="displayHops"
         android:text="@string/serchInputButtonLabel" />
 
     <EditText
