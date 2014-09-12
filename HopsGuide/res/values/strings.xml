@@ -17,5 +17,6 @@
     <string name="searchBoxDescription">Search box</string>
     <string name="searchInputButtonDescription">Search for hops results using given input text</string>
     <string name="serchInputButtonLabel">Search</string>
+    <string name="resultTextArea">Area for text results from searches</string>
 
 </resources>

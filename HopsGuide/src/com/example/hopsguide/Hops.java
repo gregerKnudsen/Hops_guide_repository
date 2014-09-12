@@ -4,30 +4,20 @@ import java.util.List;
 
 public class Hops {
 
-	private String name;
 	private double alphaAcid;
 	private double betaAcid;
 	private String substitutes;
 	private String type;
 	private String country;
 
-	public Hops(String name, double alphaAcid, double betaAcid, String substitutes, String type, String country){
-		this.name = name;
+	public Hops(double alphaAcid, double betaAcid, String substitutes, String type, String country){
 		this.alphaAcid = alphaAcid;
 		this.betaAcid = betaAcid;
 		this.substitutes = substitutes;
 		this.type = type;
 		this.country = country;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	
 	public double getAlphaAcid() {
 		return alphaAcid;
 	}
@@ -70,7 +60,7 @@ public class Hops {
 
 	@Override
 	public String toString() {
-		return "Hops [name=" + name + ", alphaAcid=" + alphaAcid
+		return "Hops [alphaAcid=" + alphaAcid
 				+ ", betaAcid=" + betaAcid + ", substitutes=" + substitutes
 				+ ", type=" + type + ", country=" + country + "]";
 	}
