@@ -15,7 +15,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_search">Search</string>
     <string name="searchBoxDescription">Search box</string>
-    <string name="arrowButtonDescription">Arrow for showing search results</string>
-    <string name="arrowButtonLabel">↓</string>
+    <string name="searchInputButtonDescription">Search for hops results using given input text</string>
+    <string name="serchInputButtonLabel">Search</string>
 
 </resources>

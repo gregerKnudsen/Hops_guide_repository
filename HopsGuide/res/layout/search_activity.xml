@@ -27,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="33dp"
-        android:layout_marginTop="28dp"
-        android:contentDescription="@string/arrowButtonDescription"
-        android:text="@string/arrowButtonLabel" />
+        android:layout_marginRight="46dp"
+        android:layout_marginTop="22dp"
+        android:contentDescription="@string/searchInputButtonDescription"
+        android:text="@string/serchInputButtonLabel" />
 
 </RelativeLayout>
