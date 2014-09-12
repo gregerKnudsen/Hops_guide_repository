@@ -25,7 +25,8 @@
         android:layout_alignLeft="@+id/imageView1"
         android:layout_below="@+id/imageView1"
         android:layout_marginTop="43dp"
-        android:text="Button" />
+        android:contentDescription="@string/searchButtonDescription"
+        android:text="@string/searchButtonLabel" />
 
     <Button
         android:id="@+id/button2"
@@ -34,7 +35,8 @@
         android:layout_alignLeft="@+id/button1"
         android:layout_below="@+id/button1"
         android:layout_marginTop="28dp"
-        android:text="Button" />
+        android:contentDescription="@string/browseButtonDescription"
+        android:text="@string/browseButtonLabel" />
 
     <TextView
         android:id="@+id/textView1"
@@ -45,5 +47,15 @@
         android:layout_marginTop="54dp"
         android:text="@string/welcome"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:text="@string/information"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
