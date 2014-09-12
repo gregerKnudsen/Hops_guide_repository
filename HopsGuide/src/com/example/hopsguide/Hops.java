@@ -7,19 +7,17 @@ public class Hops {
 	private String name;
 	private double alphaAcid;
 	private double betaAcid;
-	private List<String> substitutes;
+	private String substitutes;
 	private String type;
 	private String country;
 
-	public Hops(String name, double alphaAcid, double betaAcid, List<String> substitutes, String type, String country){
+	public Hops(String name, double alphaAcid, double betaAcid, String substitutes, String type, String country){
 		this.name = name;
 		this.alphaAcid = alphaAcid;
 		this.betaAcid = betaAcid;
 		this.substitutes = substitutes;
 		this.type = type;
 		this.country = country;
-
-
 	}
 
 	public String getName() {
@@ -46,11 +44,11 @@ public class Hops {
 		this.betaAcid = betaAcid;
 	}
 
-	public List<String> getSubstitutes() {
+	public String getSubstitutes() {
 		return substitutes;
 	}
 
-	public void setSubstitutes(List<String> substitutes) {
+	public void setSubstitutes(String substitutes) {
 		this.substitutes = substitutes;
 	}
 

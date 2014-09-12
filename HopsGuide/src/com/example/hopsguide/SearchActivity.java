@@ -1,7 +1,9 @@
 package com.example.hopsguide;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,13 +12,18 @@ import android.view.MenuItem;
 
 public class SearchActivity extends ActionBarActivity {
 	
-	private List<Hops> hops;
+	private Map<String,Hops> hops;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);
-		hops = new ArrayList<Hops>();
+		hops = new HashMap<String,Hops>();
+		addHops();
+	}
+	
+	public void addHops(){
+		hops.put("Summit", new Hops("Summit",17.0,34.0,"Tilicum,Tomahawk","aroma","Germany"));
 	}
 
 	@Override
@@ -26,9 +33,11 @@ public class SearchActivity extends ActionBarActivity {
 		return true;
 	}
 	
-	public Hops getHops(String name){
-		return null;
-	}
+//	public Hops getHops(String name){
+//		if(hops.key != null){
+//			
+//		}
+//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
