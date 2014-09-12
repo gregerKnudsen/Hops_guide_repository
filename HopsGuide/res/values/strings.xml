@@ -13,5 +13,6 @@
     <string name="browseButtonLabel">Browse</string>
     <string name="title_activity_search_screen">SearchActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_search">Search</string>
 
 </resources>

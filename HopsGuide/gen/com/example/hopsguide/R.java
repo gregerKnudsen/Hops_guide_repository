@@ -1199,11 +1199,13 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030016;
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_main=0x7f030018;
-        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+        public static final int search_activity=0x7f030019;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001a;
     }
     public static final class menu {
         public static final int main=0x7f0c0000;
-        public static final int search_screen=0x7f0c0001;
+        public static final int search=0x7f0c0001;
+        public static final int search_screen=0x7f0c0002;
     }
     public static final class string {
         /**  Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] 
@@ -1256,6 +1258,7 @@ containing a value of this type.
         public static final int search=0x7f0a0011;
         public static final int searchButtonDescription=0x7f0a0013;
         public static final int searchButtonLabel=0x7f0a0015;
+        public static final int title_activity_search=0x7f0a0019;
         public static final int title_activity_search_screen=0x7f0a0017;
         public static final int welcome=0x7f0a000e;
     }
