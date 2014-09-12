@@ -7,5 +7,9 @@
     <string name="browse">Browse</string>
     <string name="search">Search</string>
     <string name="information">i</string>
+    <string name="searchButtonDescription">Button for search</string>
+    <string name="browseButtonDescription">Button for browsing</string>
+    <string name="searchButtonLabel">Search</string>
+    <string name="browseButtonLabel">Browse</string>
 
 </resources>
