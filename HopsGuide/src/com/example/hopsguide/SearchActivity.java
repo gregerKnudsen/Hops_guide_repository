@@ -40,8 +40,8 @@ public class SearchActivity extends ActionBarActivity {
 
 	public void displayHops(){
 		EditText inputText = (EditText) findViewById(R.id.editText1);
-		TextView resultText = (TextView) findViewById(R.id.textView1);
 		String name = inputText.getText().toString();
+		TextView resultText = (TextView) findViewById(R.id.textView1);
 		if(!name.equals("")){
 			Hops hops = getHops(name);
 			if(hops != null){
