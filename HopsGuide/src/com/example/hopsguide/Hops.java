@@ -1,7 +1,5 @@
 package com.example.hopsguide;
 
-import java.util.List;
-
 public class Hops {
 
 	private double alphaAcid;
