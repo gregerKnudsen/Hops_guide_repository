@@ -19,6 +19,6 @@
     <string name="serchInputButtonLabel">Search</string>
     <string name="resultTextArea">Area for text results from searches</string>
     <string name="informationButtonDescription">Button for information access</string>
-    <string name="defaultResultText"> </string>
+    <string name="defaultResultText">Please enter name of desired hops</string>
 
 </resources>
