@@ -38,16 +38,16 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
-
-    private void button1Click(){
-    	startActivity(new Intent("search_activity"));
+    
+    public void searchButtonClick(){
+    	onClick((Button) findViewById(R.id.button1));
     }
     
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.button1 : 
-			button1Click();
+			startActivity(new Intent("search_activity"));
 			break;
 		}
 	}
