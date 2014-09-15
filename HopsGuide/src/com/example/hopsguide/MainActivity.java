@@ -45,9 +45,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     
 	@Override
 	public void onClick(View v) {
+		 
 		switch (v.getId()){
 		case R.id.button1 : 
-			startActivity(new Intent("search_activity"));
+			Intent in = new Intent(getApplicationContext(),SearchActivity.class);
+			startActivity(in);
 			break;
 		}
 	}
