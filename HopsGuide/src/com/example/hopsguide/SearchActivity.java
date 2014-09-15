@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SearchActivity extends ActionBarActivity {
 
@@ -38,20 +39,20 @@ public class SearchActivity extends ActionBarActivity {
 	}
 
 	public void displayHops(){
-		EditText textField = (EditText) findViewById(R.id.editText1);
-		EditText editText = (EditText) findViewById(R.id.editText2);
-		String name = textField.getText().toString();
+		EditText inputText = (EditText) findViewById(R.id.editText1);
+		TextView resultText = (TextView) findViewById(R.id.textView1);
+		String name = inputText.getText().toString();
 		if(!name.equals("")){
 			Hops hops = getHops(name);
 			if(hops != null){
-				editText.setText(name + "\n\n" + hops);
+				resultText.setText(name + "\n\n" + hops);
 			}
 			else{
-				editText.setText("Hops named \"" + name + "\" not found");
+				resultText.setText("Hops named \"" + name + "\" not found");
 			}
 		}
 		else{
-			editText.setText("Please type in name of desired hops");
+			resultText.setText("Please type in name of desired hops");
 		}
 	}
 
