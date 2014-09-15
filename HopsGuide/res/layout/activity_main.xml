@@ -36,6 +36,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
         android:contentDescription="@string/searchButtonDescription"
+        android:onClick="onClick"
         android:text="@string/searchButtonLabel" />
 
     <Button
