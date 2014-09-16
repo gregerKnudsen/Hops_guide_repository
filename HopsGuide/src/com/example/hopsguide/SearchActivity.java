@@ -4,25 +4,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SearchActivity extends ActionBarActivity {
+public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
 	private TextView resultText;
+	private Button searchButton;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);
 		hops = new HashMap<String,Hops>();
+		inputText = (EditText) findViewById(R.id.inputTextBox);
+		resultText = (TextView) findViewById(R.id.textView1);
 		addHops();
+        searchButton = (Button) findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(this);
 	}
 
 	public void addHops(){
@@ -41,23 +49,24 @@ public class SearchActivity extends ActionBarActivity {
 		return hops.get(name);
 	}
 	
+	public void searchButtonClick(){
+		onClick((Button) findViewById(R.id.searchButton));
+	}
+	
 	public void displayHops(){
-//		inputText = (EditText) findViewById(R.id.editText1);
-//		input = inputText.getText().toString();
-//		resultText = (TextView) findViewById(R.id.textView1);
-//		resultText.setText("Hops named \"" + input + "\" not found");
-//		if(!name.equals("")){
-//			Hops hops = getHops(name);
-//			if(hops != null){
-//				resultText.setText(name + "\n\n" + hops);
-//			}
-//			else{
-//				resultText.setText("Hops named \"" + name + "\" not found");
-//			}
-//		}
-//		else{
-//			resultText.setText("Please type in name of desired hops");
-//		}
+		input = inputText.getText().toString();
+		if(!input.equals("")){
+			Hops hops = getHops(input);
+			if(hops != null){
+				resultText.setText(input + "\n\n" + hops);
+			}
+			else{
+				resultText.setText("Hops named \"" + input + "\" not found");
+			}
+		}
+		else{
+			resultText.setText("Please type in name of desired hops");
+		}
 	}
 
 	@Override
@@ -70,5 +79,14 @@ public class SearchActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()){
+		case R.id.searchButton : 
+			displayHops();
+			break;
+		}
 	}
 }

@@ -38,7 +38,7 @@
         android:layout_alignTop="@+id/inputTextBox"
         android:layout_marginRight="31dp"
         android:contentDescription="@string/searchButtonDescription"
-        android:onClick="displayHops"
+        android:onClick="searchButtonClick"
         android:text="@string/searchButtonLabel" />
 
 </RelativeLayout>

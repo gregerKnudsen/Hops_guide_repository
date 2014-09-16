@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
     
-    public void searchButtonClick(){
+    public void searchSectionButtonClick(){
     	onClick((Button) findViewById(R.id.searchSectionButton));
     }
     
