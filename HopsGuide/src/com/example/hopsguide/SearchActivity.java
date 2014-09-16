@@ -34,10 +34,10 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public void addHops(){
-		hops.put("Admiral", new Hops("UK",14.75,5.6,"Bittering"));
-		hops.put("Ahtanum", new Hops("US",6,5.25,"Aroma"));
-		hops.put("Amarillo Gold", new Hops("US",8.5,6,"Both"));
-		hops.put("Apollo", new Hops("US",17,6.75,"Bittering"));
+		hops.put("admiral", new Hops("UK",14.75,5.6,"Bittering"));
+		hops.put("ahtanum", new Hops("US",6,5.25,"Aroma"));
+		hops.put("amarillo Gold", new Hops("US",8.5,6,"Both"));
+		hops.put("apollo", new Hops("US",17,6.75,"Bittering"));
 		
 //		Aquila US 6.5 3 Aroma
 //
@@ -66,7 +66,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public Hops getHops(String name){
-		return hops.get(name);
+		return hops.get(name.toLowerCase());
 	}
 	
 	public void searchButtonClick(){
@@ -78,10 +78,10 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		if(!input.equals("")){
 			Hops hops = getHops(input);
 			if(hops != null){
-				resultText.setText("**** " + input + " ****" + "\n\n" + hops);
+				resultText.setText("**** " + (input.substring(0,1).toUpperCase() + input.substring(1,input.length()) + " ****" + "\n\n" + hops));
 			}
 			else{
-				resultText.setText("Hops named \"" + input + "\" not found");
+				resultText.setText("Sorry, hops named \"" + input + "\" not found");
 			}
 		}
 		else{
