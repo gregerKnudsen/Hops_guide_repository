@@ -20,5 +20,6 @@
     <string name="informationContent">Copyright © gruppe 1 INFO331</string>
     <string name="title_activity_information">InformationActivity</string>
     <string name="listButtonLabel">My lists</string>
+    <string name="title_activity_list">ListActivity</string>
 
 </resources>
