@@ -34,8 +34,28 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public void addHops(){
-		hops.put("Summit", new Hops(17.0,34.0,"Tilicum,Tomahawk","aroma","Germany"));
-		hops.put("Tomahawk", new Hops(23.0,12.0,"Ultra,Vanguard","bitterness","Netherlands"));
+		hops.put("Admiral", new Hops("UK",14.75,5.6,"Bittering"));
+		hops.put("Ahtanum", new Hops("US",6,5.25,"Aroma"));
+		hops.put("Amarillo Gold", new Hops("US",8.5,6,"Both"));
+		hops.put("Apollo", new Hops("US",17,6.75,"Bittering"));
+		
+//		Aquila US 6.5 3 Aroma
+//
+//		Atlas Slovenia 9 3.7 Aroma
+//
+//		Aurora Slovenia 8.25 3.5 Both
+//		
+//		Banner US 10 4 Bittering
+//
+//		Bobek Slovenia 5.25 5 Both
+//
+//		Bramling Cross UK 6 3 Aroma
+//
+//		Bravo US 15.5 3.5 Bittering
+//
+//		Brewer's Gold UK 8 3.7 Bittering
+//
+//		Bullion UK 8 4.5 Bittering
 	}
 
 	@Override
@@ -58,7 +78,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		if(!input.equals("")){
 			Hops hops = getHops(input);
 			if(hops != null){
-				resultText.setText(input + "\n\n" + hops);
+				resultText.setText("**** " + input + " ****" + "\n\n" + hops);
 			}
 			else{
 				resultText.setText("Hops named \"" + input + "\" not found");

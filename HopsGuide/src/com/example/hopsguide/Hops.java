@@ -4,16 +4,14 @@ public class Hops {
 
 	private double alphaAcid;
 	private double betaAcid;
-	private String substitutes;
 	private String type;
 	private String country;
 
-	public Hops(double alphaAcid, double betaAcid, String substitutes, String type, String country){
+	public Hops(String country, double alphaAcid, double betaAcid, String type){
+		this.country = country;
 		this.alphaAcid = alphaAcid;
 		this.betaAcid = betaAcid;
-		this.substitutes = substitutes;
 		this.type = type;
-		this.country = country;
 	}
 	
 	public double getAlphaAcid() {
@@ -30,14 +28,6 @@ public class Hops {
 
 	public void setBetaAcid(double betaAcid) {
 		this.betaAcid = betaAcid;
-	}
-
-	public String getSubstitutes() {
-		return substitutes;
-	}
-
-	public void setSubstitutes(String substitutes) {
-		this.substitutes = substitutes;
 	}
 
 	public String getType() {
@@ -58,8 +48,9 @@ public class Hops {
 
 	@Override
 	public String toString() {
-		return "Hops [alphaAcid=" + alphaAcid
-				+ ", betaAcid=" + betaAcid + ", substitutes=" + substitutes
-				+ ", type=" + type + ", country=" + country + "]";
+		return 	"Country: " + country + 
+				"\nAlpha acid: " + alphaAcid +
+				"\nBetaAcid:" + betaAcid +
+				"\nType=" + type;
 	}
 }
