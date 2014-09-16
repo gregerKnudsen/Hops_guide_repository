@@ -50,7 +50,7 @@ public class Hops {
 	public String toString() {
 		return 	"Country: " + country + 
 				"\nAlpha acid: " + alphaAcid +
-				"\nBetaAcid:" + betaAcid +
-				"\nType=" + type;
+				"\nBetaAcid: " + betaAcid +
+				"\nType: " + type;
 	}
 }

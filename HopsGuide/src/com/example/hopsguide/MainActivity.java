@@ -7,17 +7,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 	
-	private Button button1;
+	private Button searchSectionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button1 = (Button) findViewById(R.id.searchSectionButton);
-        button1.setOnClickListener(this);
+        searchSectionButton = (Button) findViewById(R.id.searchSectionButton);
+        searchSectionButton.setOnClickListener(this);
     }
 
     @Override
@@ -43,14 +44,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     	onClick((Button) findViewById(R.id.searchSectionButton));
     }
     
+    public void informationButtonClick(){
+    	onClick((ImageView) findViewById(R.id.informationButton));
+    }
+    
 	@Override
 	public void onClick(View v) {
 		 
 		switch (v.getId()){
 		case R.id.searchSectionButton : 
-			Intent in = new Intent(getApplicationContext(),SearchActivity.class);
-			startActivity(in);
+			Intent in1 = new Intent(getApplicationContext(),SearchActivity.class);
+			startActivity(in1);
 			break;
+		case R.id.informationButton :
+			Intent in2 = new Intent(getApplicationContext(),InformationActivity.class);
+			startActivity(in2);
 		}
 	}
 }

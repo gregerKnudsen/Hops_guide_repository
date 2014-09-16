@@ -38,8 +38,8 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		hops.put("ahtanum", new Hops("US",6,5.25,"Aroma"));
 		hops.put("amarillo Gold", new Hops("US",8.5,6,"Both"));
 		hops.put("apollo", new Hops("US",17,6.75,"Bittering"));
+		hops.put("aquila", new Hops("US",6.5,3,"Aroma"));
 		
-//		Aquila US 6.5 3 Aroma
 //
 //		Atlas Slovenia 9 3.7 Aroma
 //
