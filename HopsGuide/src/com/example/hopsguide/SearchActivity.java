@@ -13,6 +13,9 @@ import android.widget.TextView;
 public class SearchActivity extends ActionBarActivity {
 
 	private Map<String,Hops> hops;
+	private EditText inputText;
+	private String input;
+	private TextView resultText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +40,24 @@ public class SearchActivity extends ActionBarActivity {
 	public Hops getHops(String name){
 		return hops.get(name);
 	}
-
+	
 	public void displayHops(){
-		EditText inputText = (EditText) findViewById(R.id.editText1);
-		String name = inputText.getText().toString();
-		TextView resultText = (TextView) findViewById(R.id.textView1);
-		if(!name.equals("")){
-			Hops hops = getHops(name);
-			if(hops != null){
-				resultText.setText(name + "\n\n" + hops);
-			}
-			else{
-				resultText.setText("Hops named \"" + name + "\" not found");
-			}
-		}
-		else{
-			resultText.setText("Please type in name of desired hops");
-		}
+//		inputText = (EditText) findViewById(R.id.editText1);
+//		input = inputText.getText().toString();
+//		resultText = (TextView) findViewById(R.id.textView1);
+//		resultText.setText("Hops named \"" + input + "\" not found");
+//		if(!name.equals("")){
+//			Hops hops = getHops(name);
+//			if(hops != null){
+//				resultText.setText(name + "\n\n" + hops);
+//			}
+//			else{
+//				resultText.setText("Hops named \"" + name + "\" not found");
+//			}
+//		}
+//		else{
+//			resultText.setText("Please type in name of desired hops");
+//		}
 	}
 
 	@Override

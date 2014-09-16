@@ -13,34 +13,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/button1"
         android:layout_marginLeft="32dp"
         android:layout_toLeftOf="@+id/button1"
         android:contentDescription="@string/searchBoxDescription"
         android:ems="10"
         android:inputType="text" />
 
-    <Button
-        android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="46dp"
-        android:layout_marginTop="22dp"
-        android:contentDescription="@string/searchInputButtonDescription"
-        android:onClick="displayHops"
-        android:text="@string/serchInputButtonLabel" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="39dp"
+        android:layout_below="@+id/editText1"
+        android:layout_marginTop="46dp"
         android:text="@string/defaultResultText"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/button1"
+        style="android:buttonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/editText1"
+        android:layout_marginRight="39dp"
+        android:contentDescription="@string/searchButtonDescription"
+        android:onClick="displayHops"
+        android:text="@string/searchButtonLabel" />
 
 </RelativeLayout>
