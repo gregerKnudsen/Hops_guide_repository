@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 	
 	private Button searchSectionButton;
+	private Button listButton;
 	private ImageView informationButton;
 
     @Override
@@ -21,6 +22,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         
         searchSectionButton = (Button) findViewById(R.id.browseButton);
         searchSectionButton.setOnClickListener(this);
+        
+        listButton = (Button) findViewById(R.id.listButton);
+        listButton.setOnClickListener(this);
         
         informationButton = (ImageView) findViewById(R.id.informationButton);
         informationButton.setOnClickListener(this);
@@ -53,16 +57,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     	onClick((ImageView) findViewById(R.id.informationButton));
     }
     
+    public void startActivity(Class activity){
+		startActivity(new Intent(getApplicationContext(),activity));
+    }
+    
 	@Override
 	public void onClick(View v) {	 
 		switch (v.getId()){
 		case R.id.browseButton : 
-			Intent in1 = new Intent(getApplicationContext(),SearchActivity.class);
-			startActivity(in1);
+			startActivity(SearchActivity.class);
 			break;
 		case R.id.informationButton :
-			Intent in2 = new Intent(getApplicationContext(),InformationActivity.class);
-			startActivity(in2);
+			startActivity(InformationActivity.class);
+			break;	
+		case R.id.listButton :
+			startActivity(ListActivity.class);
 			break;
 		}
 	}
