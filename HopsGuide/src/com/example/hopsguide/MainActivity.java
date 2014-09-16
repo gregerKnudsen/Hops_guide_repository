@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 	
 	private Button searchSectionButton;
+	private ImageView informationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +20,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         searchSectionButton = (Button) findViewById(R.id.searchSectionButton);
         searchSectionButton.setOnClickListener(this);
+        informationButton.setOnClickListener(this);
     }
 
     @Override
@@ -49,8 +51,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
     
 	@Override
-	public void onClick(View v) {
-		 
+	public void onClick(View v) {	 
 		switch (v.getId()){
 		case R.id.searchSectionButton : 
 			Intent in1 = new Intent(getApplicationContext(),SearchActivity.class);
@@ -59,6 +60,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		case R.id.informationButton :
 			Intent in2 = new Intent(getApplicationContext(),InformationActivity.class);
 			startActivity(in2);
+			break;
 		}
 	}
 }
