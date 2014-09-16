@@ -57,10 +57,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			Intent in1 = new Intent(getApplicationContext(),SearchActivity.class);
 			startActivity(in1);
 			break;
-		case R.id.informationButton :
-			Intent in2 = new Intent(getApplicationContext(),InformationActivity.class);
-			startActivity(in2);
-			break;
+//		case R.id.informationButton :
+//			Intent in2 = new Intent(getApplicationContext(),InformationActivity.class);
+//			startActivity(in2);
+//			break;
 		}
 	}
 }
