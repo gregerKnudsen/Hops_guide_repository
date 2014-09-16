@@ -330,8 +330,8 @@ int layout abc_popup_menu_item_layout 0x7f030014
 int layout abc_search_dropdown_item_icons_2line 0x7f030015
 int layout abc_search_view 0x7f030016
 int layout abc_simple_decor 0x7f030017
-int layout activity_main 0x7f030018
-int layout fragment_information 0x7f030019
+int layout activity_information 0x7f030018
+int layout activity_main 0x7f030019
 int layout search_activity 0x7f03001a
 int layout support_simple_spinner_dropdown_item 0x7f03001b
 int menu information 0x7f0c0000
@@ -368,6 +368,7 @@ int string searchButtonDescription 0x7f0a0013
 int string searchButtonLabel 0x7f0a0015
 int string searchInputButtonDescription 0x7f0a001b
 int string serchInputButtonLabel 0x7f0a001c
+int string title_activity_information 0x7f0a0021
 int string title_activity_search 0x7f0a0019
 int string title_activity_search_screen 0x7f0a0017
 int string welcome 0x7f0a000e

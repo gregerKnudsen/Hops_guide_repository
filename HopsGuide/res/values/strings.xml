@@ -21,5 +21,6 @@
     <string name="informationButtonDescription">Button for information access</string>
     <string name="defaultResultText">Please enter name of desired hops</string>
     <string name="informationContent">Copyright © gruppe 1 INFO331</string>
+    <string name="title_activity_information">InformationActivity</string>
 
 </resources>
