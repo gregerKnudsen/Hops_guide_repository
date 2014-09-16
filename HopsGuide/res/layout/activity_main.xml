@@ -29,15 +29,15 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/searchSectionButton"
+        android:id="@+id/browseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="45dp"
-        android:contentDescription="@string/searchButtonDescription"
+        android:contentDescription="@string/browseButtonDescription"
         android:onClick="searchSectionButtonClick"
-        android:text="@string/searchButtonLabel" />
+        android:text="@string/browseButtonLabel" />
 
     <ImageView
         android:id="@+id/informationButton"
@@ -53,13 +53,13 @@
         android:src="@drawable/informasjonsikon" />
 
     <Button
-        android:id="@+id/browseSectionButton"
+        android:id="@+id/listButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/searchSectionButton"
-        android:layout_below="@+id/searchSectionButton"
+        android:layout_alignLeft="@+id/browseButton"
+        android:layout_below="@+id/browseButton"
         android:layout_marginTop="19dp"
         android:contentDescription="@string/browseButtonDescription"
-        android:text="@string/browseButtonLabel" />
+        android:text="@string/listButtonLabel" />
 
 </RelativeLayout>

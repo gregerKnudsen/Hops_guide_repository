@@ -32,6 +32,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
         searchButton.setOnClickListener(this);
 	}
 
+	/**
+	 * Merk at her trenger vi bare å legge til et utvalg, unødvendig
+	 * å legge til ALLE sorter fra exel-fil for å vise applikasjonens 
+	 * virkemåte
+	 */
 	public void addHops(){
 		hops.put("admiral", new Hops("UK",14.75,5.6,"Bittering"));
 		hops.put("ahtanum", new Hops("US",6,5.25,"Aroma"));
@@ -39,7 +44,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		hops.put("apollo", new Hops("US",17,6.75,"Bittering"));
 		hops.put("aquila", new Hops("US",6.5,3,"Aroma"));
 		
-//
+
 //		Atlas Slovenia 9 3.7 Aroma
 //
 //		Aurora Slovenia 8.25 3.5 Both

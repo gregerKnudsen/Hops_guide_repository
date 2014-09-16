@@ -1097,6 +1097,7 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
+        public static final int browseButton=0x7f05003e;
         public static final int browseSectionButton=0x7f050040;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
@@ -1126,7 +1127,6 @@ containing a value of this type.
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
         public static final int searchButton=0x7f050042;
-        public static final int searchSectionButton=0x7f05003e;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
