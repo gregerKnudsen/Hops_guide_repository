@@ -16,7 +16,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button1 = (Button) findViewById(R.id.button1);
+        button1 = (Button) findViewById(R.id.searchSectionButton);
         button1.setOnClickListener(this);
     }
 
@@ -40,14 +40,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
     
     public void searchButtonClick(){
-    	onClick((Button) findViewById(R.id.button1));
+    	onClick((Button) findViewById(R.id.searchSectionButton));
     }
     
 	@Override
 	public void onClick(View v) {
 		 
 		switch (v.getId()){
-		case R.id.button1 : 
+		case R.id.searchSectionButton : 
 			Intent in = new Intent(getApplicationContext(),SearchActivity.class);
 			startActivity(in);
 			break;

@@ -9,12 +9,12 @@
     tools:context="com.example.hopsguide.SearchActivity" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/inputTextBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="32dp"
-        android:layout_toLeftOf="@+id/button1"
+        android:layout_toLeftOf="@+id/searchButton"
         android:contentDescription="@string/searchBoxDescription"
         android:ems="10"
         android:inputType="text" />
@@ -23,20 +23,20 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/inputTextBox"
+        android:layout_below="@+id/inputTextBox"
         android:layout_marginTop="46dp"
         android:text="@string/defaultResultText"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
-        android:id="@+id/button1"
-        style="android:buttonStyle"
+        android:id="@+id/searchButton"
+        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/editText1"
-        android:layout_marginRight="39dp"
+        android:layout_alignTop="@+id/inputTextBox"
+        android:layout_marginRight="31dp"
         android:contentDescription="@string/searchButtonDescription"
         android:onClick="displayHops"
         android:text="@string/searchButtonLabel" />
