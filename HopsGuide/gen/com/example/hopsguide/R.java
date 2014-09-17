@@ -1116,10 +1116,10 @@ containing a value of this type.
         public static final int imageView1=0x7f05003c;
         public static final int informationButton=0x7f05003f;
         public static final int inputTextBox=0x7f050041;
-        public static final int listButton=0x7f050040;
         public static final int listMode=0x7f050001;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
+        public static final int myListsButton=0x7f050040;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;

@@ -9,37 +9,6 @@
     tools:context="com.example.hopsguide.MainActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
-        android:contentDescription="@string/welcome"
-        android:src="@drawable/app_icon" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="54dp"
-        android:text="@string/welcome"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/browseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:contentDescription="@string/browseButtonDescription"
-        android:onClick="searchSectionButtonClick"
-        android:text="@string/browseButtonLabel" />
-
-    <ImageView
         android:id="@+id/informationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,12 +22,42 @@
         android:src="@drawable/informasjonsikon" />
 
     <Button
-        android:id="@+id/listButton"
+        android:id="@+id/browseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/browseButton"
-        android:layout_below="@+id/browseButton"
-        android:layout_marginTop="19dp"
+        android:layout_alignLeft="@+id/myListsButton"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="37dp"
+        android:contentDescription="@string/browseButtonDescription"
+        android:onClick="searchSectionButtonClick"
+        android:text="@string/browseButtonLabel" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:contentDescription="@string/welcome"
+        android:src="@drawable/app_icon" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp"
+        android:text="@string/welcome"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/myListsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/informationButton"
+        android:layout_alignRight="@+id/textView1"
         android:contentDescription="@string/browseButtonDescription"
         android:text="@string/listButtonLabel" />
 

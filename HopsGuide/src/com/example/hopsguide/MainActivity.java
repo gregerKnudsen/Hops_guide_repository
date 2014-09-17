@@ -23,7 +23,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         searchSectionButton = (Button) findViewById(R.id.browseButton);
         searchSectionButton.setOnClickListener(this);
         
-        listButton = (Button) findViewById(R.id.listButton);
+        listButton = (Button) findViewById(R.id.myListsButton);
         listButton.setOnClickListener(this);
         
         informationButton = (ImageView) findViewById(R.id.informationButton);
@@ -53,6 +53,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     	onClick((Button) findViewById(R.id.browseButton));
     }
     
+    public void myListsButtonClick(){
+    	onClick((Button) findViewById(R.id.myListsButton));
+    } 
+    
     public void informationButtonClick(){
     	onClick((ImageView) findViewById(R.id.informationButton));
     }
@@ -70,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		case R.id.informationButton :
 			startActivity(InformationActivity.class);
 			break;	
-		case R.id.listButton :
+		case R.id.myListsButton :
 			startActivity(ListActivity.class);
 			break;
 		}
