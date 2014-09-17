@@ -1,5 +1,6 @@
 package com.example.hopsguide;
 
+//Adda en kommentar her eg :) 
 public class Hops {
 
 	private double alphaAcid;
