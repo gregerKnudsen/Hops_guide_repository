@@ -8,17 +8,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hopsguide.MainActivity" >
 
-    <Button
-        android:id="@+id/browseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/myListsButton"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="37dp"
-        android:contentDescription="@string/browseButtonDescription"
-        android:onClick="searchSectionButtonClick"
-        android:text="@string/browseButtonLabel" />
-
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="140dp"
@@ -53,14 +42,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="22dp"
+        android:layout_marginRight="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/informationButtonDescription"
         android:maxWidth="39dip"
         android:onClick="informationButtonClick"
         android:scaleType="centerCrop"
         android:src="@drawable/informasjonsikon" />
+
+    <Button
+        android:id="@+id/browseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/myListsButton"
+        android:layout_alignLeft="@+id/myListsButton"
+        android:contentDescription="@string/browseButtonDescription"
+        android:onClick="searchSectionButtonClick"
+        android:text="@string/browseButtonLabel" />
 
 </RelativeLayout>
