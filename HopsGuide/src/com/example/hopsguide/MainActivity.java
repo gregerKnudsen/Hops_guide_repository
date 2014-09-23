@@ -1,5 +1,10 @@
 package com.example.hopsguide;
 
+import java.util.List;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +16,7 @@ import android.widget.ImageView;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 	
+	private JSONObject jsonObject;
 	private Button searchSectionButton;
 	private Button listButton;
 	private ImageView informationButton;

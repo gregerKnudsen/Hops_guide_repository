@@ -2,8 +2,14 @@ package com.example.hopsguide;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -17,11 +23,14 @@ import android.widget.TextView;
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	Connection conn;
+	private JSONObject jsonObject;
 	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
 	private TextView resultText;
 	private Button searchButton;
+	private JSONArray jsonArray;
+	private List<String> currData;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -32,6 +41,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		resultText = (TextView) findViewById(R.id.textView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
+        currData = new ArrayList<String>();
         
 //        try {
 //			conn = Database.getConnection();
@@ -54,6 +64,14 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //        
 //        resultText.setText("Connection established");
 	}
+	
+    public void fillLocalDatabase() throws JSONException{
+    	jsonObject = JSONfunctions.getJSONfromURL("http://jdbc:mysql://172.31.3.90:3306/sql352981");
+    	jsonArray = jsonObject.getJSONArray("Name");
+    	for(int i = 0; i < jsonArray.length(); i++){
+    		currData.add(jsonArray.getString(i));
+    	}
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
