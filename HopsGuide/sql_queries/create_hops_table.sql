@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS Hops (
-	   	name VARCHAR(200),
+	   	_id VARCHAR(200) PRIMARY KEY,
 	   	country VARCHAR(200),
 	   	alpha FLOAT,
 	   	beta FLOAT,

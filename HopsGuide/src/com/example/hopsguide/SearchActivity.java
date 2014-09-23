@@ -21,7 +21,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	Connection conn;
 	private Database database;
-	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
 	private TextView resultText;
@@ -32,20 +31,12 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);      
-		
-		hops = new HashMap<String,Hops>();
+
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
         currData = new ArrayList<String>();
-        
-        try {
-			fillLocalDatabase();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	
 	public void initializeDatabase() throws SQLException{
@@ -74,7 +65,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public Hops getHops(String name){
-		return hops.get(name.toLowerCase());
+		return null;
 	}
 	
 	public void searchButtonClick(){
