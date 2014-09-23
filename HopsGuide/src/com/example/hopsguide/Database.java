@@ -43,12 +43,7 @@ public class Database {
 		//m� ogs� lage for innsetting av hops
 
 		hops = new HashMap<String,Hops>();
-
-		/**
-		 * Dette metodekallet er kun n�dvendig n�r SQL-databasen
-		 * trengs � oppdateres med nye data fra csv-filene
-		 */
-		//	updateDatabase();
+		System.out.println("Alt gikk fint");
 	}
 
 	/**
@@ -109,20 +104,16 @@ public class Database {
 	 */
 	public static Connection getConnection() throws InstantiationException, 
 	IllegalAccessException, ClassNotFoundException, SQLException{
-		String driver = "org.apache.derby.jdbc.EmbeddedDriver";    /* Hvilken type database vi vil ha */
-		Class.forName(driver).newInstance();                       /* Kall new pÃ¥ klassen med dette navnet. Til dÃ¸mes Class.forName("java.lang.String").newInstance() er det samme som new java.lang.String() */
-		String protocol = "jdbc:derby:"; 				 	       /* Hvordan vi vil snakke med Derby. */
-		String databaseNavn = "database";						   /* Hva databasen vil hete. (En mappe med filer i vil bli lagd. */
-		String jdbcUrl = protocol + databaseNavn + ";create=true"; /* URLen spesifiserer til DriverManageren vÃ¥r alt den trenger Ã¥ vite for Ã¥ koble oss pÃ¥ Derby */
+		String driver = "org.apache.derby.jdbc.EmbeddedDriver";    
+		Class.forName(driver).newInstance();                       
+		String protocol = "jdbc:derby:"; 				 	      
+		String databaseNavn = "database";						   
+		String jdbcUrl = protocol + databaseNavn + ";create=true";
 		return DriverManager.getConnection(jdbcUrl);
 	}
 
-	/**
-	 * Sletter en tabell med gitt navn i databasen.
-	 * Krever før utførelse at tabellen med gitt navn eksisterer i databasen
-	 */
 	public void deleteTable(String tableName) throws SQLException{
-		Statement statement = conn.createStatement();
-		statement.execute("DROP TABLE " + tableName);
+		PreparedStatement ps = conn.prepareStatement("DROP TABLE Hops");
+		ps.execute();
 	}
 }

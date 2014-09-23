@@ -7,10 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,54 +19,47 @@ import android.widget.TextView;
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	Connection conn;
-	private JSONObject jsonObject;
+	private Database database;
 	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
 	private TextView resultText;
 	private Button searchButton;
-	private JSONArray jsonArray;
 	private List<String> currData;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);      
+		
+		try {
+			database = new Database(Database.getConnection());
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		hops = new HashMap<String,Hops>();
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
         currData = new ArrayList<String>();
-        
-//        try {
-//			conn = Database.getConnection();
-//		} catch (InstantiationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (android.database.SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//        
-//        resultText.setText("Connection established");
 	}
 	
-    public void fillLocalDatabase() throws JSONException{
-    	jsonObject = JSONfunctions.getJSONfromURL("http://jdbc:mysql://172.31.3.90:3306/sql352981");
-    	jsonArray = jsonObject.getJSONArray("Name");
-    	for(int i = 0; i < jsonArray.length(); i++){
-    		currData.add(jsonArray.getString(i));
-    	}
+    public void fillLocalDatabase() {
     }
 
 	@Override
