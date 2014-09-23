@@ -33,31 +33,13 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);      
 		
-		try {
-			database = new Database(Database.getConnection());
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		hops = new HashMap<String,Hops>();
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
         currData = new ArrayList<String>();
+        
         try {
 			fillLocalDatabase();
 		} catch (SQLException e) {
@@ -66,11 +48,15 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		}
 	}
 	
+	public void initializeDatabase() throws SQLException{
+		//database.createHopsTable();
+	}
+	
     public void fillLocalDatabase() throws SQLException {
     //	private void addHops(String name, String country, float alpha, float beta, String type, int storageIndex, 
     //			String typicalFor, String aroma, String information) throws SQLException{
     	
-    	database.addHops("Apollo","US",(float) 8.6,(float) 6.0,"Both",20,"IPAs, Ales","Citrus, Flowery","Unknown origin, but character similar to Cascade");
+    	//database.addHops("Apollo","US",(float) 8.6,(float) 6.0,"Both",20,"IPAs, Ales","Citrus, Flowery","Unknown origin, but character similar to Cascade");
     }
     
 //    public void searchByName(String name) throws SQLException{

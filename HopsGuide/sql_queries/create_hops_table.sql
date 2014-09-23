@@ -1,4 +1,4 @@
-CREATE TABLE Hops (
+CREATE TABLE IF NOT EXISTS Hops (
 	   	name VARCHAR(200),
 	   	country VARCHAR(200),
 	   	alpha FLOAT,
