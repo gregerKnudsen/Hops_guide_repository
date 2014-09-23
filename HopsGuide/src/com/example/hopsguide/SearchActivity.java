@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
-	private Connection conn;
+	Connection conn;
 	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
@@ -26,30 +26,33 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.search_activity);
+		setContentView(R.layout.search_activity);      
 		hops = new HashMap<String,Hops>();
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
-        try {
-			conn = Database.getConnection();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (android.database.SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        
+//        try {
+//			conn = Database.getConnection();
+//		} catch (InstantiationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (ClassNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (android.database.SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//        
+//        resultText.setText("Connection established");
 	}
 
 	@Override
