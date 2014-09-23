@@ -1,5 +1,7 @@
 package com.example.hopsguide;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
+	private Connection conn;
 	private Map<String,Hops> hops;
 	private EditText inputText;
 	private String input;
@@ -21,45 +24,32 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	private Button searchButton;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);
 		hops = new HashMap<String,Hops>();
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
-		addHops();
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
-	}
-
-	/**
-	 * Merk at her trenger vi bare å legge til et utvalg, unødvendig
-	 * å legge til ALLE sorter fra exel-fil for å vise applikasjonens 
-	 * virkemåte
-	 */
-	public void addHops(){
-		hops.put("admiral", new Hops("UK",14.75,5.6,"Bittering"));
-		hops.put("ahtanum", new Hops("US",6,5.25,"Aroma"));
-		hops.put("amarillo Gold", new Hops("US",8.5,6,"Both"));
-		hops.put("apollo", new Hops("US",17,6.75,"Bittering"));
-		hops.put("aquila", new Hops("US",6.5,3,"Aroma"));
-		
-
-//		Atlas Slovenia 9 3.7 Aroma
-//
-//		Aurora Slovenia 8.25 3.5 Both
-//		
-//		Banner US 10 4 Bittering
-//
-//		Bobek Slovenia 5.25 5 Both
-//
-//		Bramling Cross UK 6 3 Aroma
-//
-//		Bravo US 15.5 3.5 Bittering
-//
-//		Brewer's Gold UK 8 3.7 Bittering
-//
-//		Bullion UK 8 4.5 Bittering
+        try {
+			conn = Database.getConnection();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (android.database.SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Override

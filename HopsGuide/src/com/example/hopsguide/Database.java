@@ -2,6 +2,8 @@ package com.example.hopsguide;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import android.database.SQLException;
 
@@ -24,6 +26,12 @@ public class Database {
 	}
 	
 //	public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException, java.sql.SQLException{
-//		getConnection();
-//	}
+//		Connection conn = getConnection();
+//		System.out.println("Kommer hit");
+//		PreparedStatement ps = conn.prepareStatement("SELECT Name FROM Hops");
+//		ResultSet rs = ps.executeQuery();
+//		while(rs.next()){
+//			System.out.println(rs.getString(1));
+//		}
+// 	}
 }
