@@ -1,6 +1,7 @@
 package com.example.hopsguide;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,10 +58,27 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
         searchButton = (Button) findViewById(R.id.searchButton);
         searchButton.setOnClickListener(this);
         currData = new ArrayList<String>();
+        try {
+			fillLocalDatabase();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
-    public void fillLocalDatabase() {
+    public void fillLocalDatabase() throws SQLException {
+    //	private void addHops(String name, String country, float alpha, float beta, String type, int storageIndex, 
+    //			String typicalFor, String aroma, String information) throws SQLException{
+    	
+    	database.addHops("Apollo","US",(float) 8.6,(float) 6.0,"Both",20,"IPAs, Ales","Citrus, Flowery","Unknown origin, but character similar to Cascade");
     }
+    
+//    public void searchByName(String name) throws SQLException{
+//    	ResultSet rs = database.getHopsByName(name);
+//    	if(rs.next()){
+//    		resultText.setText(rs.getString(1));
+//    	}
+//    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

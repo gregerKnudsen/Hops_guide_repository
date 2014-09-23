@@ -41,5 +41,4 @@
             android:label="@string/title_activity_list" >
         </activity>
     </application>
-
 </manifest>

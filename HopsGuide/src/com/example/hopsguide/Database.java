@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Database {
-	Connection conn;
+	static Connection conn;
 	private Map<String,Hops> hops;
 	private String createHopsTable;
 	private String insertHops;
@@ -67,7 +67,7 @@ public class Database {
 		ps.execute();
 	}
 
-	private void addHops(String name, String country, float alpha, float beta, String type, int storageIndex, 
+	public void addHops(String name, String country, float alpha, float beta, String type, int storageIndex, 
 			String typicalFor, String aroma, String information) throws SQLException{
 		PreparedStatement ps = conn.prepareStatement(insertHops);
 		ps.setString(1, name);
