@@ -1,5 +1,12 @@
 package com.example.hopsguide;
 
-public class Database {
+import java.sql.Connection;
 
+public class Database {
+	Connection conn;
+	private String selectAllHopsNames;
+	private String selectHopsByName;
+	private String selectHopsByCountry;
+	private String createHighscoreTable;
+	private String createLevelTable;
 }
