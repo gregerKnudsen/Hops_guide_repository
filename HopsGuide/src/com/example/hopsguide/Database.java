@@ -6,7 +6,7 @@ import java.util.Scanner;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.Message;
+import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
@@ -34,6 +34,7 @@ public class Database extends SQLiteOpenHelper {
 	public Database(Context context) throws Exception{
 		super(context,DATABASE_NAME,null,DATABASE_VERSION);
 		this.context = context;
+		Toast.makeText(context,"contructor called",2);
 		parseSQLFiles();
 	}
 	
@@ -53,6 +54,11 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(createHopsTable);
+		Toast.makeText(context,"onCreate called",2);
+	}
+	
+	public void insertHops(String insertHops){
+		
 	}
 
 	//Kalt når databasen endrer innhold og/eller struktur

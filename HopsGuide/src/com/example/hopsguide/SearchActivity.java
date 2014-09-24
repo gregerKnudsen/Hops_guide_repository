@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,13 +20,12 @@ import android.widget.TextView;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
-	Connection conn;
 	private Database database;
 	private EditText inputText;
 	private String input;
 	private TextView resultText;
 	private Button searchButton;
-	private List<String> currData;
+	private SQLiteDatabase sqLiteDatabase;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -34,28 +34,19 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
-        searchButton = (Button) findViewById(R.id.searchButton);
-        searchButton.setOnClickListener(this);
-        currData = new ArrayList<String>();
+		searchButton = (Button) findViewById(R.id.searchButton);
+		searchButton.setOnClickListener(this);
+
+		getDatabaseAccess();
 	}
 	
-	public void initializeDatabase() throws SQLException{
-		//database.createHopsTable();
+	public void getDatabaseAccess(){
+		
 	}
 	
-    public void fillLocalDatabase() throws SQLException {
-    //	private void addHops(String name, String country, float alpha, float beta, String type, int storageIndex, 
-    //			String typicalFor, String aroma, String information) throws SQLException{
-    	
-    	//database.addHops("Apollo","US",(float) 8.6,(float) 6.0,"Both",20,"IPAs, Ales","Citrus, Flowery","Unknown origin, but character similar to Cascade");
-    }
-    
-//    public void searchByName(String name) throws SQLException{
-//    	ResultSet rs = database.getHopsByName(name);
-//    	if(rs.next()){
-//    		resultText.setText(rs.getString(1));
-//    	}
-//    }
+	public void fillDatabase(){
+		
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -67,11 +58,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	public Hops getHops(String name){
 		return null;
 	}
-	
+
 	public void searchButtonClick(){
 		onClick((Button) findViewById(R.id.searchButton));
 	}
-	
+
 	public void displayHops(){
 		input = inputText.getText().toString();
 		if(!input.equals("")){
