@@ -14,4 +14,8 @@ public class SQLQueryFactory {
 			   "VALUES (" + _id + "," + country + "," + alpha + "," + beta + "," + 
 				type + "," + storageIndex + "," + typicalFor + "," + substitutes + "," + aroma + "," + information + ")";
 	}
+	
+	public static String selectHopsByName(String name){
+		return "SELECT";
+	}
 }

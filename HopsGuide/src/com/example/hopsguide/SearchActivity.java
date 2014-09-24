@@ -38,6 +38,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		searchButton.setOnClickListener(this);
 
 		getDatabaseAccess();
+		fillDatabase();
 	}
 	
 	public void getDatabaseAccess(){
@@ -51,7 +52,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillDatabase(){
-		
+		sqLiteDatabase.execSQL(SQLQueryFactory.insertHops("Armando", "UK", (float) 2.5, (float) 5.2, "Bitter", 45, "Ale", "Indigo", "Orange", "Very nice taste"));
 	}
 
 	@Override
@@ -63,6 +64,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	public Hops getHops(String name){
 		return null;
+		//return sqLiteDatabase.execSQL(SQLQueryFactory.selectHopsByName("Amari"));
 	}
 
 	public void searchButtonClick(){
