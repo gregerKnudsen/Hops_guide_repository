@@ -25,7 +25,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	private Database database;
 	private EditText inputText;
-	private String input;
 	private TextView resultText;
 	private Button searchButton;
 	private SQLiteDatabase sqLiteDatabase;
@@ -92,10 +91,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //	private static final String INFORMATION = "Information";
 	
 	public Hops getHops(String name){
-		sqLiteDatabase = database.getReadableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = database.getWritableDatabase();
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.AROMA,Database.INFORMATION};
-		Cursor cursor = sqLiteDatabase.query(Database.TABLE_NAME,columns,null,null,null,null,null);
+		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,Database.UID+" = '"+name+"'",null,null,null,null);
 		if(cursor.moveToNext()){
+		//	Toast.makeText(getApplicationContext(), cursor.getString(0),Toast.LENGTH_SHORT).show();
 			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7));
 		}
 		return null; //humle med gitt navn finnes ikke i databasen
@@ -106,11 +106,12 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public void displayHops(){
-		input = inputText.getText().toString();
+		String input = inputText.getText().toString();
 		if(!input.equals("")){
 			Hops hops = getHops(input);
+			Toast.makeText(getApplicationContext(),"" + (hops != null),Toast.LENGTH_SHORT).show();
 			if(hops != null){
-				resultText.setText("**** " + (hops.getName().substring(0,1).toUpperCase() + hops.getName().substring(1,input.length()) + " ****" + "\n\n" + hops));
+				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
 			}
 			else{
 				resultText.setText("Sorry, hops named \"" + input + "\" not found");

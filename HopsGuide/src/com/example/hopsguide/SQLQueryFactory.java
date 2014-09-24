@@ -6,7 +6,7 @@ public class SQLQueryFactory {
 	
 	public static String createHopsTable(){
 		return "CREATE TABLE IF NOT EXISTS Hops (" +
-			   	"_id CHAR(200) PRIMARY KEY NOT NULL,"+
+			   	"_id VARCHAR(200),"+
 			   	"country VARCHAR(200),"+
 			   	"alpha FLOAT,"+
 			   	"beta FLOAT,"+
@@ -31,5 +31,9 @@ public class SQLQueryFactory {
 	
 	public static String selectHopsByName(String name){
 		return "SELECT Name FROM Hops WHERE Name = " + name;
+	}
+	
+	public static String deleteHopsTable(){
+		return "DROP TABLE IF EXISTS Hops";
 	}
 }

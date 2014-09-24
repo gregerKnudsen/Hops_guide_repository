@@ -36,6 +36,7 @@ public class Database extends SQLiteOpenHelper {
 	//passende for SELECT-spørringer
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		db.execSQL(SQLQueryFactory.deleteHopsTable());
 		db.execSQL(SQLQueryFactory.createHopsTable());
 	}
 	
