@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -41,7 +42,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 		getDatabaseAccess();
 		createHopsTable();
-	//	fillHopsTable();
+		fillHopsTable();
 	}
 	
 	public void createHopsTable(){
@@ -61,7 +62,16 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillHopsTable(){
-		sqLiteDatabase.execSQL(SQLQueryFactory.insertHops("Armando", "UK", (float) 2.5, (float) 5.2, "Bitter", 45, "Ale", "Indigo", "Orange", "Very nice taste"));
+		ContentValues values = new ContentValues();
+		values.put("_id","Armano");
+		values.put("Country", "UK");
+		values.put("Alpha", (float) 2.4);
+		values.put("Beta", (float) 1.9);
+		values.put("StorageIndex", 23);
+		values.put("TypicalFor", "Pale Aile,IPA");
+		values.put("Aroma", "Bitter");
+		values.put("Information", "Very bitter taste, beware!");
+		database.insertHops(sqLiteDatabase, values);
 		Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
 	}
 
@@ -82,7 +92,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //	private static final String INFORMATION = "Information";
 	
 	public Hops getHops(String name){
-		sqLiteDatabase = database.getWritableDatabase();
+		sqLiteDatabase = database.getReadableDatabase();
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabase.query(Database.TABLE_NAME,columns,null,null,null,null,null);
 		if(cursor.moveToNext()){
@@ -100,7 +110,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		if(!input.equals("")){
 			Hops hops = getHops(input);
 			if(hops != null){
-				resultText.setText("**** " + (input.substring(0,1).toUpperCase() + input.substring(1,input.length()) + " ****" + "\n\n" + hops));
+				resultText.setText("**** " + (hops.getName().substring(0,1).toUpperCase() + hops.getName().substring(1,input.length()) + " ****" + "\n\n" + hops));
 			}
 			else{
 				resultText.setText("Sorry, hops named \"" + input + "\" not found");

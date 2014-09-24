@@ -3,6 +3,7 @@ package com.example.hopsguide;
 import java.io.File;
 import java.util.Scanner;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -37,6 +38,14 @@ public class Database extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(SQLQueryFactory.createHopsTable());
 	}
+	
+	public void insertHops(SQLiteDatabase db,ContentValues values){
+		db.insert("Hops",null,values);
+	}
+	
+//	public void selectHops(SQLiteDatabase db,ContentValues values){
+//		Cursor curs, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)
+//	}
 
 	//Kalt når databasen endrer innhold og/eller struktur
 	@Override
