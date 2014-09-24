@@ -36,7 +36,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		resultText = (TextView) findViewById(R.id.textView1);
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
-		
+
+		getDatabaseAccess();
+	}
+	
+	public void getDatabaseAccess(){
 		try {
 			database = new Database(this);
 			sqLiteDatabase = database.getWritableDatabase();
@@ -44,12 +48,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		getDatabaseAccess();
-	}
-	
-	public void getDatabaseAccess(){
-		
 	}
 	
 	public void fillDatabase(){
