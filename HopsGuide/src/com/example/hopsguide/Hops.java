@@ -4,40 +4,34 @@ package com.example.hopsguide;
 // Litt der
 public class Hops {
 
-	private double alphaAcid;
-	private double betaAcid;
-	private String type;
+	private String name;
 	private String country;
-
-	public Hops(String country, double alphaAcid, double betaAcid, String type){
-		this.country = country;
-		this.alphaAcid = alphaAcid;
-		this.betaAcid = betaAcid;
-		this.type = type;
-	}
+	private float alpha;
+	private float beta;
+	private int storageIndex;
+	private String typicalFor;
+	private String aroma;
+	private String information;
 	
-	public double getAlphaAcid() {
-		return alphaAcid;
+	public Hops(String name, String country, float alpha, float beta,
+			int storageIndex, String typicalFor, String aroma,
+			String information) {
+		this.name = name;
+		this.country = country;
+		this.alpha = alpha;
+		this.beta = beta;
+		this.storageIndex = storageIndex;
+		this.typicalFor = typicalFor;
+		this.aroma = aroma;
+		this.information = information;
 	}
 
-	public void setAlphaAcid(double alphaAcid) {
-		this.alphaAcid = alphaAcid;
+	public String getName() {
+		return name;
 	}
 
-	public double getBetaAcid() {
-		return betaAcid;
-	}
-
-	public void setBetaAcid(double betaAcid) {
-		this.betaAcid = betaAcid;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCountry() {
@@ -48,11 +42,60 @@ public class Hops {
 		this.country = country;
 	}
 
+	public float getAlpha() {
+		return alpha;
+	}
+
+	public void setAlpha(float alpha) {
+		this.alpha = alpha;
+	}
+
+	public float getBeta() {
+		return beta;
+	}
+
+	public void setBeta(float beta) {
+		this.beta = beta;
+	}
+
+	public int getStorageIndex() {
+		return storageIndex;
+	}
+
+	public void setStorageIndex(int storageIndex) {
+		this.storageIndex = storageIndex;
+	}
+
+	public String getTypicalFor() {
+		return typicalFor;
+	}
+
+	public void setTypicalFor(String typicalFor) {
+		this.typicalFor = typicalFor;
+	}
+
+	public String getAroma() {
+		return aroma;
+	}
+
+	public void setAroma(String aroma) {
+		this.aroma = aroma;
+	}
+
+	public String getInformation() {
+		return information;
+	}
+
+	public void setInformation(String information) {
+		this.information = information;
+	}
+
 	@Override
 	public String toString() {
-		return 	"Country: " + country + 
-				"\nAlpha acid: " + alphaAcid +
-				"\nBetaAcid: " + betaAcid +
-				"\nType: " + type;
+		return "Hops [name=" + name + ", country=" + country + ", alpha="
+				+ alpha + ", beta=" + beta + ", storageIndex=" + storageIndex
+				+ ", typicalFor=" + typicalFor + ", aroma=" + aroma
+				+ ", information=" + information + "]";
 	}
+	
 }

@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import android.support.v7.app.ActionBarActivity;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -44,7 +45,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	public void getDatabaseAccess(){
 		try {
 			database = new Database(this);
-			sqLiteDatabase = database.getWritableDatabase();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -52,6 +52,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillDatabase(){
+		sqLiteDatabase = database.getWritableDatabase();
 		sqLiteDatabase.execSQL(SQLQueryFactory.insertHops("Armando", "UK", (float) 2.5, (float) 5.2, "Bitter", 45, "Ale", "Indigo", "Orange", "Very nice taste"));
 	}
 
@@ -62,9 +63,23 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		return true;
 	}
 
+//	private static final String UID = "_id";	//denne kolonnen lagrer navnet på humlen, som er tabellens primærnøkkel
+//	private static final String COUNTRY = "Country";
+//	private static final String ALPHA = "Alpha";
+//	private static final String BETA = "Beta";
+//	private static final String STORAGE_INDEX = "StorageIndex";
+//	private static final String TYPICAL_FOR = "TypicalFor";
+//	private static final String AROMA = "Aroma";
+//	private static final String INFORMATION = "Information";
+	
 	public Hops getHops(String name){
-		return null;
-		//return sqLiteDatabase.execSQL(SQLQueryFactory.selectHopsByName("Amari"));
+		sqLiteDatabase = database.getWritableDatabase();
+		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.AROMA,Database.INFORMATION};
+		Cursor cursor = sqLiteDatabase.query(Database.TABLE_NAME,columns,null,null,null,null,null);
+		if(cursor.moveToNext()){
+			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7));
+		}
+		return null; //humle med gitt navn finnes ikke i databasen
 	}
 
 	public void searchButtonClick(){
