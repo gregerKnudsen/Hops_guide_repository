@@ -6,7 +6,7 @@ public class SQLQueryFactory {
 	
 	public static String createHopsTable(){
 		return "CREATE TABLE IF NOT EXISTS Hops (" +
-			   	"_id VARCHAR(200) PRIMARY KEY,"+
+			   	"_id CHAR(200) PRIMARY KEY NOT NULL,"+
 			   	"country VARCHAR(200),"+
 			   	"alpha FLOAT,"+
 			   	"beta FLOAT,"+
@@ -15,7 +15,7 @@ public class SQLQueryFactory {
 			   	"typicalFor VARCHAR(200),"+
 			   	"substitutes VARCHAR(500),"+
 			   	"aroma VARCHAR(500),"+
-			   	"information VARCHAR(720))";
+			   	"information VARCHAR(720));";
 	}
 	
 	public static String selectHopsNames(){

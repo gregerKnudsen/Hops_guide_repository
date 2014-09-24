@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -39,21 +40,29 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		searchButton.setOnClickListener(this);
 
 		getDatabaseAccess();
-		fillDatabase();
+		createHopsTable();
+	//	fillHopsTable();
+	}
+	
+	public void createHopsTable(){
+		database.onCreate(sqLiteDatabase);
+		Toast.makeText(getApplicationContext(), "Hops table created",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void getDatabaseAccess(){
 		try {
 			database = new Database(this);
+			sqLiteDatabase = database.getWritableDatabase();
+			Toast.makeText(getApplicationContext(), "Database access granted",Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
-	public void fillDatabase(){
-		sqLiteDatabase = database.getWritableDatabase();
+	public void fillHopsTable(){
 		sqLiteDatabase.execSQL(SQLQueryFactory.insertHops("Armando", "UK", (float) 2.5, (float) 5.2, "Bitter", 45, "Ale", "Indigo", "Orange", "Very nice taste"));
+		Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
 	}
 
 	@Override

@@ -36,11 +36,6 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(SQLQueryFactory.createHopsTable());
-		Toast.makeText(context,"onCreate called",2);
-	}
-	
-	public void insertHops(String insertHops){
-		
 	}
 
 	//Kalt når databasen endrer innhold og/eller struktur
