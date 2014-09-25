@@ -37,19 +37,19 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		getDatabaseAccess();
 		createHopsTable();
 		fillHopsTable();
-		
+		displayHopsNames();
 	}
 	
 	public void createHopsTable(){
 		database.onCreate(sqLiteDatabase);
-		Toast.makeText(getApplicationContext(), "Hops table created",Toast.LENGTH_SHORT).show();
+	//	Toast.makeText(getApplicationContext(), "Hops table created",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void getDatabaseAccess(){
 		try {
 			database = new Database(this);
 			sqLiteDatabase = database.getWritableDatabase();
-			Toast.makeText(getApplicationContext(), "Database access granted",Toast.LENGTH_SHORT).show();
+		//	Toast.makeText(getApplicationContext(), "Database access granted",Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -73,7 +73,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		values.put("Aroma", aroma);
 		values.put("Information", information);
 		database.insertHops(sqLiteDatabase, values);
-		Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
+	//	Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -99,17 +99,18 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void displayHopsNames(){
-		
+		resultText.setText(getHopsNamesList());
 	}
 	
 	public List<String> getHopsNames(){
 		List<String> result = new ArrayList<String>();
 		SQLiteDatabase sqLiteDatabaseCurr = database.getWritableDatabase();
 		String[] columns = {Database.UID};
-		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,Database.UID,null,null,null,null);
+		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,null,null,null,null,null);
 		while(cursor.moveToNext()){
 			result.add(cursor.getString(0));
 		}
+	//	Toast.makeText(getApplicationContext(),"Nr. of names: " + (result.size()),Toast.LENGTH_SHORT).show();
 		return result;
 	}
 	
@@ -126,7 +127,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		String input = inputText.getText().toString();
 		if(!input.equals("")){
 			Hops hops = getHops(input);
-			Toast.makeText(getApplicationContext(),"" + (hops != null),Toast.LENGTH_SHORT).show();
+		//	Toast.makeText(getApplicationContext(),"" + (hops != null),Toast.LENGTH_SHORT).show();
 			if(hops != null){
 				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
 			}
