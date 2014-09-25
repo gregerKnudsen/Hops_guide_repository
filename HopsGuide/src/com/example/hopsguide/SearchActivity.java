@@ -1,5 +1,8 @@
 package com.example.hopsguide;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -34,6 +37,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		getDatabaseAccess();
 		createHopsTable();
 		fillHopsTable();
+		
 	}
 	
 	public void createHopsTable(){
@@ -53,15 +57,21 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillHopsTable(){
+		insertHops("Armano","UK",(float) 2.4,(float) 1.9,23,"Pale Ale,IPA","Bitter","Very bitter taste, beware!");
+		insertHops("Fromage","USA",(float) 4.2,(float) 9.2,12,"Pilsner","Aroma","Sweet taste, delicious!");
+	}
+	
+	public void insertHops(String name,String country,float alpha,float beta, int storageIndex,String typicalFor,
+			String aroma, String information){
 		ContentValues values = new ContentValues();
-		values.put("_id","Armano");
-		values.put("Country", "UK");
-		values.put("Alpha", (float) 2.4);
-		values.put("Beta", (float) 1.9);
-		values.put("StorageIndex", 23);
-		values.put("TypicalFor", "Pale Aile,IPA");
-		values.put("Aroma", "Bitter");
-		values.put("Information", "Very bitter taste, beware!");
+		values.put("_id",name);
+		values.put("Country", country);
+		values.put("Alpha", alpha);
+		values.put("Beta", beta);
+		values.put("StorageIndex", storageIndex);
+		values.put("TypicalFor", typicalFor);
+		values.put("Aroma", aroma);
+		values.put("Information", information);
 		database.insertHops(sqLiteDatabase, values);
 		Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
 	}
@@ -86,6 +96,30 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	public void searchButtonClick(){
 		onClick((Button) findViewById(R.id.searchButton));
+	}
+	
+	public void displayHopsNames(){
+		
+	}
+	
+	public List<String> getHopsNames(){
+		List<String> result = new ArrayList<String>();
+		SQLiteDatabase sqLiteDatabaseCurr = database.getWritableDatabase();
+		String[] columns = {Database.UID};
+		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,Database.UID,null,null,null,null);
+		while(cursor.moveToNext()){
+			result.add(cursor.getString(0));
+		}
+		return result;
+	}
+	
+	public String getHopsNamesList(){
+		String result = "";
+		List<String> hopsNamesList = getHopsNames();
+		for(String name : hopsNamesList){
+			result += (name + "\n");
+		}
+		return result;
 	}
 
 	public void displayHops(){
