@@ -1,13 +1,5 @@
 package com.example.hopsguide;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -81,15 +73,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		return true;
 	}
 
-//	private static final String UID = "_id";	//denne kolonnen lagrer navnet på humlen, som er tabellens primærnøkkel
-//	private static final String COUNTRY = "Country";
-//	private static final String ALPHA = "Alpha";
-//	private static final String BETA = "Beta";
-//	private static final String STORAGE_INDEX = "StorageIndex";
-//	private static final String TYPICAL_FOR = "TypicalFor";
-//	private static final String AROMA = "Aroma";
-//	private static final String INFORMATION = "Information";
-	
 	public Hops getHops(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = database.getWritableDatabase();
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.AROMA,Database.INFORMATION};
