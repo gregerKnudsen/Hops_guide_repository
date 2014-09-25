@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,6 +32,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 		inputText = (EditText) findViewById(R.id.inputTextBox);
 		resultText = (TextView) findViewById(R.id.textView1);
+		resultText.setMovementMethod(new ScrollingMovementMethod());
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
 

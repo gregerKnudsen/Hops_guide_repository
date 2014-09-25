@@ -27,6 +27,7 @@
         android:layout_below="@+id/inputTextBox"
         android:layout_marginTop="46dp"
         android:text="@string/defaultResultText"
+        android:scrollbars="vertical"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
