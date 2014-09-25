@@ -28,15 +28,6 @@
         android:text="@string/welcome"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/myListsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/informationButton"
-        android:layout_alignRight="@+id/textView1"
-        android:contentDescription="@string/browseButtonDescription"
-        android:text="@string/listButtonLabel" />
-
     <ImageView
         android:id="@+id/informationButton"
         android:layout_width="wrap_content"
@@ -57,9 +48,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/myListsButton"
-        android:layout_alignLeft="@+id/myListsButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
         android:contentDescription="@string/browseButtonDescription"
         android:onClick="searchSectionButtonClick"
         android:text="@string/browseButtonLabel" />
+
+    <Button
+        android:id="@+id/myListsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/informationButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="@string/browseButtonDescription"
+        android:text="@string/listButtonLabel" />
 
 </RelativeLayout>

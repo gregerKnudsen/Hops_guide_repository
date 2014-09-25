@@ -13,17 +13,20 @@ public class Database extends SQLiteOpenHelper {
 
 	private static final int 	DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "info331";
+	private Context context;
 	
 	public static final String TABLE_NAME = "hops";
 	public static final String UID = "_id";	//denne kolonnen lagrer navnet på humlen, som er tabellens primærnøkkel
 	public static final String COUNTRY = "Country";
 	public static final String ALPHA = "Alpha";
 	public static final String BETA = "Beta";
+	public static final String TYPE = "Type";
 	public static final String STORAGE_INDEX = "StorageIndex";
 	public static final String TYPICAL_FOR = "TypicalFor";
+	public static final String SUBSTITUTES = "Substitutes";
 	public static final String AROMA = "Aroma";
 	public static final String INFORMATION = "Information";
-	private Context context;
+	public static final String NO_DATA = "Not available";
 
 	public Database(Context context) throws Exception{
 		super(context,DATABASE_NAME,null,DATABASE_VERSION);

@@ -57,19 +57,21 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillHopsTable(){
-		insertHops("Armano","UK",(float) 2.4,(float) 1.9,23,"Pale Ale,IPA","Bitter","Very bitter taste, beware!");
-		insertHops("Fromage","USA",(float) 4.2,(float) 9.2,12,"Pilsner","Aroma","Sweet taste, delicious! Suitable for meat.");
+		insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
+		insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
 	}
 	
-	public void insertHops(String name,String country,float alpha,float beta, int storageIndex,String typicalFor,
-			String aroma, String information){
+	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,
+			String substitutes,String aroma, String information){
 		ContentValues values = new ContentValues();
 		values.put("_id",name);
 		values.put("Country", country);
 		values.put("Alpha", alpha);
 		values.put("Beta", beta);
+		values.put("Type", type);
 		values.put("StorageIndex", storageIndex);
 		values.put("TypicalFor", typicalFor);
+		values.put("Substitutes", substitutes);
 		values.put("Aroma", aroma);
 		values.put("Information", information);
 		database.insertHops(sqLiteDatabase, values);
@@ -85,11 +87,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	public Hops getHops(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = database.getWritableDatabase();
-		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.AROMA,Database.INFORMATION};
+		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,Database.UID+" = '"+name+"'",null,null,null,null);
 		if(cursor.moveToNext()){
 		//	Toast.makeText(getApplicationContext(), cursor.getString(0),Toast.LENGTH_SHORT).show();
-			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7));
+			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getString(4),cursor.getInt(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
 		}
 		return null; //humle med gitt navn finnes ikke i databasen
 	}
