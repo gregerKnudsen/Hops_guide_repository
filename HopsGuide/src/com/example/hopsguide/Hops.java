@@ -90,10 +90,13 @@ public class Hops {
 
 	@Override
 	public String toString() {
-		return "Hops [name=" + name + ", country=" + country + ", alpha="
-				+ alpha + ", beta=" + beta + ", storageIndex=" + storageIndex
-				+ ", typicalFor=" + typicalFor + ", aroma=" + aroma
-				+ ", information=" + information + "]";
+		return "Country = \t\t" + country +
+				"\nAlpha = \t\t\t"+ alpha + 
+				"\nBeta = \t\t\t" + beta + 
+				"\nStorage index = \t" + storageIndex +
+				"\nTypicalFor = \t\t" + typicalFor + 
+				"\nAroma = \t\t\t" + aroma +
+				"\n\nInformation\n" + information;
 	}
 	
 }

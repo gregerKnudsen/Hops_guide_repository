@@ -58,7 +58,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	
 	public void fillHopsTable(){
 		insertHops("Armano","UK",(float) 2.4,(float) 1.9,23,"Pale Ale,IPA","Bitter","Very bitter taste, beware!");
-		insertHops("Fromage","USA",(float) 4.2,(float) 9.2,12,"Pilsner","Aroma","Sweet taste, delicious!");
+		insertHops("Fromage","USA",(float) 4.2,(float) 9.2,12,"Pilsner","Aroma","Sweet taste, delicious! Suitable for meat.");
 	}
 	
 	public void insertHops(String name,String country,float alpha,float beta, int storageIndex,String typicalFor,
