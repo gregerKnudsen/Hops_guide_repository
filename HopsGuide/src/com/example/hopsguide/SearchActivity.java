@@ -41,8 +41,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		getDatabaseAccess();
 		createHopsTable();
 		try {
-			File file = new File("C:/Users/Greger Siem Knudsen/git/Hops_guide_repository/HopsGuide/data.csv");
-			Toast.makeText(getApplicationContext(), "File exists: " + file.exists(),Toast.LENGTH_LONG).show();
 			fillHopsTable();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
