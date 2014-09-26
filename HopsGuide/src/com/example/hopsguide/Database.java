@@ -54,7 +54,7 @@ public class Database extends SQLiteOpenHelper {
 	//Kalt når databasen endrer innhold og/eller struktur
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL("deleteDummy");
+	//	db.execSQL("deleteDummy");
 		onCreate(db);
 	}
 }
