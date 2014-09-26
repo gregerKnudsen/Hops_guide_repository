@@ -1,5 +1,7 @@
 package com.example.hopsguide;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +40,14 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 		getDatabaseAccess();
 		createHopsTable();
-		fillHopsTable();
+		try {
+			File file = new File("C:/Users/Greger Siem Knudsen/git/Hops_guide_repository/HopsGuide/data.csv");
+			Toast.makeText(getApplicationContext(), "File exists: " + file.exists(),Toast.LENGTH_LONG).show();
+			fillHopsTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			Toast.makeText(getApplicationContext(), "Failed to load CSV: " + e.getCause(),Toast.LENGTH_LONG).show();
+		}
 		displayHopsNames();
 	}
 	
@@ -58,11 +67,16 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		}
 	}
 	
-	public void fillHopsTable(){
+	public void fillHopsTable() throws IOException{
 	//	insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
 	//	insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
-		
-		
+		CSVReader csvReader = new CSVReader();
+		List<Hops> hopsList = csvReader.read("data.csv");
+		Toast.makeText(getApplicationContext(), "Number of hops in csv-file: " + hopsList.size(),Toast.LENGTH_SHORT).show();
+		for(Hops hops : hopsList){
+			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),
+					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
+		}
 	}
 	
 	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,
