@@ -15,7 +15,7 @@ public class Hops {
 	
 	public Hops(String name, String country, float alpha, float beta,
 			String type, int storageIndex, String typicalFor, String substitutes,String aroma,
-			String information) {
+				String information) {
 		this.name = name;
 		this.country = country;
 		this.alpha = alpha;
