@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.StrictMode;
 import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
@@ -31,7 +32,6 @@ public class Database extends SQLiteOpenHelper {
 	public Database(Context context) throws Exception{
 		super(context,DATABASE_NAME,null,DATABASE_VERSION);
 		this.context = context;
-		Toast.makeText(context,"contructor called",2);
 	}
 
 	//Kalt når databasen lages for første gang

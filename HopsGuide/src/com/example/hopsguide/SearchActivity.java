@@ -44,7 +44,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 			fillHopsTable();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			Toast.makeText(getApplicationContext(), "Failed to load CSV: " + e.getCause(),Toast.LENGTH_LONG).show();
 		}
 		displayHopsNames();
 	}
@@ -66,8 +65,8 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillHopsTable() throws IOException{
-		insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
-		insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
+//		insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
+//		insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
 //		CSVReader csvReader = new CSVReader();
 //		List<Hops> hopsList = csvReader.read("data.csv");
 //		Toast.makeText(getApplicationContext(), "Number of hops in csv-file: " + hopsList.size(),Toast.LENGTH_SHORT).show();
@@ -75,6 +74,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),
 //					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
 //		}
+		Toast.makeText(getApplicationContext(), "Gets here",Toast.LENGTH_LONG).show();
+		List<Hops> hopsList = MySQLDatabase.getData();
+		for(Hops hops : hopsList){
+			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
+		}
 	}
 	
 	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,

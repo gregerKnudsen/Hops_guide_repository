@@ -38,7 +38,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 		informationButton = (ImageView) findViewById(R.id.informationButton);
 		informationButton.setOnClickListener(this);
-
+		Toast.makeText(getApplicationContext(), "Got data from MySQL database: " + (MySQLDatabase.getData() != null),Toast.LENGTH_LONG).show();
 		checkNetworkConnection();
 	}
 
