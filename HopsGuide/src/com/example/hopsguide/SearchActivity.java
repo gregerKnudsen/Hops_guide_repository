@@ -2,14 +2,24 @@ package com.example.hopsguide;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
-
+	
 	private Database database;
 	private EditText inputText;
 	private TextView resultText;
@@ -40,8 +50,23 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 		getDatabaseAccess();
 		createHopsTable();
+	//	createMyListsTable();
 		try {
-			fillHopsTable();
+			try {
+				fillHopsTable();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		}
@@ -64,7 +89,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		}
 	}
 	
-	public void fillHopsTable() throws IOException{
+	public void fillHopsTable() throws IOException, InterruptedException, ExecutionException, JSONException, TimeoutException{
 //		insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
 //		insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
 //		CSVReader csvReader = new CSVReader();
@@ -75,11 +100,23 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
 //		}
 		Toast.makeText(getApplicationContext(), "Gets here",Toast.LENGTH_LONG).show();
-		List<Hops> hopsList = MySQLDatabase.getData();
+		MySQLDatabase sqldb = new MySQLDatabase();
+		
+		Log.i("MySQLDatabase", "KOMMER FAKTISK HIT TIL CASTINGEN");
+	//	Thread.currentThread().sleep(10000);
+		Toast.makeText(getApplicationContext(), "Downloading database...",Toast.LENGTH_SHORT).show();
+		AsyncTask<URL,Void,JSONArray> result = sqldb.getDatabaseData();
+		Log.i("MySQLDatabase", "HAR HENTET UT DATAENE!");
+		List<Hops> hopsList = parseJSONArray(result.get());
 		for(Hops hops : hopsList){
 			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
 		}
+		Toast.makeText(getApplicationContext(), "Finished",Toast.LENGTH_SHORT).show();
 	}
+	
+//	public String checkForNull(String s){
+//		if(s.)
+//	}
 	
 	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,
 			String substitutes,String aroma, String information){
@@ -160,6 +197,24 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		else{
 			resultText.setText("Please type in name of desired hops");
 		}
+	}
+	
+	public List<Hops> parseJSONArray(JSONArray jArray) throws JSONException{
+		List<Hops> hopsList = new ArrayList<Hops>();
+		Log.i("MySQLDatabase", "ANKOMMER FOR LØKKEN FOR INNSETTING AV DATA");
+		Log.i("MySQLDatabase", "JARRAY SIN LENGDE ER " + jArray.length());
+		JSONObject json;
+		for(int i = 0; i < jArray.length(); i++){
+			json = jArray.getJSONObject(i);
+		//	Log.i("MySQLDatabase", "FÅR TAK I JSON OBJEKT");
+			System.out.println("FÅR TAK I JSON OBJEKT. ER I ITERASJON NUMMER " + i);
+			hopsList.add(new Hops(json.getString("Name"),json.getString("Country"),
+					Float.parseFloat(json.getString("Alpha")), Float.parseFloat(json.getString("Beta")),json.getString("Type"),
+					Integer.parseInt(json.getString("Storage Index")), json.getString("Typical for"), json.getString("Substitutes"),
+					json.getString("Aroma"),json.getString("Information")));
+		}
+		Log.i("MySQLDatabase", "ALT GIKK BRA, RETURNERER LISTE MED " + hopsList.size());
+		return hopsList;
 	}
 
 	@Override

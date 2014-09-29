@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,7 +39,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 		informationButton = (ImageView) findViewById(R.id.informationButton);
 		informationButton.setOnClickListener(this);
-		Toast.makeText(getApplicationContext(), "Got data from MySQL database: " + (MySQLDatabase.getData() != null),Toast.LENGTH_LONG).show();
+		Log.i("MainActivity", "SKJEKKER OM DATABASEKLASSEN RETURNERER NULL...");
+	//	Toast.makeText(getApplicationContext(), "Got data from MySQL database: " + (MySQLDatabase.getData() != null),Toast.LENGTH_LONG).show();
 		checkNetworkConnection();
 	}
 
