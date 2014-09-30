@@ -105,10 +105,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 	
 	public void insertList(String name, String hopsNamesCSV){
+		Log.i("MySQLDatabase", "LEGGER TIL LISTE");
 			ContentValues values = new ContentValues();
 			values.put("_id",name);
 			values.put("content", hopsNamesCSV);
-			database.insertHops(sqLiteDatabase, values);
+			database.insertList(sqLiteDatabase, values);
 	}
 
 	public void fillHopsTable() throws IOException, InterruptedException, ExecutionException, JSONException, TimeoutException{
@@ -118,11 +119,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		for(Hops hops : hopsList){
 			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
 		}
-		Toast.makeText(getApplicationContext(), "Finished",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void fillMyListsTable(){
-		
+		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster,Brewer's Gold");
+		insertList("My favorites", "Celeia,Nugget,Orion,Olympic");
 	}
 
 	public void checkNetworkConnection(){

@@ -17,7 +17,7 @@ public class SQLQueryFactory {
 	}
 	
 	public static String createMyListTable(){
-		return "CREATE TABLE IF NOT EXISTS MyLists (" +
+		return "CREATE TABLE IF NOT EXISTS Lists (" +
 			   	"_id VARCHAR(200),"+ //hver liste identifiseres med navn på liste
 			   	"content VARCHAR(1024));";
 	}
@@ -35,6 +35,6 @@ public class SQLQueryFactory {
 	}
 	
 	public static String deleteMyListsTable(){
-		return "DROP TABLE IF EXISTS MyLists";
+		return "DROP TABLE IF EXISTS Lists";
 	}
 }

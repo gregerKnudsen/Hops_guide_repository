@@ -1,34 +1,51 @@
 package com.example.hopsguide;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class ListActivity extends ActionBarActivity {
-
-	private Database database;
-	private SQLiteDatabase sqLiteDatabase;
+	
+	private TextView resultText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		getDatabaseAccess();
+		resultText = (TextView) findViewById(R.id.listNames);
+		displayListNames();
 	}
 	
-	public void getDatabaseAccess(){
-		try {
-			database = new Database(this);
-			sqLiteDatabase = database.getWritableDatabase();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public void displayListNames(){
+		resultText.setText(getListNamesList());
+	}
+	
+	public String getListNamesList(){
+		String result = "";
+		List<String> hopsNamesList = getListNames();
+		for(String name : hopsNamesList){
+			result += (name + "\n");
 		}
+		return result;
+	}
+	
+	public List<String> getListNames(){
+		List<String> result = new ArrayList<String>();
+		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		String[] columns = {Database.UID};
+		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,null,null,null,null,null);
+		while(cursor.moveToNext()){
+			result.add(cursor.getString(0));
+		}
+		return result;
 	}
 
 	@Override

@@ -9,10 +9,9 @@ public class Database extends SQLiteOpenHelper {
 
 	private static final int 	DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "info331";
-//	private Context context;
+	public static final String UID = "_id";
 	
-	public static final String TABLE_NAME = "hops";
-	public static final String UID = "_id";	//denne kolonnen lagrer navnet på humlen, som er tabellens primærnøkkel
+	public static final String HOPS_TABLE_NAME = "hops";
 	public static final String COUNTRY = "Country";
 	public static final String ALPHA = "Alpha";
 	public static final String BETA = "Beta";
@@ -22,6 +21,11 @@ public class Database extends SQLiteOpenHelper {
 	public static final String SUBSTITUTES = "Substitutes";
 	public static final String AROMA = "Aroma";
 	public static final String INFORMATION = "Information";
+	
+	public static final String LIST_TABLE_NAME = "lists";
+	public static final String CONTENT = "Content";
+	
+	
 	public static final String NO_DATA = "Not available";
 
 	public Database(Context context) throws Exception{
@@ -45,7 +49,7 @@ public class Database extends SQLiteOpenHelper {
 	}
 	
 	public void insertList(SQLiteDatabase db, ContentValues values){
-		db.insert("MyLists",null,values); 	//ikke nødvendig med nullColumnHack fordi brukeren
+		db.insert("Lists",null,values); 	//ikke nødvendig med nullColumnHack fordi brukeren
 											//må alltid fylle inn all informasjon
 	}
 
