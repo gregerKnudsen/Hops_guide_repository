@@ -1,20 +1,15 @@
 package com.example.hopsguide;
 
-import java.io.File;
-import java.util.Scanner;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.os.StrictMode;
-import android.widget.Toast;
 
 public class Database extends SQLiteOpenHelper {
 
 	private static final int 	DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "info331";
-	private Context context;
+//	private Context context;
 	
 	public static final String TABLE_NAME = "hops";
 	public static final String UID = "_id";	//denne kolonnen lagrer navnet på humlen, som er tabellens primærnøkkel
@@ -31,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
 
 	public Database(Context context) throws Exception{
 		super(context,DATABASE_NAME,null,DATABASE_VERSION);
-		this.context = context;
+//		this.context = context;
 	}
 
 	//Kalt når databasen lages for første gang
@@ -46,10 +41,6 @@ public class Database extends SQLiteOpenHelper {
 	public void insertHops(SQLiteDatabase db,ContentValues values){
 		db.insert("Hops",null,values);
 	}
-	
-//	public void selectHops(SQLiteDatabase db,ContentValues values){
-//		Cursor curs, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit, cancellationSignal)
-//	}
 
 	//Kalt når databasen endrer innhold og/eller struktur
 	@Override

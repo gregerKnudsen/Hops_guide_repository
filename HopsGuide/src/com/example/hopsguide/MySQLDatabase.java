@@ -4,8 +4,6 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -14,16 +12,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import android.app.Activity;
-import android.database.sqlite.SQLiteDatabase;
-import android.location.Location;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
 
 public class MySQLDatabase extends Activity{
 
@@ -89,18 +81,6 @@ public class MySQLDatabase extends Activity{
 			JSONArray jArray = new JSONArray(result);
 
 			return jArray;
-			//			List<Hops> hops = new ArrayList<Hops>();
-			//			hops.add(new Hops("TestHops","UK",(float) 4.3,(float) 1.9,"Bitter",23,"Pale ale","Armanio","Orange","Good hops!"));
-			//			return hops;
-		}
-		
-		public void onPostExecute(Long result){
-			
 		}
 	}
-
-	//	public void onCreate(Bundle bundle){
-	//		super.onCreate(bundle);
-	//	}
-
 }

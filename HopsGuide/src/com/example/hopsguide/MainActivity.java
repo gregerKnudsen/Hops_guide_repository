@@ -1,17 +1,11 @@
 package com.example.hopsguide;
 
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import android.support.v7.app.ActionBarActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +15,6 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-	private JSONObject jsonObject;
 	private Button searchSectionButton;
 	private Button listButton;
 	private ImageView informationButton;
@@ -39,8 +32,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 		informationButton = (ImageView) findViewById(R.id.informationButton);
 		informationButton.setOnClickListener(this);
-		Log.i("MainActivity", "SKJEKKER OM DATABASEKLASSEN RETURNERER NULL...");
-	//	Toast.makeText(getApplicationContext(), "Got data from MySQL database: " + (MySQLDatabase.getData() != null),Toast.LENGTH_LONG).show();
 		checkNetworkConnection();
 	}
 
@@ -87,7 +78,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		onClick((ImageView) findViewById(R.id.informationButton));
 	}
 
-	public void startActivity(Class activity){
+	public void startActivity(Class<?> activity){
 		startActivity(new Intent(getApplicationContext(),activity));
 	}
 

@@ -1,12 +1,10 @@
 package com.example.hopsguide;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
 import org.json.JSONArray;
@@ -75,14 +73,12 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	
 	public void createHopsTable(){
 		database.onCreate(sqLiteDatabase);
-	//	Toast.makeText(getApplicationContext(), "Hops table created",Toast.LENGTH_SHORT).show();
 	}
 	
 	public void getDatabaseAccess(){
 		try {
 			database = new Database(this);
 			sqLiteDatabase = database.getWritableDatabase();
-		//	Toast.makeText(getApplicationContext(), "Database access granted",Toast.LENGTH_SHORT).show();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -90,15 +86,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void fillHopsTable() throws IOException, InterruptedException, ExecutionException, JSONException, TimeoutException{
-//		insertHops("Admiral","UK",(float) 14.75,(float) 5.6,"Bittering",15,"Ales","Target,Northdown",Database.NO_DATA,"Bittering hops derived from Wye Challenger. Good high-alpha bittering hops.");
-//		insertHops("Ahtanum","US",(float) 6,(float) 5.25,"Aroma",30,"American ales,lagers","Amarillo,Cascade","Distinctive floral and citrus aromas","Distinctive aromatic hops with moderate bittering power from Washington.");
-//		CSVReader csvReader = new CSVReader();
-//		List<Hops> hopsList = csvReader.read("data.csv");
-//		Toast.makeText(getApplicationContext(), "Number of hops in csv-file: " + hopsList.size(),Toast.LENGTH_SHORT).show();
-//		for(Hops hops : hopsList){
-//			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),
-//					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
-//		}
 		Toast.makeText(getApplicationContext(), "Gets here",Toast.LENGTH_LONG).show();
 		MySQLDatabase sqldb = new MySQLDatabase();
 		
@@ -114,10 +101,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		Toast.makeText(getApplicationContext(), "Finished",Toast.LENGTH_SHORT).show();
 	}
 	
-//	public String checkForNull(String s){
-//		if(s.)
-//	}
-	
 	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,
 			String substitutes,String aroma, String information){
 		ContentValues values = new ContentValues();
@@ -132,7 +115,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		values.put("Aroma", aroma);
 		values.put("Information", information);
 		database.insertHops(sqLiteDatabase, values);
-	//	Toast.makeText(getApplicationContext(), "Filled Hops table",Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
@@ -147,7 +129,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.TABLE_NAME,columns,Database.UID+" = '"+name+"'",null,null,null,null);
 		if(cursor.moveToNext()){
-		//	Toast.makeText(getApplicationContext(), cursor.getString(0),Toast.LENGTH_SHORT).show();
 			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getString(4),cursor.getInt(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
 		}
 		return null; //humle med gitt navn finnes ikke i databasen
@@ -169,7 +150,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		while(cursor.moveToNext()){
 			result.add(cursor.getString(0));
 		}
-	//	Toast.makeText(getApplicationContext(),"Nr. of names: " + (result.size()),Toast.LENGTH_SHORT).show();
 		return result;
 	}
 	
@@ -186,7 +166,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		String input = inputText.getText().toString();
 		if(!input.equals("")){
 			Hops hops = getHops(input);
-		//	Toast.makeText(getApplicationContext(),"" + (hops != null),Toast.LENGTH_SHORT).show();
 			if(hops != null){
 				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
 			}
@@ -206,7 +185,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		JSONObject json;
 		for(int i = 0; i < jArray.length(); i++){
 			json = jArray.getJSONObject(i);
-		//	Log.i("MySQLDatabase", "FÅR TAK I JSON OBJEKT");
 			System.out.println("FÅR TAK I JSON OBJEKT. ER I ITERASJON NUMMER " + i);
 			hopsList.add(new Hops(json.getString("Name"),json.getString("Country"),
 					Float.parseFloat(json.getString("Alpha")), Float.parseFloat(json.getString("Beta")),json.getString("Type"),
