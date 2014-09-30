@@ -47,7 +47,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		searchButton.setOnClickListener(this);
 
 		getDatabaseAccess();
-		createHopsTable();
+		createTables();
 	//	createMyListsTable();
 		try {
 			try {
@@ -71,7 +71,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		displayHopsNames();
 	}
 	
-	public void createHopsTable(){
+	public void createTables(){
 		database.onCreate(sqLiteDatabase);
 	}
 	

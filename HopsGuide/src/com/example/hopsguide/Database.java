@@ -35,11 +35,18 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(SQLQueryFactory.deleteHopsTable());
+		db.execSQL(SQLQueryFactory.deleteMyListsTable());
 		db.execSQL(SQLQueryFactory.createHopsTable());
+		db.execSQL(SQLQueryFactory.createMyListTable());
 	}
 	
-	public void insertHops(SQLiteDatabase db,ContentValues values){
-		db.insert("Hops",null,values);
+	public void insertHops(SQLiteDatabase db, ContentValues values){
+		db.insert("Hops","no data",values);
+	}
+	
+	public void insertList(SQLiteDatabase db, ContentValues values){
+		db.insert("MyLists",null,values); 	//ikke nødvendig med nullColumnHack fordi brukeren
+											//må alltid fylle inn all informasjon
 	}
 
 	//Kalt når databasen endrer innhold og/eller struktur

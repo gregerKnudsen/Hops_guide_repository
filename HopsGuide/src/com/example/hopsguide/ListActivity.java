@@ -1,16 +1,49 @@
 package com.example.hopsguide;
 
+import java.util.List;
+
 import android.support.v7.app.ActionBarActivity;
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
 public class ListActivity extends ActionBarActivity {
 
+	private Database database;
+	private SQLiteDatabase sqLiteDatabase;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
+		getDatabaseAccess();
+	}
+	
+	public void getDatabaseAccess(){
+		try {
+			database = new Database(this);
+			sqLiteDatabase = database.getWritableDatabase();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void insertList(String name, List<String> hopsNames){
+		if(hopsNames.size() > 0){
+			String nameList = hopsNames.get(0);
+			ContentValues values = new ContentValues();
+			values.put("_id",name);
+			for(int i = 1; i < hopsNames.size(); i++){
+				nameList += "," + hopsNames.get(i);
+			}
+			values.put("_id", name);
+			values.put("content", nameList);
+			database.insertHops(sqLiteDatabase, values);
+		}
+		//setter ikke noe inn dersom listen er tom
 	}
 
 	@Override
