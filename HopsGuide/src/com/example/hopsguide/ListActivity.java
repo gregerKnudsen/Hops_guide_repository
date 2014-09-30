@@ -30,21 +30,6 @@ public class ListActivity extends ActionBarActivity {
 			e.printStackTrace();
 		}
 	}
-	
-	public void insertList(String name, List<String> hopsNames){
-		if(hopsNames.size() > 0){
-			String nameList = hopsNames.get(0);
-			ContentValues values = new ContentValues();
-			values.put("_id",name);
-			for(int i = 1; i < hopsNames.size(); i++){
-				nameList += "," + hopsNames.get(i);
-			}
-			values.put("_id", name);
-			values.put("content", nameList);
-			database.insertHops(sqLiteDatabase, values);
-		}
-		//setter ikke noe inn dersom listen er tom
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
