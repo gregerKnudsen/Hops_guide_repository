@@ -131,9 +131,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 				getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
-			Toast.makeText(getApplicationContext(),"Network available",Toast.LENGTH_SHORT).show();
+		//	Toast.makeText(getApplicationContext(),"Network available",Toast.LENGTH_SHORT).show();
 		} else {
-			Toast.makeText(getApplicationContext(),"Network not available",Toast.LENGTH_SHORT).show();
+		//	Toast.makeText(getApplicationContext(),"Network not available",Toast.LENGTH_SHORT).show();
 		}
 	}
 
