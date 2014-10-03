@@ -14,21 +14,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class ListActivity extends ActionBarActivity {
-	
-	private TextView resultText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		resultText = (TextView) findViewById(R.id.listViewResult);
 	//	displayListNames();
 		populateListView();
 	}
 	
-	public void displayListNames(){
-		resultText.setText(getListNamesList());
-	}
+//	public void displayListNames(){
+//		resultText.setText(getListNamesList());
+//	}
 	
 	public String getListNamesList(){
 		String result = "";
@@ -40,8 +37,10 @@ public class ListActivity extends ActionBarActivity {
 	}
 	
 	public void populateListView(){
-		String[] listNames = (String[]) getListNames().toArray();
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.activity_list,listNames);
+	//	String[] a = list.toArray(new String[list.size()]);
+		List<String> result = getListNames();
+		String[] listNamesArray = result.toArray(new String[result.size()]);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listnames,listNamesArray);
 		ListView list = (ListView) findViewById(R.id.listViewResult);
 		list.setAdapter(adapter);
 	}
