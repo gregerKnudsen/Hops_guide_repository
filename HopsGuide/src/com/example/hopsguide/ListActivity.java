@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
-import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class ListActivity extends ActionBarActivity {
@@ -20,8 +21,9 @@ public class ListActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		resultText = (TextView) findViewById(R.id.listNames);
-		displayListNames();
+		resultText = (TextView) findViewById(R.id.listViewResult);
+	//	displayListNames();
+		populateListView();
 	}
 	
 	public void displayListNames(){
@@ -35,6 +37,13 @@ public class ListActivity extends ActionBarActivity {
 			result += (name + "\n");
 		}
 		return result;
+	}
+	
+	public void populateListView(){
+		String[] listNames = (String[]) getListNames().toArray();
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.activity_list,listNames);
+		ListView list = (ListView) findViewById(R.id.listViewResult);
+		list.setAdapter(adapter);
 	}
 	
 	public List<String> getListNames(){

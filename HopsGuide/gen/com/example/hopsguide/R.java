@@ -1119,7 +1119,7 @@ containing a value of this type.
         public static final int informationButton=0x7f05003f;
         public static final int inputTextBox=0x7f050043;
         public static final int listMode=0x7f050001;
-        public static final int listNames=0x7f05003c;
+        public static final int listViewResult=0x7f05003c;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
         public static final int myListsButton=0x7f050041;
@@ -1208,8 +1208,9 @@ containing a value of this type.
         public static final int activity_list=0x7f030019;
         public static final int activity_main=0x7f03001a;
         public static final int activity_splash=0x7f03001b;
-        public static final int search_activity=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int listnames=0x7f03001c;
+        public static final int search_activity=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int information=0x7f0c0000;
