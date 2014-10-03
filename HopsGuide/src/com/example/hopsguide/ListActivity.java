@@ -9,9 +9,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ListActivity extends ActionBarActivity {
 
@@ -21,6 +24,7 @@ public class ListActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_list);
 	//	displayListNames();
 		populateListView();
+		setListNamesListener();
 	}
 	
 //	public void displayListNames(){
@@ -54,6 +58,28 @@ public class ListActivity extends ActionBarActivity {
 			result.add(cursor.getString(0));
 		}
 		return result;
+	}
+	
+	public String getList(String name){
+		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		String[] columns = {Database.CONTENT};
+		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,
+				Database.UID+" = '"+ name +"'",null,null,null,null);
+		cursor.moveToNext();
+		return cursor.getString(0);
+	}
+	
+	public void setListNamesListener(){
+		ListView list = (ListView) findViewById(R.id.listViewResult);
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View viewClicked, int position,
+					long id) {
+				TextView textView = (TextView) viewClicked;
+				Toast.makeText(getApplicationContext(),getList(textView.getText().toString()),Toast.LENGTH_LONG).show();
+			}
+		});
 	}
 
 	@Override

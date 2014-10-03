@@ -126,6 +126,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster,Brewer's Gold");
 		insertList("My favorites", "Celeia,Nugget,Orion,Olympic");
 	}
+	
+//	public String getListByName(String name){
+//		ContentValues values = new ContentValues();
+//		values.put("_id", name);
+//		database.getList(sqLiteDatabase,values);
+//	}
 
 	public void checkNetworkConnection(){
 		ConnectivityManager connMgr = (ConnectivityManager) 
