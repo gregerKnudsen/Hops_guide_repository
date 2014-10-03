@@ -26,7 +26,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -117,7 +116,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		AsyncTask<URL,Void,JSONArray> result = sqldb.getDatabaseData();
 		List<Hops> hopsList = parseJSONArray(result.get());
 		for(Hops hops : hopsList){
-			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),hops.getInformation());
+			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),
+					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),
+					hops.getInformation());
 		}
 	}
 	

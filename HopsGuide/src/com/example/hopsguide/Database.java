@@ -25,7 +25,6 @@ public class Database extends SQLiteOpenHelper {
 	public static final String LIST_TABLE_NAME = "lists";
 	public static final String CONTENT = "Content";
 	
-	
 	public static final String NO_DATA = "Not available";
 
 	public Database(Context context) throws Exception{
