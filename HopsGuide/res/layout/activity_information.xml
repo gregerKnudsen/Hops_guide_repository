@@ -9,8 +9,39 @@
     tools:context="com.example.hopsguide.InformationActivity" >
 
     <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Information" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:src="@drawable/info1" />
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_above="@+id/textView3"
+        android:layout_marginBottom="16dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="&apos;Browse&apos; lets you look through a list of hops sorted alphabetically. You can also search for specific hops by name, type and aroma."
+        android:textSize="4pt" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView1"
+        android:layout_marginBottom="48dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="&apos;My lists&apos; lets you look at collections of hops you&apos;ve made using the browser. You can also edit and delete lists here."
+        android:textSize="4pt" />
 
 </RelativeLayout>
