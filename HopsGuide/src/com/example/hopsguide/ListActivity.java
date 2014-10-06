@@ -22,14 +22,9 @@ public class ListActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-	//	displayListNames();
 		populateListView();
 		setListNamesListener();
 	}
-	
-//	public void displayListNames(){
-//		resultText.setText(getListNamesList());
-//	}
 	
 	public String getListNamesList(){
 		String result = "";
@@ -41,7 +36,6 @@ public class ListActivity extends ActionBarActivity {
 	}
 	
 	public void populateListView(){
-	//	String[] a = list.toArray(new String[list.size()]);
 		List<String> result = getListNames();
 		String[] listNamesArray = result.toArray(new String[result.size()]);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listnames,listNamesArray);
