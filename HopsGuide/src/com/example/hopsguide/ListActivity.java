@@ -43,7 +43,7 @@ public class ListActivity extends ActionBarActivity {
 		list.setAdapter(adapter);
 	}
 	
-	public List<String> getListNames(){
+	public static List<String> getListNames(){
 		List<String> result = new ArrayList<String>();
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID};

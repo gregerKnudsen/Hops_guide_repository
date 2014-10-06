@@ -110,7 +110,7 @@ public class Hops {
 
 	@Override
 	public String toString() {
-		return "Country\n" + country +
+		return "Country: " + country +
 				"\n\nAlpha: "+ alpha + 
 				"\n\nBeta: " + beta + 
 				"\n\nType: " + type + 

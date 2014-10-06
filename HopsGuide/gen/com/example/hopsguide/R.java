@@ -1278,6 +1278,7 @@ containing a value of this type.
         public static final int resultTextArea=0x7f0a001a;
         public static final int searchBoxDescription=0x7f0a0017;
         public static final int searchInputButtonDescription=0x7f0a0018;
+        public static final int selectList=0x7f0a0022;
         public static final int serchInputButtonLabel=0x7f0a0019;
         public static final int title_activity_information=0x7f0a001e;
         public static final int title_activity_list=0x7f0a0020;

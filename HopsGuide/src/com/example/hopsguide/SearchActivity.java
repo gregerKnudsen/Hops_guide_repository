@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,9 +24,7 @@ import android.widget.Toast;
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 	
 	private EditText inputText;
-//	private TextView resultText;
 	private Button searchButton;
-	private ListView resultText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -31,12 +32,26 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		setContentView(R.layout.search_activity);      
 
 		inputText = (EditText) findViewById(R.id.inputTextBox);
-		resultText = (ListView) findViewById(R.id.listView2);
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
-		
-		populateListView();
-		setHopsNamesListener();
+		updateListView(getHopsNames());
+		setListViewItemListeners();
+	}
+	
+	public void showListSelection(){
+	    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+	    List<String> listNames = ListActivity.getListNames();
+	    CharSequence[] listNamesArray = new String[listNames.size()];
+	    listNamesArray = listNames.toArray(listNamesArray);
+	    builder.setTitle(R.string.selectList)
+	           .setItems(listNamesArray, new DialogInterface.OnClickListener() {
+	               public void onClick(DialogInterface dialog, int which) {
+	               // The 'which' argument contains the index position
+	               // of the selected item
+	            	   
+	           }
+	    });
+	    builder.create();
 	}
 
 	@Override
@@ -46,17 +61,37 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		return true;
 	}
 
-	public void populateListView(){
-		List<String> result = getHopsNames();
-		System.out.println("STØRRELSE PÅ RESULT LISTE: " + result.size());
-		String[] hopsNamesArray = result.toArray(new String[result.size()]);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.hopsnames,hopsNamesArray);
+	public void populateListView(String[] hopsNames){
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.hopsnames,hopsNames);
 		ListView list = (ListView) findViewById(R.id.listView2);
 		list.setAdapter(adapter);
 	}
 	
-	public void setHopsNamesListener(){
+	public void updateListView(List<String> hopsNames){
+		String[] hopsNamesArray = hopsNames.toArray(new String[hopsNames.size()]);
+		populateListView(hopsNamesArray);
+	}
+	
+	public void setListViewItemListeners(){
 		ListView list = (ListView) findViewById(R.id.listView2);
+		setHopsNamesClickListener(list);
+		setHopsNamesLongClickListener(list);
+	}
+	
+	public void setHopsNamesLongClickListener(ListView list){
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+            public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
+                
+				TextView textView = (TextView) viewLongClicked;
+				showListSelection();
+            //	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+	}
+	
+	public void setHopsNamesClickListener(ListView list){
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
 			@Override
@@ -74,17 +109,12 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		if(cursor.moveToNext()){
 			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getString(4),cursor.getInt(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
 		}
-		Toast.makeText(getApplicationContext(),"Didn't find hops",Toast.LENGTH_LONG).show();
 		return null; //humle med gitt navn finnes ikke i databasen
 	}
 
 	public void searchButtonClick(){
 		onClick((Button) findViewById(R.id.searchButton));
 	}
-	
-//	public void displayHopsNames(){
-//		resultText.setText(getHopsNamesList());
-//	}
 	
 	public List<String> getHopsNames(){
 		List<String> result = new ArrayList<String>();
@@ -106,20 +136,11 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		return result;
 	}
 
-	public void displayHops(){
-//		String input = inputText.getText().toString();
-//		if(!input.equals("")){
-//			Hops hops = getHops(input);
-//			if(hops != null){
-//				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
-//			}
-//			else{
-//				resultText.setText("Sorry, hops named \"" + input + "\" not found");
-//			}
-//		}
-//		else{
-//			resultText.setText("Please type in name of desired hops");
-//		}
+	public void displaySearchResult(){
+		String input = inputText.getText().toString();
+		List<String> result = new ArrayList<String>();
+		result.add(input.substring(0,1).toUpperCase() + input.substring(1,input.length()));
+		updateListView(result);
 	}
 
 	@Override
@@ -138,7 +159,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.searchButton : 
-			displayHops();
+			displaySearchResult();
 			break;
 		}
 	}

@@ -22,5 +22,6 @@
     <string name="listButtonLabel">My lists</string>
     <string name="title_activity_list">My Lists</string>
     <string name="listNames">List names</string>
+    <string name="selectList">Select list to add hops</string>
 
 </resources>
