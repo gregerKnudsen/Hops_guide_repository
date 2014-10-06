@@ -10,15 +10,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 	
 	private EditText inputText;
-	private TextView resultText;
+//	private TextView resultText;
 	private Button searchButton;
+	private ListView resultText;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -26,12 +29,13 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		setContentView(R.layout.search_activity);      
 
 		inputText = (EditText) findViewById(R.id.inputTextBox);
-		resultText = (TextView) findViewById(R.id.textView1);
-		resultText.setMovementMethod(new ScrollingMovementMethod());
+		resultText = (ListView) findViewById(R.id.listView2);
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
 		
-		displayHopsNames();
+	//	displayHopsNames();
+		
+		populateListView();
 	}
 
 	@Override
@@ -39,6 +43,16 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
+	}
+	
+
+	public void populateListView(){
+		List<String> result = getHopsNames();
+		System.out.println("STØRRELSE PÅ RESULT LISTE: " + result.size());
+		String[] hopsNamesArray = result.toArray(new String[result.size()]);
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.hopsnames,hopsNamesArray);
+		ListView list = (ListView) findViewById(R.id.listView2);
+		list.setAdapter(adapter);
 	}
 
 	public Hops getHops(String name){
@@ -55,9 +69,9 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		onClick((Button) findViewById(R.id.searchButton));
 	}
 	
-	public void displayHopsNames(){
-		resultText.setText(getHopsNamesList());
-	}
+//	public void displayHopsNames(){
+//		resultText.setText(getHopsNamesList());
+//	}
 	
 	public List<String> getHopsNames(){
 		List<String> result = new ArrayList<String>();
@@ -80,19 +94,19 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public void displayHops(){
-		String input = inputText.getText().toString();
-		if(!input.equals("")){
-			Hops hops = getHops(input);
-			if(hops != null){
-				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
-			}
-			else{
-				resultText.setText("Sorry, hops named \"" + input + "\" not found");
-			}
-		}
-		else{
-			resultText.setText("Please type in name of desired hops");
-		}
+//		String input = inputText.getText().toString();
+//		if(!input.equals("")){
+//			Hops hops = getHops(input);
+//			if(hops != null){
+//				resultText.setText("**** " + (hops.getName()) + " ****" + "\n\n" + hops);
+//			}
+//			else{
+//				resultText.setText("Sorry, hops named \"" + input + "\" not found");
+//			}
+//		}
+//		else{
+//			resultText.setText("Please type in name of desired hops");
+//		}
 	}
 
 	@Override
