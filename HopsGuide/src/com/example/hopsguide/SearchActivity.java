@@ -39,7 +39,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void showListSelection(){
-	    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    List<String> listNames = ListActivity.getListNames();
 	    CharSequence[] listNamesArray = new String[listNames.size()];
 	    listNamesArray = listNames.toArray(listNamesArray);
@@ -51,7 +51,8 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	            	   
 	           }
 	    });
-	    builder.create();
+	    AlertDialog dialog = builder.create();
+	    dialog.show();
 	}
 
 	@Override
