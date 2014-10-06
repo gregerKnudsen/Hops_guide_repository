@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
 	
@@ -33,9 +35,8 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
 		
-	//	displayHopsNames();
-		
 		populateListView();
+		setHopsNamesListener();
 	}
 
 	@Override
@@ -44,7 +45,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		getMenuInflater().inflate(R.menu.search, menu);
 		return true;
 	}
-	
 
 	public void populateListView(){
 		List<String> result = getHopsNames();
@@ -54,6 +54,18 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		ListView list = (ListView) findViewById(R.id.listView2);
 		list.setAdapter(adapter);
 	}
+	
+	public void setHopsNamesListener(){
+		ListView list = (ListView) findViewById(R.id.listView2);
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View viewClicked, int position,long id) {
+				TextView textView = (TextView) viewClicked;
+				Toast.makeText(getApplicationContext(),getHops(textView.getText().toString()).toString(),Toast.LENGTH_LONG).show();
+			}
+		});
+	}
 
 	public Hops getHops(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
@@ -62,6 +74,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		if(cursor.moveToNext()){
 			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getString(4),cursor.getInt(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
 		}
+		Toast.makeText(getApplicationContext(),"Didn't find hops",Toast.LENGTH_LONG).show();
 		return null; //humle med gitt navn finnes ikke i databasen
 	}
 
