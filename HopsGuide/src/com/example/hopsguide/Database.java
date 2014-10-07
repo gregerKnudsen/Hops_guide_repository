@@ -1,11 +1,22 @@
 package com.example.hopsguide;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.StreamCorruptedException;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class Database extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper implements Serializable{
 
 	private static final int 	DATABASE_VERSION = 1;
 	private static final String DATABASE_NAME = "info331";
@@ -57,5 +68,24 @@ public class Database extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	//	db.execSQL("deleteDummy");
 		onCreate(db);
+		try {
+			saveToFile("database.obj");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void saveToFile(String fileName) throws IOException{
+		File file = new File(fileName);
+		FileOutputStream fos = new FileOutputStream(file);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(this);
+	}
+	
+	public static Database readFromFile(String fileName) throws StreamCorruptedException, IOException, ClassNotFoundException{
+		FileInputStream fis = new FileInputStream(fileName);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		return (Database) ois.readObject();
 	}
 }
