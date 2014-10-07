@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.app.ActionBarActivity;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -40,6 +41,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	
 	public void showListSelection(String source){
 		final String input = source;
+		Log.i("SearchActivity", "HOPS SOM SKAL LEGGES TIL: " + input);
 	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    List<String> listNames = ListActivity.getListNames();
 	    final CharSequence[] listNamesArray = listNames.toArray(new String[listNames.size()]);
@@ -87,7 +89,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
             public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
                 
 				TextView textView = (TextView) viewLongClicked;
-				showListSelection(textView.toString());
+				showListSelection(textView.getText().toString());
            // 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
                 return true;
             }

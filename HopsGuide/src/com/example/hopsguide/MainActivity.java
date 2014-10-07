@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -109,11 +110,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		values.put("content", hopsNamesCSV);
 		database.insertList(sqLiteDatabase, values);
 	}
-
+	
 	public static void appendHopsToList(String listName, String hopsName){
 		sqLiteDatabase = database.getWritableDatabase();
-		sqLiteDatabase.execSQL(SQLQueryFactory.updateColumn(Database.HOPS_TABLE_NAME, 
-				Database.CONTENT, ListActivity.getList(listName) + "," + hopsName, Database.UID, listName));
+		sqLiteDatabase.execSQL(SQLQueryFactory.updateColumn(Database.LIST_TABLE_NAME, 
+				Database.CONTENT, ("'" + (ListActivity.getList(listName) + "," + hopsName) + "'"), Database.UID, listName));
 	}
 	//	public static String updateColumn(String table, String column, String row, String value){
 	//  "UPDATE " + table + " SET " + column + "=" + value + " WHERE " + row + "='" + value + "'";
@@ -130,7 +131,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 
 	public void fillMyListsTable(){
-		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster,Brewer's Gold");
+		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster");
 		insertList("My favorites", "Celeia,Nugget,Orion,Olympic");
 	}
 

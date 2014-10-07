@@ -60,7 +60,7 @@ public class ListActivity extends ActionBarActivity {
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,
 				Database.UID+" = '"+ name +"'",null,null,null,null);
 		cursor.moveToNext();
-		return cursor.getString(0);
+		return cursor.getString(0).toString();
 	}
 	
 	public void setListNamesListener(){

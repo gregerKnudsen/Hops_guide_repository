@@ -23,7 +23,7 @@ public class SQLQueryFactory {
 	}
 	
 	public static String updateColumn(String table, String column, String columnValue, String row, String rowValue){
-		return "UPDATE " + table + " SET " + column + "=" + columnValue + " WHERE " + row + "='" + rowValue + "'";
+		return "UPDATE " + table + " SET " + column + " = " + columnValue + " WHERE " + row + " = '" + rowValue + "'";
 	}
 	
 	public static String selectHopsNames(){
