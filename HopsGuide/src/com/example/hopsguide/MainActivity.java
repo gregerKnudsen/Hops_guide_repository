@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	private Button searchSectionButton;
 	private Button listButton;
 	private ImageView informationButton;
-	private SQLiteDatabase sqLiteDatabase;
+	private static SQLiteDatabase sqLiteDatabase;
 	private static Database database;
 
 	@Override
@@ -102,14 +102,21 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		values.put("Information", information);
 		database.insertHops(sqLiteDatabase, values);
 	}
-	
-	public void insertList(String name, String hopsNamesCSV){
-		Log.i("MySQLDatabase", "LEGGER TIL LISTE");
-			ContentValues values = new ContentValues();
-			values.put("_id",name);
-			values.put("content", hopsNamesCSV);
-			database.insertList(sqLiteDatabase, values);
+
+	public static void insertList(String name, String hopsNamesCSV){
+		ContentValues values = new ContentValues();
+		values.put("_id",name);
+		values.put("content", hopsNamesCSV);
+		database.insertList(sqLiteDatabase, values);
 	}
+
+	public static void appendHopsToList(String listName, String hopsName){
+		sqLiteDatabase = database.getWritableDatabase();
+		sqLiteDatabase.execSQL(SQLQueryFactory.updateColumn(Database.HOPS_TABLE_NAME, 
+				Database.CONTENT, ListActivity.getList(listName) + "," + hopsName, Database.UID, listName));
+	}
+	//	public static String updateColumn(String table, String column, String row, String value){
+	//  "UPDATE " + table + " SET " + column + "=" + value + " WHERE " + row + "='" + value + "'";
 
 	public void fillHopsTable() throws IOException, InterruptedException, ExecutionException, JSONException, TimeoutException{
 		MySQLDatabase sqldb = new MySQLDatabase();
@@ -121,26 +128,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 					hops.getInformation());
 		}
 	}
-	
+
 	public void fillMyListsTable(){
 		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster,Brewer's Gold");
 		insertList("My favorites", "Celeia,Nugget,Orion,Olympic");
 	}
-	
-//	public String getListByName(String name){
-//		ContentValues values = new ContentValues();
-//		values.put("_id", name);
-//		database.getList(sqLiteDatabase,values);
-//	}
+
+	//	public String getListByName(String name){
+	//		ContentValues values = new ContentValues();
+	//		values.put("_id", name);
+	//		database.getList(sqLiteDatabase,values);
+	//	}
 
 	public void checkNetworkConnection(){
 		ConnectivityManager connMgr = (ConnectivityManager) 
 				getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 		if (networkInfo != null && networkInfo.isConnected()) {
-		//	Toast.makeText(getApplicationContext(),"Network available",Toast.LENGTH_SHORT).show();
+			//	Toast.makeText(getApplicationContext(),"Network available",Toast.LENGTH_SHORT).show();
 		} else {
-		//	Toast.makeText(getApplicationContext(),"Network not available",Toast.LENGTH_SHORT).show();
+			//	Toast.makeText(getApplicationContext(),"Network not available",Toast.LENGTH_SHORT).show();
 		}
 	}
 
@@ -210,7 +217,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			break;
 		}
 	}
-	
+
 	public static Database getDatabase(){
 		return database;
 	}

@@ -54,7 +54,7 @@ public class ListActivity extends ActionBarActivity {
 		return result;
 	}
 	
-	public String getList(String name){
+	public static String getList(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
 		String[] columns = {Database.CONTENT};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,

@@ -38,17 +38,19 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		setListViewItemListeners();
 	}
 	
-	public void showListSelection(){
+	public void showListSelection(String source){
+		final String input = source;
 	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
 	    List<String> listNames = ListActivity.getListNames();
-	    CharSequence[] listNamesArray = new String[listNames.size()];
-	    listNamesArray = listNames.toArray(listNamesArray);
+	    final CharSequence[] listNamesArray = listNames.toArray(new String[listNames.size()]);
 	    builder.setTitle(R.string.selectList)
 	           .setItems(listNamesArray, new DialogInterface.OnClickListener() {
-	               public void onClick(DialogInterface dialog, int which) {
+	               public void onClick(DialogInterface dialog, int index) {
 	               // The 'which' argument contains the index position
 	               // of the selected item
-	            	   
+	            	   String listName = (String) listNamesArray[index];
+	            	   MainActivity.appendHopsToList(listName, input);
+	            	   Toast.makeText(getApplicationContext(),"Succesfully added " + input + " to " + listName,Toast.LENGTH_LONG).show();
 	           }
 	    });
 	    AlertDialog dialog = builder.create();
@@ -85,8 +87,8 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
             public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
                 
 				TextView textView = (TextView) viewLongClicked;
-				showListSelection();
-            //	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
+				showListSelection(textView.toString());
+           // 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
                 return true;
             }
         });

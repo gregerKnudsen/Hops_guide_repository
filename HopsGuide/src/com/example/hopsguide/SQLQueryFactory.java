@@ -22,6 +22,10 @@ public class SQLQueryFactory {
 			   	"content VARCHAR(1024));";
 	}
 	
+	public static String updateColumn(String table, String column, String columnValue, String row, String rowValue){
+		return "UPDATE " + table + " SET " + column + "=" + columnValue + " WHERE " + row + "='" + rowValue + "'";
+	}
+	
 	public static String selectHopsNames(){
 		return "SELECT Name FROM Hops";
 	}
