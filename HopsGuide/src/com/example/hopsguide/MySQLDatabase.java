@@ -1,8 +1,15 @@
 package com.example.hopsguide;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.net.URL;
 
 import org.apache.http.HttpEntity;
@@ -17,7 +24,7 @@ import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
 
-public class MySQLDatabase extends Activity{
+public class MySQLDatabase extends Activity {
 
 	public AsyncTask<URL, Void, JSONArray> getDatabaseData() throws InterruptedException{
 		DatabaseDownload dbdl = new DatabaseDownload();

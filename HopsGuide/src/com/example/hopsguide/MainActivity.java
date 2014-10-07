@@ -1,5 +1,6 @@
 package com.example.hopsguide;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
@@ -50,7 +52,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		informationButton = (ImageView) findViewById(R.id.informationButton);
 		informationButton.setOnClickListener(this);
 		checkNetworkConnection();
-
 		getDatabaseAccess();
 		createTables();
 		try {
@@ -72,6 +73,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			e.printStackTrace();
 		}
 		fillMyListsTable();
+		
+		sqLiteDatabase = database.getWritableDatabase();
+	}
+	
+	public boolean fileExists(String fileName){
+		File f = new File(fileName);
+		return (f.exists() && !f.isDirectory());
 	}
 
 	public void getDatabaseAccess(){
@@ -111,11 +119,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		database.insertList(sqLiteDatabase, values);
 	}
 	
-	public static void appendHopsToList(String listName, String hopsName){
+	public static void appendHopsToList(String listName, String hopsName) throws IOException{
 		sqLiteDatabase = database.getWritableDatabase();
 		sqLiteDatabase.execSQL(SQLQueryFactory.updateColumn(Database.LIST_TABLE_NAME, 
 				Database.CONTENT, ("'" + (ListActivity.getList(listName) + "," + hopsName) + "'"), Database.UID, listName));
+	//	saveDatabaseToFile("database.obj");
 	}
+	
+	public void saveDatabaseToFile(String fileName){
+		
+	}
+	
+	
 	//	public static String updateColumn(String table, String column, String row, String value){
 	//  "UPDATE " + table + " SET " + column + "=" + value + " WHERE " + row + "='" + value + "'";
 

@@ -1,5 +1,6 @@
 package com.example.hopsguide;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.app.ActionBarActivity;
@@ -51,7 +52,12 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	               // The 'which' argument contains the index position
 	               // of the selected item
 	            	   String listName = (String) listNamesArray[index];
-	            	   MainActivity.appendHopsToList(listName, input);
+	            	   try {
+						MainActivity.appendHopsToList(listName, input);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 	            	   Toast.makeText(getApplicationContext(),"Succesfully added " + input + " to " + listName,Toast.LENGTH_LONG).show();
 	           }
 	    });
