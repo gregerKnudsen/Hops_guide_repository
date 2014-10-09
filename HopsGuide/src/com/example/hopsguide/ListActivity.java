@@ -7,6 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,7 @@ public class ListActivity extends ActionBarActivity {
 	
 	public void populateListView(){
 		List<String> result = getListNames();
+		Log.i("MySQLDatabase", "Størrelse på listenavnliste: " + result.size());
 		String[] listNamesArray = result.toArray(new String[result.size()]);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listnames,listNamesArray);
 		ListView list = (ListView) findViewById(R.id.listViewResult);
@@ -49,6 +51,7 @@ public class ListActivity extends ActionBarActivity {
 		String[] columns = {Database.UID};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,null,null,null,null,null);
 		while(cursor.moveToNext()){
+			Log.i("MySQLDatabase", "Henter ut liste fra database");
 			result.add(cursor.getString(0));
 		}
 		return result;
