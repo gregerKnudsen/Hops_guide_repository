@@ -1,9 +1,13 @@
 package com.example.hopsguide;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -13,9 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ListActivity extends ActionBarActivity {
 
@@ -34,6 +40,47 @@ public class ListActivity extends ActionBarActivity {
 			result += (name + "\n");
 		}
 		return result;
+	}
+	
+	public void setListNamesLongClickListener(ListView list){
+		list.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+			public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
+
+				TextView textView = (TextView) viewLongClicked;
+				showCreateListDialog(textView.getText().toString());
+				// 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
+				return true;
+			}
+		});
+	}
+	
+	public void showCreateListDialog(String listName){
+//		final String listNameInput = listName;
+//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//		builder.setTitle("Delete");
+//
+//	    Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+//		input.setInputType(InputType.TYPE_CLASS_TEXT);
+//		builder.setView(input);
+//
+//		// Set up the buttons
+//		builder.setPositiveButton("Add", new DialogInterface.OnClickListener() { 
+//		    @Override
+//		    public void onClick(DialogInterface dialog, int which) {
+//		        String listName = input.getText().toString();
+//		        MainActivity.insertList(listName,listNameInput);
+//				Toast.makeText(getApplicationContext(),"Succesfully deleted list " + listName,Toast.LENGTH_LONG).show();
+//		    }
+//		});
+//		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//		    @Override
+//		    public void onClick(DialogInterface dialog, int which) {
+//		        dialog.cancel();
+//		    }
+//		});
+//
+//		builder.show();
 	}
 	
 	public void populateListView(){

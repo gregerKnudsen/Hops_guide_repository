@@ -108,31 +108,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		builder.show();
 	}
 
-//	public void showCreateListDialog(String hopsName){
-//		final String hopsNameParam = hopsName;
-//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//		LayoutInflater inflater = this.getLayoutInflater();
-//	//	builder.setView(inflater.inflate(R.layout.createlistdialog, null))
-//		// Add action buttons
-//		.setPositiveButton(R.string.addListButtonLabel, new DialogInterface.OnClickListener() {
-//			@Override
-//			public void onClick(DialogInterface dialog, int id) {
-//				
-//				Log.i("SearchActivity", "" + listNameInput);
-//				String listName = listNameInput.getText().toString();
-//				Log.i("SearchActivity", "listName sin tekst: " + listName);
-//			}
-//		})
-//		.setNegativeButton(R.string.cancelButtonLabel, new DialogInterface.OnClickListener() {
-//			public void onClick(DialogInterface dialog, int id) {
-//				closeCreateListDialog();
-//				//LoginDialogFragment.this.getDialog().cancel();
-//			}
-//		});      
-//		dialog = builder.create();
-//		dialog.show();
-//	}
-
 	public void closeCreateListDialog(){
 		dialog.cancel();
 	}
