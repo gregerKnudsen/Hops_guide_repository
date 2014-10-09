@@ -18,7 +18,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper implements Serializable{
 
-	public static final String DATABASE_FILE_LOCATION = "data/data/com.example.hopsguide/databases/hopsDatabase.db";
+	public static final String 		DATABASE_FILE_LOCATION = "data/data/com.example.hopsguide/databases/hopsDatabase.db";
 	
 	private static final int 		DATABASE_VERSION = 1;
 	private static final String 	DATABASE_NAME = "info331";
@@ -50,10 +50,14 @@ public class Database extends SQLiteOpenHelper implements Serializable{
 	//passende for SELECT-spørringer
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-//		db.execSQL(SQLQueryFactory.deleteHopsTable());
-//		db.execSQL(SQLQueryFactory.deleteMyListsTable());
-//		db.execSQL(SQLQueryFactory.createHopsTable());
-//		db.execSQL(SQLQueryFactory.createMyListTable());
+	//	initializeDatabase(db); //kall denne første gang applikasjonen starter
+	}
+	
+	public void initializeDatabase(SQLiteDatabase db){
+		db.execSQL(SQLQueryFactory.deleteHopsTable());
+		db.execSQL(SQLQueryFactory.deleteMyListsTable());
+		db.execSQL(SQLQueryFactory.createHopsTable());
+		db.execSQL(SQLQueryFactory.createMyListTable());
 	}
 	
 	public void insertHops(SQLiteDatabase db, ContentValues values){

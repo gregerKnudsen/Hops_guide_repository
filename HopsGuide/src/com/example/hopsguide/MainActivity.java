@@ -58,7 +58,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		sqLiteDatabase = database.getWritableDatabase();
 	}
 
@@ -67,32 +67,37 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			Toast.makeText(getApplicationContext(),"Database doesn't exist!",Toast.LENGTH_LONG).show();
 			getDatabaseAccess();
 			createTables();
-//			try {
-//				fillHopsTable();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (InterruptedException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (ExecutionException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (JSONException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			} catch (TimeoutException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//		fillMyListsTable();
-//			database.saveToFile("database.obj");
+		//	initializeDatabase();    //kall denne første gang applikasjonen lages
 		}
 		else{
-			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();
-			database = Database.readFromFile(Database.DATABASE_FILE_LOCATION);
+//			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();
+//			database = Database.readFromFile(Database.DATABASE_FILE_LOCATION);
 		}
 	}
+		
+	public void initializeDatabase(){
+		try {
+			fillHopsTable();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (TimeoutException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		fillMyListsTable();
+	//	database.saveToFile("database.obj");
+	}
+
 
 	public void checkLocalDatabaseExistence(){
 		if(!fileExists("database.obj")){
