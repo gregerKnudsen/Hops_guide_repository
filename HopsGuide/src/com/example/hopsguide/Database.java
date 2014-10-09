@@ -50,10 +50,10 @@ public class Database extends SQLiteOpenHelper implements Serializable{
 	//passende for SELECT-spørringer
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-	//	db.execSQL(SQLQueryFactory.deleteHopsTable());
-	//	db.execSQL(SQLQueryFactory.deleteMyListsTable());
-	//	db.execSQL(SQLQueryFactory.createHopsTable());
-	//	db.execSQL(SQLQueryFactory.createMyListTable());
+//		db.execSQL(SQLQueryFactory.deleteHopsTable());
+//		db.execSQL(SQLQueryFactory.deleteMyListsTable());
+//		db.execSQL(SQLQueryFactory.createHopsTable());
+//		db.execSQL(SQLQueryFactory.createMyListTable());
 	}
 	
 	public void insertHops(SQLiteDatabase db, ContentValues values){

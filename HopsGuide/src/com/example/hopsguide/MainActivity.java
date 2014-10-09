@@ -67,26 +67,26 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			Toast.makeText(getApplicationContext(),"Database doesn't exist!",Toast.LENGTH_LONG).show();
 			getDatabaseAccess();
 			createTables();
-			try {
-				fillHopsTable();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (ExecutionException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (TimeoutException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		fillMyListsTable();
-		//	database.saveToFile("database.obj");
+//			try {
+//				fillHopsTable();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (ExecutionException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (JSONException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (TimeoutException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		fillMyListsTable();
+//			database.saveToFile("database.obj");
 		}
 		else{
 			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();
