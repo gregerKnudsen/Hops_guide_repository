@@ -23,5 +23,7 @@
     <string name="title_activity_list">My Lists</string>
     <string name="listNames">List names</string>
     <string name="selectList">Select list to add hops</string>
-
+    <string name="informationMain1">This button lets you browse a list of all available hops. You can filter the hops with a search to easily find the hop you are looking for. You can search using keywords or attributes of desired hops.</string>
+	<string name="informationMain2">This button lets you make lists or browse and edit lists you've made.</string>
+    
 </resources>

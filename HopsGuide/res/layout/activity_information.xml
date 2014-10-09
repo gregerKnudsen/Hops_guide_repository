@@ -8,4 +8,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hopsguide.InformationActivity" >
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/info1" 
+        android:contentDescription="@string/informationMain1"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text= "@string/informationMain1"
+        android:textSize="4pt" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="19dp"
+        android:layout_toRightOf="@+id/imageView1"
+        android:text="@string/informationMain2"
+        android:textSize="4pt" />
+
 </RelativeLayout>
