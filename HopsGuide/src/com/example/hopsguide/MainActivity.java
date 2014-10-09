@@ -181,6 +181,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			//	Toast.makeText(getApplicationContext(),"Network available",Toast.LENGTH_SHORT).show();
 		} else {
 			//	Toast.makeText(getApplicationContext(),"Network not available",Toast.LENGTH_SHORT).show();
+			//legger til kommentar
 		}
 	}
 
