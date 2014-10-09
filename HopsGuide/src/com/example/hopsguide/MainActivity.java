@@ -16,7 +16,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -52,34 +51,58 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		informationButton = (ImageView) findViewById(R.id.informationButton);
 		informationButton.setOnClickListener(this);
 		checkNetworkConnection();
-		getDatabaseAccess();
-		createTables();
+
 		try {
-			fillHopsTable();
+			checkDatabaseExistence();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-		fillMyListsTable();
 		
 		sqLiteDatabase = database.getWritableDatabase();
 	}
-	
+
+	public void checkDatabaseExistence() throws IOException{
+		if(!fileExists(Database.DATABASE_FILE_LOCATION)){
+			Toast.makeText(getApplicationContext(),"Database doesn't exist!",Toast.LENGTH_LONG).show();
+			getDatabaseAccess();
+			createTables();
+			try {
+				fillHopsTable();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		fillMyListsTable();
+		//	database.saveToFile("database.obj");
+		}
+		else{
+			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();
+			database = Database.readFromFile(Database.DATABASE_FILE_LOCATION);
+		}
+	}
+
+	public void checkLocalDatabaseExistence(){
+		if(!fileExists("database.obj")){
+			sqLiteDatabase = database.getWritableDatabase();
+		}
+	}
+
 	public boolean fileExists(String fileName){
 		File f = new File(fileName);
-		return (f.exists() && !f.isDirectory());
+		return (f.exists());
 	}
 
 	public void getDatabaseAccess(){
@@ -118,19 +141,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		values.put("content", hopsNamesCSV);
 		database.insertList(sqLiteDatabase, values);
 	}
-	
+
 	public static void appendHopsToList(String listName, String hopsName) throws IOException{
 		sqLiteDatabase = database.getWritableDatabase();
 		sqLiteDatabase.execSQL(SQLQueryFactory.updateColumn(Database.LIST_TABLE_NAME, 
 				Database.CONTENT, ("'" + (ListActivity.getList(listName) + "," + hopsName) + "'"), Database.UID, listName));
-	//	saveDatabaseToFile("database.obj");
 	}
-	
-	public void saveDatabaseToFile(String fileName){
-		
-	}
-	
-	
+
 	//	public static String updateColumn(String table, String column, String row, String value){
 	//  "UPDATE " + table + " SET " + column + "=" + value + " WHERE " + row + "='" + value + "'";
 

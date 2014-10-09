@@ -16,27 +16,29 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class Database extends SQLiteOpenHelper {
+public class Database extends SQLiteOpenHelper implements Serializable{
 
-	private static final int 	DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "info331";
-	public static final String UID = "_id";
+	public static final String DATABASE_FILE_LOCATION = "data/data/com.example.hopsguide/databases/hopsDatabase.db";
 	
-	public static final String HOPS_TABLE_NAME = "hops";
-	public static final String COUNTRY = "Country";
-	public static final String ALPHA = "Alpha";
-	public static final String BETA = "Beta";
-	public static final String TYPE = "Type";
-	public static final String STORAGE_INDEX = "StorageIndex";
-	public static final String TYPICAL_FOR = "TypicalFor";
-	public static final String SUBSTITUTES = "Substitutes";
-	public static final String AROMA = "Aroma";
-	public static final String INFORMATION = "Information";
+	private static final int 		DATABASE_VERSION = 1;
+	private static final String 	DATABASE_NAME = "info331";
+	public static final String 		UID = "_id";
 	
-	public static final String LIST_TABLE_NAME = "lists";
-	public static final String CONTENT = "content";
+	public static final String 		HOPS_TABLE_NAME = "hops";
+	public static final String 		COUNTRY = "Country";
+	public static final String 		ALPHA = "Alpha";
+	public static final String 		BETA = "Beta";
+	public static final String 		TYPE = "Type";
+	public static final String 		STORAGE_INDEX = "StorageIndex";
+	public static final String 		TYPICAL_FOR = "TypicalFor";
+	public static final String 		SUBSTITUTES = "Substitutes";
+	public static final String 		AROMA = "Aroma";
+	public static final String 		INFORMATION = "Information";
 	
-	public static final String NO_DATA = "Not available";
+	public static final String 		LIST_TABLE_NAME = "lists";
+	public static final String 		CONTENT = "content";
+	
+	public static final String 		NO_DATA = "Not available";
 
 	public Database(Context context) throws Exception{
 		super(context,DATABASE_NAME,null,DATABASE_VERSION);
@@ -48,8 +50,8 @@ public class Database extends SQLiteOpenHelper {
 	//passende for SELECT-spørringer
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(SQLQueryFactory.deleteHopsTable());
-		db.execSQL(SQLQueryFactory.deleteMyListsTable());
+	//	db.execSQL(SQLQueryFactory.deleteHopsTable());
+	//	db.execSQL(SQLQueryFactory.deleteMyListsTable());
 		db.execSQL(SQLQueryFactory.createHopsTable());
 		db.execSQL(SQLQueryFactory.createMyListTable());
 	}
@@ -68,5 +70,26 @@ public class Database extends SQLiteOpenHelper {
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 	//	db.execSQL("deleteDummy");
 		onCreate(db);
+	}
+	
+	public void saveToFile(String fileName) throws IOException{
+		File file = new File(fileName);
+		FileOutputStream fos = new FileOutputStream(file);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(this);
+	}
+	
+	public static Database readFromFile(String fileName){
+		Database file;
+		try{
+			FileInputStream fis = new FileInputStream(fileName);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			file = (Database) ois.readObject();
+			ois.close();
+		}
+		catch(Exception e){
+			file = null;
+		}
+		return file;
 	}
 }
