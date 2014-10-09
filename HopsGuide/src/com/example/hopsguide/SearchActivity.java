@@ -79,20 +79,23 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 	
 	public void showCreateListDialog(String hopsName){
+		final String hopsNameInput = hopsName;
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Title");
+		builder.setTitle("Enter list name");
 
 		// Set up the input
 		final EditText input = new EditText(this);
 		// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-		input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+		input.setInputType(InputType.TYPE_CLASS_TEXT);
 		builder.setView(input);
 
 		// Set up the buttons
-		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		builder.setPositiveButton("Add", new DialogInterface.OnClickListener() { 
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
-		        String inputText = input.getText().toString();
+		        String listName = input.getText().toString();
+		        MainActivity.insertList(listName,hopsNameInput);
+				Toast.makeText(getApplicationContext(),"Succesfully created list " + listName + " with hops " + hopsNameInput,Toast.LENGTH_LONG).show();
 		    }
 		});
 		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -118,8 +121,6 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 //				Log.i("SearchActivity", "" + listNameInput);
 //				String listName = listNameInput.getText().toString();
 //				Log.i("SearchActivity", "listName sin tekst: " + listName);
-//				MainActivity.insertList(listName,hopsNameParam);
-//				Toast.makeText(getApplicationContext(),"Succesfully created list " + listName + " with hops " + hopsNameParam,Toast.LENGTH_LONG).show();
 //			}
 //		})
 //		.setNegativeButton(R.string.cancelButtonLabel, new DialogInterface.OnClickListener() {
