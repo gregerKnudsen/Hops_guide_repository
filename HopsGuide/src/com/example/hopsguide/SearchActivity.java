@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.app.AlertDialog;
@@ -11,6 +12,7 @@ import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,45 +26,114 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SearchActivity extends ActionBarActivity implements View.OnClickListener {
-	
+
 	private EditText inputText;
 	private Button searchButton;
+	private AlertDialog dialog;
+	private EditText listNameInput;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.search_activity);      
-
+		
 		inputText = (EditText) findViewById(R.id.inputTextBox);
+		
+	//	listNameInput = (EditText) findViewById(R.id.addToListText);
 		searchButton = (Button) findViewById(R.id.searchButton);
 		searchButton.setOnClickListener(this);
 		updateListView(getHopsNames());
 		setListViewItemListeners();
 	}
-	
+
 	public void showListSelection(String source){
 		final String input = source;
-		Log.i("SearchActivity", "HOPS SOM SKAL LEGGES TIL: " + input);
-	    AlertDialog.Builder builder = new AlertDialog.Builder(this);
-	    List<String> listNames = ListActivity.getListNames();
-	    final CharSequence[] listNamesArray = listNames.toArray(new String[listNames.size()]);
-	    builder.setTitle(R.string.selectList)
-	           .setItems(listNamesArray, new DialogInterface.OnClickListener() {
-	               public void onClick(DialogInterface dialog, int index) {
-	               // The 'which' argument contains the index position
-	               // of the selected item
-	            	   String listName = (String) listNamesArray[index];
-	            	   try {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		List<String> listNames = ListActivity.getListNames();
+		listNames.add("Create new list");
+		final CharSequence[] listNamesArray = listNames.toArray(new String[listNames.size()]);
+		builder.setTitle(R.string.selectList)
+		.setItems(listNamesArray, new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int index) {
+				String listName = (String) listNamesArray[index];
+				if(index < listNamesArray.length-1){
+					// The 'which' argument contains the index position
+					// of the selected item
+					try {
 						MainActivity.appendHopsToList(listName, input);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-	            	   Toast.makeText(getApplicationContext(),"Succesfully added " + input + " to " + listName,Toast.LENGTH_LONG).show();
-	           }
-	    });
-	    AlertDialog dialog = builder.create();
-	    dialog.show();
+					Toast.makeText(getApplicationContext(),"Succesfully added " + input + " to list " + listName,Toast.LENGTH_LONG).show();
+				}
+				else{
+				//	setContentView(R.layout.createlistdialog);
+				//	listNameInput = (EditText) findViewById(R.id.addToListText);
+					showCreateListDialog(input);
+				}
+			}
+		});
+		AlertDialog dialog = builder.create();
+		dialog.show();
+	}
+	
+	public void showCreateListDialog(String hopsName){
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Title");
+
+		// Set up the input
+		final EditText input = new EditText(this);
+		// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+		input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+		builder.setView(input);
+
+		// Set up the buttons
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        String inputText = input.getText().toString();
+		    }
+		});
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        dialog.cancel();
+		    }
+		});
+
+		builder.show();
+	}
+
+//	public void showCreateListDialog(String hopsName){
+//		final String hopsNameParam = hopsName;
+//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//		LayoutInflater inflater = this.getLayoutInflater();
+//	//	builder.setView(inflater.inflate(R.layout.createlistdialog, null))
+//		// Add action buttons
+//		.setPositiveButton(R.string.addListButtonLabel, new DialogInterface.OnClickListener() {
+//			@Override
+//			public void onClick(DialogInterface dialog, int id) {
+//				
+//				Log.i("SearchActivity", "" + listNameInput);
+//				String listName = listNameInput.getText().toString();
+//				Log.i("SearchActivity", "listName sin tekst: " + listName);
+//				MainActivity.insertList(listName,hopsNameParam);
+//				Toast.makeText(getApplicationContext(),"Succesfully created list " + listName + " with hops " + hopsNameParam,Toast.LENGTH_LONG).show();
+//			}
+//		})
+//		.setNegativeButton(R.string.cancelButtonLabel, new DialogInterface.OnClickListener() {
+//			public void onClick(DialogInterface dialog, int id) {
+//				closeCreateListDialog();
+//				//LoginDialogFragment.this.getDialog().cancel();
+//			}
+//		});      
+//		dialog = builder.create();
+//		dialog.show();
+//	}
+
+	public void closeCreateListDialog(){
+		dialog.cancel();
 	}
 
 	@Override
@@ -77,31 +148,31 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		ListView list = (ListView) findViewById(R.id.listView2);
 		list.setAdapter(adapter);
 	}
-	
+
 	public void updateListView(List<String> hopsNames){
 		String[] hopsNamesArray = hopsNames.toArray(new String[hopsNames.size()]);
 		populateListView(hopsNamesArray);
 	}
-	
+
 	public void setListViewItemListeners(){
 		ListView list = (ListView) findViewById(R.id.listView2);
 		setHopsNamesClickListener(list);
 		setHopsNamesLongClickListener(list);
 	}
-	
+
 	public void setHopsNamesLongClickListener(ListView list){
 		list.setOnItemLongClickListener(new OnItemLongClickListener() {
 
-            public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
-                
+			public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
+
 				TextView textView = (TextView) viewLongClicked;
 				showListSelection(textView.getText().toString());
-           // 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
+				// 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
+				return true;
+			}
+		});
 	}
-	
+
 	public void setHopsNamesClickListener(ListView list){
 		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -126,7 +197,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	public void searchButtonClick(){
 		onClick((Button) findViewById(R.id.searchButton));
 	}
-	
+
 	public List<String> getHopsNames(){
 		List<String> result = new ArrayList<String>();
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
@@ -137,7 +208,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		}
 		return result;
 	}
-	
+
 	public String getHopsNamesList(){
 		String result = "";
 		List<String> hopsNamesList = getHopsNames();

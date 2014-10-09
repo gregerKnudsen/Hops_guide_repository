@@ -362,9 +362,12 @@ int string abc_searchview_description_voice 0x7f0a0008
 int string abc_shareactionprovider_share_with 0x7f0a000c
 int string abc_shareactionprovider_share_with_application 0x7f0a000b
 int string action_settings 0x7f0a000f
+int string addListButtonLabel 0x7f0a0024
+int string addToListText 0x7f0a0025
 int string app_name 0x7f0a000d
 int string browseButtonDescription 0x7f0a0012
 int string browseButtonLabel 0x7f0a0010
+int string cancelButtonLabel 0x7f0a0023
 int string defaultResultText 0x7f0a001c
 int string hello_world 0x7f0a0015
 int string information 0x7f0a0011
