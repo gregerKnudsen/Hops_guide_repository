@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -35,7 +36,7 @@ public class ListActivity extends ActionBarActivity {
 		Log.i("MySQLDatabase", "RETT ETTER LONGCLICK");
 	}
 	
-	public String getListNamesList(){
+	public static String getListNamesList(){
 		String result = "";
 		List<String> hopsNamesList = getListNames();
 		for(String name : hopsNamesList){
@@ -51,7 +52,6 @@ public class ListActivity extends ActionBarActivity {
 			public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
 
 				TextView textView = (TextView) viewLongClicked;
-				Toast.makeText(getApplicationContext(),"You long clicked " + textView.toString(),Toast.LENGTH_LONG).show();
 				showCreateListDialog(textView.getText().toString());
 				return true;
 			}
@@ -116,12 +116,16 @@ public class ListActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View viewClicked, int position,
 					long id) {
-				TextView textView = (TextView) viewClicked;
-				Toast.makeText(getApplicationContext(),getList(textView.getText().toString()),Toast.LENGTH_LONG).show();
+					TextView textView = (TextView) viewClicked;
+					String listName = textView.getText().toString();
+					Intent intent = new Intent();
+					intent.setClass(viewClicked.getContext(),ListViewActivity.class);
+					intent.putExtra("Listname", listName);
+					startActivity(intent);
 			}
 		});
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

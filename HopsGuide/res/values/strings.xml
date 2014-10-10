@@ -26,5 +26,7 @@
     <string name="cancelButtonLabel">Cancel</string>
     <string name="addListButtonLabel">Add</string>
     <string name="addToListText">Create new list</string>
-    
+    <string name="title_activity_list_view">ListViewActivity</string>
+    <string name="listContentActivity"> </string>
+
 </resources>

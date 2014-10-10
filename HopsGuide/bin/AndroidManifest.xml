@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.hopsguide.SplashScreen"
+            android:name=".SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar" >
@@ -29,6 +29,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
         <activity
@@ -46,6 +47,10 @@
         <activity
             android:name=".ListActivity"
             android:label="@string/title_activity_list" >
+        </activity>
+        <activity
+            android:name=".ListViewActivity"
+            android:label="@string/listContentActivity" >
         </activity>
     </application>
 
