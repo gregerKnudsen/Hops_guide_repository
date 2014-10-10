@@ -34,6 +34,10 @@ public class SQLQueryFactory {
 		return "SELECT Name FROM Hops WHERE Name = " + name;
 	}
 	
+	public static String deleteList(String listName){
+		return "DELETE FROM Lists WHERE _id = '" + listName + "'";
+	}
+	
 	public static String deleteHopsTable(){
 		return "DROP TABLE IF EXISTS Hops";
 	}

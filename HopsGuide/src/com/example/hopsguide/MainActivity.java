@@ -64,7 +64,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
 	public void checkDatabaseExistence() throws IOException{
 		if(!fileExists(Database.DATABASE_FILE_LOCATION)){
-			Toast.makeText(getApplicationContext(),"Database doesn't exist!",Toast.LENGTH_LONG).show();
 			getDatabaseAccess();
 			createTables();
 		//	initializeDatabase();    //kall denne første gang applikasjonen lages
@@ -145,6 +144,12 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		values.put("_id",name);
 		values.put("content", hopsNamesCSV);
 		database.insertList(sqLiteDatabase, values);
+	}
+	
+	public static void deleteList(String listName){
+		sqLiteDatabase = database.getWritableDatabase();
+		sqLiteDatabase.execSQL(SQLQueryFactory.deleteList(listName));
+
 	}
 
 	public static void appendHopsToList(String listName, String hopsName) throws IOException{

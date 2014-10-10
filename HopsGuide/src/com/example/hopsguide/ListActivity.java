@@ -31,6 +31,8 @@ public class ListActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_list);
 		populateListView();
 		setListNamesListener();
+		setListNamesLongClickListener(null);
+		Log.i("MySQLDatabase", "RETT ETTER LONGCLICK");
 	}
 	
 	public String getListNamesList(){
@@ -42,50 +44,44 @@ public class ListActivity extends ActionBarActivity {
 		return result;
 	}
 	
-	public void setListNamesLongClickListener(ListView list){
+	public void setListNamesLongClickListener(ListView notUsed){
+		ListView list = (ListView) findViewById(R.id.listViewResult);
 		list.setOnItemLongClickListener(new OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
 
 				TextView textView = (TextView) viewLongClicked;
+				Toast.makeText(getApplicationContext(),"You long clicked " + textView.toString(),Toast.LENGTH_LONG).show();
 				showCreateListDialog(textView.getText().toString());
-				// 	Toast.makeText(getApplicationContext(),"You just long clicked " + textView.getText().toString(),Toast.LENGTH_LONG).show();
 				return true;
 			}
 		});
 	}
 	
 	public void showCreateListDialog(String listName){
-//		final String listNameInput = listName;
-//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//		builder.setTitle("Delete");
-//
-//	    Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-//		input.setInputType(InputType.TYPE_CLASS_TEXT);
-//		builder.setView(input);
-//
-//		// Set up the buttons
-//		builder.setPositiveButton("Add", new DialogInterface.OnClickListener() { 
-//		    @Override
-//		    public void onClick(DialogInterface dialog, int which) {
-//		        String listName = input.getText().toString();
-//		        MainActivity.insertList(listName,listNameInput);
-//				Toast.makeText(getApplicationContext(),"Succesfully deleted list " + listName,Toast.LENGTH_LONG).show();
-//		    }
-//		});
-//		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//		    @Override
-//		    public void onClick(DialogInterface dialog, int which) {
-//		        dialog.cancel();
-//		    }
-//		});
-//
-//		builder.show();
+		final String listNameInput = listName;
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Delete list?");
+		
+		// Set up the buttons
+		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() { 
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        MainActivity.deleteList(listNameInput);
+		        populateListView();
+		    }
+		});
+		builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		    @Override
+		    public void onClick(DialogInterface dialog, int which) {
+		        dialog.cancel();
+		    }
+		});
+		builder.show();
 	}
 	
 	public void populateListView(){
 		List<String> result = getListNames();
-		Log.i("MySQLDatabase", "Størrelse på listenavnliste: " + result.size());
 		String[] listNamesArray = result.toArray(new String[result.size()]);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.listnames,listNamesArray);
 		ListView list = (ListView) findViewById(R.id.listViewResult);
