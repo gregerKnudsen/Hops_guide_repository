@@ -45,4 +45,9 @@ public class SQLQueryFactory {
 	public static String deleteMyListsTable(){
 		return "DROP TABLE IF EXISTS Lists";
 	}
+	
+	public static String selectCountryNames(){
+		return "SELECT DISTINCT country FROM Hops";
+	}
+	
 }

@@ -13,7 +13,7 @@
     <string name="title_activity_search">Search</string>
     <string name="searchBoxDescription">Search box</string>
     <string name="searchInputButtonDescription">Search for hops results using given input text</string>
-    <string name="serchInputButtonLabel">Search</string>
+    <string name="serchInputButtonLabel">Advanced Search</string>
     <string name="resultTextArea">Area for text results from searches</string>
     <string name="informationButtonDescription">Button for information access</string>
     <string name="defaultResultText">Please enter name of desired hops</string>
@@ -27,6 +27,9 @@
     <string name="addListButtonLabel">Add</string>
     <string name="addToListText">Create new list</string>
     <string name="title_activity_list_view">ListViewActivity</string>
-    <string name="listContentActivity"> </string>
+    <string name="listContentActivity"></string>
+    <string name="title_activity_advanced_search">Advanced search</string>
+    <string name="countryLabel">Country:</string>
+    <string name="countrySpinnerLabel">countrySpinner</string>
 
 </resources>

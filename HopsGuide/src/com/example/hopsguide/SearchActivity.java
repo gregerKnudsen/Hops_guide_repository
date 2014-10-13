@@ -9,13 +9,16 @@ import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ArrayAdapter;
@@ -44,6 +47,25 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		searchButton.setOnClickListener(this);
 		updateListView(getHopsNames());
 		setListViewItemListeners();
+		setEditTextListener();
+	}
+	
+	public void setEditTextListener(){
+		inputText.setOnKeyListener(new OnKeyListener(){
+
+			@Override
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// TODO Auto-generated method stub
+				if(event.getAction() != KeyEvent.ACTION_DOWN){
+					return false;
+				}
+				if(keyCode == KeyEvent.KEYCODE_ENTER){
+					displaySearchResult();
+					return true;
+				}
+				return false;
+			}
+		});
 	}
 
 	public void showListSelection(String source){
@@ -212,12 +234,16 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void startActivity(Class<?> activity){
+		startActivity(new Intent(getApplicationContext(),activity));
+	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()){
 		case R.id.searchButton : 
-			displaySearchResult();
+			startActivity(AdvancedSearchActivity.class);
 			break;
 		}
 	}

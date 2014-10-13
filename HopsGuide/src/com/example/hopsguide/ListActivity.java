@@ -1,11 +1,9 @@
 package com.example.hopsguide;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import android.support.v7.app.ActionBarActivity;
-import android.text.InputType;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,10 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemLongClickListener;
 
 public class ListActivity extends ActionBarActivity {
@@ -33,7 +29,6 @@ public class ListActivity extends ActionBarActivity {
 		populateListView();
 		setListNamesListener();
 		setListNamesLongClickListener(null);
-		Log.i("MySQLDatabase", "RETT ETTER LONGCLICK");
 	}
 	
 	public static String getListNamesList(){

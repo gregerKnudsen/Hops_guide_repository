@@ -149,7 +149,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	public static void deleteList(String listName){
 		sqLiteDatabase = database.getWritableDatabase();
 		sqLiteDatabase.execSQL(SQLQueryFactory.deleteList(listName));
-
+		
+	}
+	public static void getCountryNames() {
+		sqLiteDatabase = database.getReadableDatabase();
+		sqLiteDatabase.execSQL(SQLQueryFactory.selectCountryNames());
 	}
 
 	public static void appendHopsToList(String listName, String hopsName) throws IOException{
