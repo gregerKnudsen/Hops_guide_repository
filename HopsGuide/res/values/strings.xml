@@ -31,5 +31,6 @@
     <string name="title_activity_advanced_search">Advanced search</string>
     <string name="countryLabel">Country:</string>
     <string name="countrySpinnerLabel">countrySpinner</string>
+    <string name="title_activity_hops_desc">HopDescActivity</string>
 
 </resources>

@@ -177,12 +177,18 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View viewClicked, int position,long id) {
 				TextView textView = (TextView) viewClicked;
-				Toast.makeText(getApplicationContext(),getHops(textView.getText().toString()).toString(),Toast.LENGTH_LONG).show();
+				String hopsName = textView.getText().toString();
+				Intent intent = new Intent();
+				intent.setClass(viewClicked.getContext(),HopDescActivity.class);
+				intent.putExtra("Hopsname", hopsName);
+				startActivity(intent);
+				
+				
 			}
 		});
 	}
 
-	public Hops getHops(String name){
+	public static Hops getHops(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.HOPS_TABLE_NAME,columns,Database.UID+" = '"+(("" + name.substring(0,1).toUpperCase()) + name.substring(1,name.length()))+"'",null,null,null,null);
