@@ -46,9 +46,9 @@ public class HopDescActivity extends Activity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.hopsdescription);
  
-                name = (TextView) findViewById(R.id.textView1);
+                name = (TextView) findViewById(R.id.countryLabel);
                 allTextViews.add(name);
-                nameDesc = (TextView) findViewById(R.id.textView2);
+                nameDesc = (TextView) findViewById(R.id.aromaLabel);
                 allTextViews.add(nameDesc);
                 country = (TextView) findViewById(R.id.textView3);
                 allTextViews.add(country);
@@ -120,10 +120,8 @@ public class HopDescActivity extends Activity {
                         if (view instanceof TextView) {
                                 TextView textView = (TextView) view;
                                 textView.setTypeface(typeface);
-                                textView.setTextColor(Color.GRAY);
+                                textView.setTextColor(Color.parseColor("#232323"));
                         }
                 }
- 
         }
- 
 }

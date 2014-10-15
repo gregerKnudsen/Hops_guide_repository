@@ -12,17 +12,28 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class AdvancedSearchActivity extends ActionBarActivity {
 
 	private Spinner countryDropdown;
+	private EditText aroma;
+	private EditText typicalFor;
+	private EditText type;
+	private Spinner alpha;
+	private Spinner beta;
+	private EditText storageIndex;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_advanced_search);
+		
 		countryDropdown = (Spinner) findViewById(R.id.countrySpinner);
+	//	aroma = (EditText) findViewById(R);
+		
+		
 		populateSpinner();
 	}
 	
@@ -44,7 +55,6 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		countryDropdown.setAdapter(dataAdapter);
 	}
 	
-
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

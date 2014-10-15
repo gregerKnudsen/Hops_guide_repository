@@ -9,7 +9,7 @@
     tools:context="com.example.hopsguide.AdvancedSearchActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/countryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -23,8 +23,115 @@
         android:id="@+id/countrySpinner"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignBottom="@+id/countryLabel"
         android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/textView1" />
+        android:layout_toRightOf="@+id/countryLabel" />
+
+    <TextView
+        android:id="@+id/aromaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/countryLabel"
+        android:layout_below="@+id/countryLabel"
+        android:layout_marginTop="29dp"
+        android:text="Aroma"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/aromaInputLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/aromaLabel"
+        android:layout_alignLeft="@+id/countrySpinner"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/typeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/aromaLabel"
+        android:layout_alignTop="@+id/typeSpinner"
+        android:layout_marginTop="21dp"
+        android:text="Type"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/alphaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/typeLabel"
+        android:layout_centerVertical="true"
+        android:text="Alpha acid"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/typeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/alphaSpinner"
+        android:layout_toRightOf="@+id/alphaLabel" />
+
+    <TextView
+        android:id="@+id/betaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/alphaLabel"
+        android:layout_below="@+id/alphaSpinner"
+        android:layout_marginTop="25dp"
+        android:text="Beta acid"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/betaSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/typeSpinner"
+        android:layout_below="@+id/alphaSpinner"
+        android:layout_marginLeft="15dp" />
+
+    <Spinner
+        android:id="@+id/alphaSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/betaSpinner"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/typicalForLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/betaLabel"
+        android:layout_below="@+id/betaSpinner"
+        android:layout_marginTop="23dp"
+        android:text="Typical for"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/typicalForSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/betaSpinner"
+        android:layout_below="@+id/betaSpinner" />
+
+    <TextView
+        android:id="@+id/storageIndexLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/typicalForLabel"
+        android:layout_below="@+id/typicalForSpinner"
+        android:layout_marginTop="18dp"
+        android:text="Storage index"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+id/storageIndexSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/typicalForSpinner"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/storageIndexLabel" />
 
 </RelativeLayout>
