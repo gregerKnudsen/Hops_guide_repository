@@ -68,7 +68,7 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 	}
 	
 	public void populateDynamicSpinner(String tableName, String columnName, Spinner spinnerName, int xmlFileRef){
-		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = SplashScreen.getDatabase().getWritableDatabase();
 		String[] columns = {columnName};
 		Cursor cursor = sqLiteDatabaseCurr.query(tableName, columns, null, null, null, null, null);
 		List<String> elementNames = new ArrayList<String>();

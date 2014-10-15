@@ -80,7 +80,7 @@ public class ListViewActivity extends ActionBarActivity implements View.OnClickL
 		builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() { 
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
-		        MainActivity.deleteList(listNameInput);
+		        SplashScreen.deleteList(listNameInput);
 		        startActivity(ListActivity.class);
 		        Toast.makeText(getApplicationContext(),"Succesfully deleted " + listNameInput,Toast.LENGTH_LONG).show();
 		    }

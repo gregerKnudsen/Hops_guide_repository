@@ -82,7 +82,7 @@ public class ListActivity extends ActionBarActivity {
 		builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() { 
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
-		        MainActivity.deleteList(listNameInput);
+		        SplashScreen.deleteList(listNameInput);
 		        populateListView();
 		    }
 		});
@@ -105,7 +105,7 @@ public class ListActivity extends ActionBarActivity {
 	
 	public static List<String> getListNames(){
 		List<String> result = new ArrayList<String>();
-		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = SplashScreen.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,null,null,null,null,null);
 		while(cursor.moveToNext()){		
@@ -115,7 +115,7 @@ public class ListActivity extends ActionBarActivity {
 	}
 	
 	public static String getList(String name){
-		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = SplashScreen.getDatabase().getWritableDatabase();
 		String[] columns = {Database.CONTENT};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,
 				Database.UID+" = '"+ name +"'",null,null,null,null);

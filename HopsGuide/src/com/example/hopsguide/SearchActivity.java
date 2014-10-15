@@ -84,7 +84,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 					// The 'which' argument contains the index position
 					// of the selected item
 					try {
-						MainActivity.appendHopsToList(listName, input);
+						SplashScreen.appendHopsToList(listName, input);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -118,7 +118,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 		    @Override
 		    public void onClick(DialogInterface dialog, int which) {
 		        String listName = input.getText().toString();
-		        MainActivity.insertList(listName,hopsNameInput);
+		        SplashScreen.insertList(listName,hopsNameInput);
 				Toast.makeText(getApplicationContext(),"Succesfully created list " + listName + " with hops " + hopsNameInput,Toast.LENGTH_LONG).show();
 		    }
 		});
@@ -191,7 +191,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 	}
 
 	public static Hops getHops(String name){
-		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = SplashScreen.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHAMAX,Database.ALPHAMIN,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.HOPS_TABLE_NAME,columns,Database.UID+" = '"+(("" + name.substring(0,1).toUpperCase()) + name.substring(1,name.length()))+"'",null,null,null,null);
 		if(cursor.moveToNext()){
@@ -206,7 +206,7 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	public List<String> getHopsNames(){
 		List<String> result = new ArrayList<String>();
-		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
+		SQLiteDatabase sqLiteDatabaseCurr = SplashScreen.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.HOPS_TABLE_NAME,columns,null,null,null,null,null);
 		while(cursor.moveToNext()){
