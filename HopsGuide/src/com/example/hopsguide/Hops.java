@@ -4,7 +4,8 @@ public class Hops {
 
 	private String name;
 	private String country;
-	private float alpha;
+	private float alphaMin;
+	private float alphaMax;
 	private float beta;
 	private String type;
 	private int storageIndex;
@@ -13,12 +14,12 @@ public class Hops {
 	private String aroma;
 	private String information;
 	
-	public Hops(String name, String country, float alpha, float beta,
-			String type, int storageIndex, String typicalFor, String substitutes,String aroma,
+	public Hops(String name, String country, float alphaMin, float alphaMax, float beta, String type, int storageIndex, String typicalFor, String substitutes,String aroma,
 				String information) {
 		this.name = name;
 		this.country = country;
-		this.alpha = alpha;
+		this.alphaMin = alphaMin;
+		this.alphaMax = alphaMax;
 		this.beta = beta;
 		this.type = type;
 		this.storageIndex = storageIndex;
@@ -44,12 +45,20 @@ public class Hops {
 		this.country = country;
 	}
 
-	public float getAlpha() {
-		return alpha;
+	public float getAlphaMin() {
+		return alphaMin;
 	}
 
-	public void setAlpha(float alpha) {
-		this.alpha = alpha;
+	public void setAlphaMin(float alphaMin) {
+		this.alphaMin = alphaMin;
+	}
+	
+	public float getAlphaMax() {
+		return alphaMax;
+	}
+
+	public void setAlphaMax(float alphaMax) {
+		this.alphaMax = alphaMax;
 	}
 
 	public float getBeta() {
@@ -111,7 +120,8 @@ public class Hops {
 	@Override
 	public String toString() {
 		return "Country: " + country +
-				"\n\nAlpha: "+ alpha + 
+				"\n\nAlphaMin: "+ alphaMin +
+				"\n\nAlphaMax: "+ alphaMax +
 				"\n\nBeta: " + beta + 
 				"\n\nType: " + type + 
 				"\n\nStorage index: " + storageIndex +

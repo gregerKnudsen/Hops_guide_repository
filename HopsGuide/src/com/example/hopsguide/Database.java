@@ -26,7 +26,8 @@ public class Database extends SQLiteOpenHelper implements Serializable{
 	
 	public static final String 		HOPS_TABLE_NAME = "hops";
 	public static final String 		COUNTRY = "Country";
-	public static final String 		ALPHA = "Alpha";
+	public static final String 		ALPHAMIN = "AlphaMin";
+	public static final String		ALPHAMAX = "AlphaMax";
 	public static final String 		BETA = "Beta";
 	public static final String 		TYPE = "Type";
 	public static final String 		STORAGE_INDEX = "StorageIndex";
@@ -34,6 +35,7 @@ public class Database extends SQLiteOpenHelper implements Serializable{
 	public static final String 		SUBSTITUTES = "Substitutes";
 	public static final String 		AROMA = "Aroma";
 	public static final String 		INFORMATION = "Information";
+	
 	
 	public static final String 		LIST_TABLE_NAME = "lists";
 	public static final String 		CONTENT = "content";

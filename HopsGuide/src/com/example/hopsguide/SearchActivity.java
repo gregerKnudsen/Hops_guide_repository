@@ -190,10 +190,10 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 	public static Hops getHops(String name){
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
-		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHA,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
+		String[] columns = {Database.UID,Database.COUNTRY,Database.ALPHAMAX,Database.ALPHAMIN,Database.BETA,Database.TYPE,Database.STORAGE_INDEX,Database.TYPICAL_FOR,Database.SUBSTITUTES,Database.AROMA,Database.INFORMATION};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.HOPS_TABLE_NAME,columns,Database.UID+" = '"+(("" + name.substring(0,1).toUpperCase()) + name.substring(1,name.length()))+"'",null,null,null,null);
 		if(cursor.moveToNext()){
-			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getString(4),cursor.getInt(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9));
+			return new Hops(cursor.getString(0),cursor.getString(1),cursor.getFloat(2),cursor.getFloat(3),cursor.getFloat(4),cursor.getString(5),cursor.getInt(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10));
 		}
 		return null; //humle med gitt navn finnes ikke i databasen
 	}

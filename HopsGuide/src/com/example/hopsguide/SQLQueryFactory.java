@@ -6,7 +6,8 @@ public class SQLQueryFactory {
 		return "CREATE TABLE IF NOT EXISTS Hops (" +
 			   	"_id VARCHAR(200),"+
 			   	"country VARCHAR(200),"+
-			   	"alpha FLOAT,"+
+			   	"alphaMin FLOAT,"+
+			   	"alphaMax FLOAT,"+
 			   	"beta FLOAT,"+
 			   	"type VARCHAR(200),"+
 			   	"storageIndex INTEGER,"+

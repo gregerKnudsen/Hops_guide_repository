@@ -125,12 +125,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		database.onCreate(sqLiteDatabase);
 	}
 
-	public void insertHops(String name,String country,float alpha,float beta, String type,int storageIndex,String typicalFor,
+	public void insertHops(String name,String country,float alphaMin, float alphaMax, float beta, String type,int storageIndex,String typicalFor,
 			String substitutes,String aroma, String information){
 		ContentValues values = new ContentValues();
 		values.put("_id",name);
 		values.put("Country", country);
-		values.put("Alpha", alpha);
+		values.put("AlphaMin", alphaMin);
+		values.put("AlphaMax", alphaMax);
 		values.put("Beta", beta);
 		values.put("Type", type);
 		values.put("StorageIndex", storageIndex);
@@ -172,7 +173,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		AsyncTask<URL,Void,JSONArray> result = sqldb.getDatabaseData();
 		List<Hops> hopsList = parseJSONArray(result.get());
 		for(Hops hops : hopsList){
-			insertHops(hops.getName(),hops.getCountry(),hops.getAlpha(),hops.getBeta(),hops.getType(),
+			insertHops(hops.getName(),hops.getCountry(),hops.getAlphaMin(),hops.getAlphaMax(),hops.getBeta(),hops.getType(),
 					hops.getStorageIndex(),hops.getTypicalFor(),hops.getSubstitutes(),hops.getAroma(),
 					hops.getInformation());
 		}
@@ -210,7 +211,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 			json = jArray.getJSONObject(i);
 			System.out.println("FÅR TAK I JSON OBJEKT. ER I ITERASJON NUMMER " + i);
 			hopsList.add(new Hops(json.getString("Name"),json.getString("Country"),
-					Float.parseFloat(json.getString("Alpha")), Float.parseFloat(json.getString("Beta")),json.getString("Type"),
+					Float.parseFloat(json.getString("AlphaMin")), Float.parseFloat(json.getString("AlphaMax")),Float.parseFloat(json.getString("Beta")),json.getString("Type"),
 					Integer.parseInt(json.getString("Storage Index")), json.getString("Typical for"), json.getString("Substitutes"),
 					json.getString("Aroma"),json.getString("Information")));
 		}
