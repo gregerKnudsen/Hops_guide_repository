@@ -74,9 +74,12 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		List<String> elementNames = new ArrayList<String>();
 		elementNames.add("Any");
 		while(cursor.moveToNext()) {
-			String currCountry = cursor.getString(0);
-			if(!elementNames.contains(currCountry)){
-				elementNames.add(currCountry);
+			String[] currElements = cursor.getString(0).split(",");
+			for(int i = 0; i < currElements.length; i++){
+				String currElement = currElements[i];
+				if(!elementNames.contains(currElement)){
+					elementNames.add(currElement);
+				}
 			}
 		}
 		String[] countryNamesArray = elementNames.toArray(new String[elementNames.size()]);
