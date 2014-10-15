@@ -17,42 +17,57 @@ import android.widget.Spinner;
 
 public class AdvancedSearchActivity extends ActionBarActivity {
 
-	private Spinner countryDropdown;
-	private EditText aroma;
-	private EditText typicalFor;
-	private EditText type;
-	private Spinner alpha;
-	private Spinner beta;
-	private EditText storageIndex;
+	private Spinner countries;
+	private EditText aromas;
+	private Spinner typicalForValues;
+	private Spinner types;
+	private Spinner alphaValues;
+	private Spinner betaValues;
+	private Spinner storageIndexes;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_advanced_search);
 		
-		countryDropdown = (Spinner) findViewById(R.id.countrySpinner);
-	//	aroma = (EditText) findViewById(R);
+		countries = (Spinner) findViewById(R.id.countrySpinner);
+		aromas = (EditText) findViewById(R.id.aromaInputLabel);
+		typicalForValues = (Spinner) findViewById(R.id.typicalForSpinner);
+		types = (Spinner) findViewById(R.id.typeSpinner);
+		alphaValues = (Spinner) findViewById(R.id.alphaSpinner);
+		betaValues = (Spinner) findViewById(R.id.betaSpinner);
+		storageIndexes = (Spinner) findViewById(R.id.storageIndexSpinner);
 		
-		
-		populateSpinner();
+		populateSpinners();
 	}
 	
-	public void populateSpinner() {
+	public void populateTypeSpinner(){
+		String[] typeArray = {"Aroma","Bittering","Both"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.types, typeArray);
+		types.setAdapter(dataAdapter);
+	}
+	
+	public void populateSpinners(){
+		populateDynamicSpinner(Database.HOPS_TABLE_NAME,Database.COUNTRY,countries,R.layout.countrynames);
+		populateDynamicSpinner(Database.HOPS_TABLE_NAME,Database.TYPICAL_FOR,typicalForValues,R.layout.typicalforvalues);
+		populateTypeSpinner();
+	}
+	
+	public void populateDynamicSpinner(String tableName, String columnName, Spinner spinnerName, int xmlFileRef){
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
-		String[] columns = {Database.COUNTRY};
-		Cursor cursor = sqLiteDatabaseCurr.query(Database.HOPS_TABLE_NAME, columns, null, null, null, null, null);
-		List<String> countryNames = new ArrayList<String>();
-		countryNames.add("Select:");
+		String[] columns = {columnName};
+		Cursor cursor = sqLiteDatabaseCurr.query(tableName, columns, null, null, null, null, null);
+		List<String> elementNames = new ArrayList<String>();
+		elementNames.add("Select:");
 		while(cursor.moveToNext()) {
 			String currCountry = cursor.getString(0);
-			if(!countryNames.contains(currCountry)){
-				countryNames.add(currCountry);
-				Log.i("AdvancedSearchActivity", cursor.getString(0));
+			if(!elementNames.contains(currCountry)){
+				elementNames.add(currCountry);
 			}
 		}
-		String[] countryNamesArray = countryNames.toArray(new String[countryNames.size()]);
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.countrynames, countryNamesArray);
-		countryDropdown.setAdapter(dataAdapter);
+		String[] countryNamesArray = elementNames.toArray(new String[elementNames.size()]);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, xmlFileRef, countryNamesArray);
+		spinnerName.setAdapter(dataAdapter);
 	}
 	
 	@Override
