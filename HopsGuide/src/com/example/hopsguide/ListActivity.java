@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,10 +48,29 @@ public class ListActivity extends ActionBarActivity {
 			public boolean onItemLongClick(AdapterView<?> arg0, View viewLongClicked, int position, long id) {
 
 				TextView textView = (TextView) viewLongClicked;
-				showCreateListDialog(textView.getText().toString());
-				return true;
+				String listName = textView.getText().toString();
+				if(!listName.equals("Favorites")) {
+					showCreateListDialog(listName);
+					return true;
+				}
+				return false;
+				
 			}
 		});
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)  {
+	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+	    	startActivity(MainActivity.class);
+	        return true;
+	    }
+
+	    return super.onKeyDown(keyCode, event);
+	}
+	
+	public void startActivity(Class<?> activity){
+		startActivity(new Intent(getApplicationContext(),activity));
 	}
 	
 	public void showCreateListDialog(String listName){
@@ -88,8 +108,7 @@ public class ListActivity extends ActionBarActivity {
 		SQLiteDatabase sqLiteDatabaseCurr = MainActivity.getDatabase().getWritableDatabase();
 		String[] columns = {Database.UID};
 		Cursor cursor = sqLiteDatabaseCurr.query(Database.LIST_TABLE_NAME,columns,null,null,null,null,null);
-		while(cursor.moveToNext()){
-			Log.i("MySQLDatabase", "Henter ut liste fra database");
+		while(cursor.moveToNext()){		
 			result.add(cursor.getString(0));
 		}
 		return result;

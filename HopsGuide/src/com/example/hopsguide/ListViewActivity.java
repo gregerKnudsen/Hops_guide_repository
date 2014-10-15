@@ -7,9 +7,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -19,7 +21,6 @@ import android.widget.Toast;
 public class ListViewActivity extends ActionBarActivity implements View.OnClickListener{
 	
 	private ListView listView;
-	private TextView listTitle; 
 	private Button deleteButton; 
 	private Button addButton; 
 	private String listName; 
@@ -28,15 +29,15 @@ public class ListViewActivity extends ActionBarActivity implements View.OnClickL
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list_view);
-		listView = (ListView) findViewById(R.id.mylistview);
-		listTitle = (TextView) findViewById(R.id.listTitle); 
+		listView = (ListView) findViewById(R.id.mylistview); 
 		deleteButton = (Button) findViewById(R.id.deletebutton);
 		addButton = (Button) findViewById(R.id.addbutton);
 		Intent intent = getIntent(); 
 		listName = intent.getStringExtra("Listname");
-		listTitle.setText(listName);
 		populateListView(); 
-		addButtonListeners(); 
+		addButtonListeners();
+		setTitle(listName);
+		setHopsNamesClickListener(listView);
 	}
 
 	@Override
@@ -108,5 +109,31 @@ public class ListViewActivity extends ActionBarActivity implements View.OnClickL
 			showCreateListDialog(listName); 
 			break;
 		}
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event)  {
+	    if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+	    	startActivity(ListActivity.class);
+	        return true;
+	    }
+
+	    return super.onKeyDown(keyCode, event);
+	}
+	
+	public void setHopsNamesClickListener(ListView list){
+		list.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View viewClicked, int position,long id) {
+				TextView textView = (TextView) viewClicked;
+				String hopsName = textView.getText().toString();
+				Intent intent = new Intent();
+				intent.setClass(viewClicked.getContext(),HopDescActivity.class);
+				intent.putExtra("Hopsname", hopsName);
+				startActivity(intent);
+				
+				
+			}
+		});
 	}
 }

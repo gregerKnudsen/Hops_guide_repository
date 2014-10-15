@@ -96,7 +96,7 @@ public class HopDescActivity extends Activity {
                 Intent intent = getIntent();
                 String hopsName = intent.getStringExtra("Hopsname");
                
-                setTitle("Hop Description - " + hopsName);
+                //setTitle("Hop Description - " + hopsName);
                 hop = SearchActivity.getHops(hopsName);
  
                 name.setText("Name");

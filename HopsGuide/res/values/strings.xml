@@ -32,5 +32,6 @@
     <string name="countryLabel">Country:</string>
     <string name="countrySpinnerLabel">countrySpinner</string>
     <string name="title_activity_hops_desc">HopDescActivity</string>
+    <string name="title_activity_desc">Description</string>
 
 </resources>

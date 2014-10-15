@@ -52,7 +52,7 @@ public class Database extends SQLiteOpenHelper implements Serializable{
 	//passende for SELECT-spørringer
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-	//	initializeDatabase(db); //kall denne første gang applikasjonen starter
+		initializeDatabase(db); //kall denne første gang applikasjonen starter
 	}
 	
 	public void initializeDatabase(SQLiteDatabase db){

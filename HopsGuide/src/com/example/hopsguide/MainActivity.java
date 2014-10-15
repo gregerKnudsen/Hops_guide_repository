@@ -32,8 +32,8 @@ import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-	private Button searchSectionButton;
-	private Button listButton;
+	private ImageView searchSectionButton;
+	private ImageView listButton;
 	private ImageView informationButton;
 	private static SQLiteDatabase sqLiteDatabase;
 	private static Database database;
@@ -44,10 +44,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 
-		searchSectionButton = (Button) findViewById(R.id.browseButton);
+		searchSectionButton = (ImageView) findViewById(R.id.searchButton);
 		searchSectionButton.setOnClickListener(this);
 
-		listButton = (Button) findViewById(R.id.myListsButton);
+		listButton = (ImageView) findViewById(R.id.myListsButton);
 		listButton.setOnClickListener(this);
 
 		informationButton = (ImageView) findViewById(R.id.informationButton);
@@ -68,7 +68,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 		if(!fileExists(Database.DATABASE_FILE_LOCATION)){
 			getDatabaseAccess();
 			createTables();
-		//	initializeDatabase();    //kall denne første gang applikasjonen lages
+			initializeDatabase();    //kall denne første gang applikasjonen lages
 		}
 		else{
 //			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();
@@ -180,6 +180,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 
 	public void fillMyListsTable(){
+		insertList("Favorites","");
 		insertList("Hops for new resturant menu", "Admiral,Bobek,Chelan,Citra,Chinook,Cluster");
 		insertList("My favorites", "Celeia,Nugget,Orion,Olympic");
 	}
@@ -239,11 +240,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	}
 
 	public void searchSectionButtonClick(){
-		onClick((Button) findViewById(R.id.browseButton));
+		onClick((ImageView) findViewById(R.id.searchButton));
 	}
 
 	public void myListsButtonClick(){
-		onClick((Button) findViewById(R.id.myListsButton));
+		onClick((ImageView) findViewById(R.id.myListsButton));
 	} 
 
 	public void informationButtonClick(){
@@ -257,7 +258,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 	@Override
 	public void onClick(View v) {	 
 		switch (v.getId()){
-		case R.id.browseButton : 
+		case R.id.searchButton : 
 			startActivity(SearchActivity.class);
 			break;
 		case R.id.informationButton :

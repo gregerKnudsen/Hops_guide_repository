@@ -55,11 +55,13 @@ public class SearchActivity extends ActionBarActivity implements View.OnClickLis
 
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				EditText inputBox = (EditText) v;
+				String input = inputBox.getText().toString();
 				// TODO Auto-generated method stub
 				if(event.getAction() != KeyEvent.ACTION_DOWN){
 					return false;
 				}
-				if(keyCode == KeyEvent.KEYCODE_ENTER){
+				if((keyCode == KeyEvent.KEYCODE_ENTER) && (!input.equals(""))){
 					displaySearchResult();
 					return true;
 				}

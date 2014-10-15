@@ -46,11 +46,11 @@
         </activity>
         <activity
             android:name=".ListActivity"
-            android:label="@string/title_activity_list" >
+            android:label="@string/title_activity_list">
         </activity>
         <activity
             android:name=".ListViewActivity"
-            android:label="@string/listContentActivity" >
+            android:label="@string/listContentActivity">
         </activity>
         <activity
             android:name=".AdvancedSearchActivity"
@@ -58,7 +58,7 @@
         </activity>
         <activity
             android:name=".HopDescActivity"
-            android:label="@string/title_activity_hops_desc" >
+            android:label="@string/title_activity_desc" >
         </activity>
     </application>
 

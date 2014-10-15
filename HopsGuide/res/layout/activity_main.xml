@@ -10,13 +10,39 @@
  	android:background="#F2F2F2" >
 
     <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:contentDescription="@string/welcome"
+        android:src="@drawable/app_icon_v2" />
+
+    <ImageView
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/searchbutton" />
+    
+    <ImageView
+        android:id="@+id/myListsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/searchButton"
+        android:layout_below="@+id/searchButton"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/mylistsbutton" />
+
+    <ImageView
         android:id="@+id/informationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="22dp"
-        android:layout_marginRight="20dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/informationButtonDescription"
         android:maxWidth="39dip"
@@ -24,35 +50,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/informasjonsikon" />
 
-    <Button
-        android:id="@+id/browseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/myListsButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/browseButtonDescription"
-        android:onClick="searchSectionButtonClick"
-        android:text="@string/browseButtonLabel" />
-
-    <Button
-        android:id="@+id/myListsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/informationButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:contentDescription="@string/browseButtonDescription"
-        android:text="@string/listButtonLabel" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_above="@+id/browseButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
-        android:contentDescription="@string/welcome"
-        android:src="@drawable/app_icon_v2" />
+    
 
 </RelativeLayout>
