@@ -47,10 +47,24 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		types.setAdapter(dataAdapter);
 	}
 	
+	public void populateAlphaSpinner(){
+		String[] alphaValues = {"0-5","6-10","11-15","16-20"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.alphavalues, alphaValues);
+		types.setAdapter(dataAdapter);
+	}
+	
+	public void populateBetaSpinner(){
+		String[] betaValues = {"0-2.5","2.6-5","5.1-7.5","7.6-10"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.types, betaValues);
+		types.setAdapter(dataAdapter);
+	}
+	
 	public void populateSpinners(){
 		populateDynamicSpinner(Database.HOPS_TABLE_NAME,Database.COUNTRY,countries,R.layout.countrynames);
 		populateDynamicSpinner(Database.HOPS_TABLE_NAME,Database.TYPICAL_FOR,typicalForValues,R.layout.typicalforvalues);
 		populateTypeSpinner();
+		populateAlphaSpinner();
+		populateBetaSpinner();
 	}
 	
 	public void populateDynamicSpinner(String tableName, String columnName, Spinner spinnerName, int xmlFileRef){
@@ -58,7 +72,7 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		String[] columns = {columnName};
 		Cursor cursor = sqLiteDatabaseCurr.query(tableName, columns, null, null, null, null, null);
 		List<String> elementNames = new ArrayList<String>();
-		elementNames.add("Select:");
+		elementNames.add("Any");
 		while(cursor.moveToNext()) {
 			String currCountry = cursor.getString(0);
 			if(!elementNames.contains(currCountry)){

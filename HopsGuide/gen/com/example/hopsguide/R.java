@@ -1247,16 +1247,18 @@ containing a value of this type.
         public static final int activity_list_view=0x7f03001b;
         public static final int activity_main=0x7f03001c;
         public static final int activity_splash=0x7f03001d;
-        public static final int aromanames=0x7f03001e;
-        public static final int countrynames=0x7f03001f;
-        public static final int hopsdescription=0x7f030020;
-        public static final int hopsnames=0x7f030021;
-        public static final int listcontent=0x7f030022;
-        public static final int listnames=0x7f030023;
-        public static final int search_activity=0x7f030024;
-        public static final int support_simple_spinner_dropdown_item=0x7f030025;
-        public static final int types=0x7f030026;
-        public static final int typicalforvalues=0x7f030027;
+        public static final int alphavalues=0x7f03001e;
+        public static final int aromanames=0x7f03001f;
+        public static final int betavalues=0x7f030020;
+        public static final int countrynames=0x7f030021;
+        public static final int hopsdescription=0x7f030022;
+        public static final int hopsnames=0x7f030023;
+        public static final int listcontent=0x7f030024;
+        public static final int listnames=0x7f030025;
+        public static final int search_activity=0x7f030026;
+        public static final int support_simple_spinner_dropdown_item=0x7f030027;
+        public static final int types=0x7f030028;
+        public static final int typicalforvalues=0x7f030029;
     }
     public static final class menu {
         public static final int advanced_search=0x7f0c0000;
