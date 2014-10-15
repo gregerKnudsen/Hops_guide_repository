@@ -120,7 +120,7 @@ public class HopDescActivity extends Activity {
                         if (view instanceof TextView) {
                                 TextView textView = (TextView) view;
                                 textView.setTypeface(typeface);
-                                textView.setTextColor(Color.WHITE);
+                                textView.setTextColor(Color.GRAY);
                         }
                 }
  
