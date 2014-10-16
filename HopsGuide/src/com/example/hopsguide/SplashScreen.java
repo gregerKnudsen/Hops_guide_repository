@@ -70,7 +70,7 @@ public class SplashScreen extends Activity {
 		if(!fileExists(Database.DATABASE_FILE_LOCATION)){
 			getDatabaseAccess();
 			createTables();
-			initializeDatabase();    //kall denne første gang applikasjonen lages
+		//	initializeDatabase();    //kall denne første gang applikasjonen lages
 		}
 		else{
 //			Toast.makeText(getApplicationContext(),"Database exists!",Toast.LENGTH_LONG).show();

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -24,6 +25,7 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 	private Spinner alphaValues;
 	private Spinner betaValues;
 	private Spinner storageIndexes;
+	private Button advancedSearchButton;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +39,33 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		alphaValues = (Spinner) findViewById(R.id.alphaSpinner);
 		betaValues = (Spinner) findViewById(R.id.betaSpinner);
 		storageIndexes = (Spinner) findViewById(R.id.storageIndexSpinner);
+		advancedSearchButton = (Button) findViewById(R.id.advancedSearchButton);
 		
 		populateSpinners();
 	}
 	
 	public void populateTypeSpinner(){
-		String[] typeArray = {"Aroma","Bittering","Both"};
+		String[] typeArray = {"Any","Aroma","Bittering","Both"};
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.types, typeArray);
 		types.setAdapter(dataAdapter);
 	}
 	
 	public void populateAlphaSpinner(){
-		String[] alphaValues = {"0-5","6-10","11-15","16-20"};
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.alphavalues, alphaValues);
-		types.setAdapter(dataAdapter);
+		String[] alphaValuesArray = {"Any","0-5","6-10","11-15","16-20"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.alphavalues, alphaValuesArray);
+		alphaValues.setAdapter(dataAdapter);
 	}
 	
 	public void populateBetaSpinner(){
-		String[] betaValues = {"0-2.5","2.6-5","5.1-7.5","7.6-10"};
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.types, betaValues);
-		types.setAdapter(dataAdapter);
+		String[] betaValuesArray = {"Any","0-2.5","2.6-5","5.1-7.5","7.6-10"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.betavalues, betaValuesArray);
+		betaValues.setAdapter(dataAdapter);
+	}
+	
+	public void populateStorageIndexSpinner(){
+		String[] storageIndexesArray = {"Any","1-19","20-39","40-59","60-80"};
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, R.layout.betavalues, storageIndexesArray);
+		storageIndexes.setAdapter(dataAdapter);
 	}
 	
 	public void populateSpinners(){
@@ -65,6 +74,7 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 		populateTypeSpinner();
 		populateAlphaSpinner();
 		populateBetaSpinner();
+		populateStorageIndexSpinner();
 	}
 	
 	public void populateDynamicSpinner(String tableName, String columnName, Spinner spinnerName, int xmlFileRef){
