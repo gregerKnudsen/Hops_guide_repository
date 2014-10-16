@@ -11,12 +11,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
-public class AdvancedSearchActivity extends ActionBarActivity {
+                                                                         
+public class AdvancedSearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	private Spinner countries;
 	private EditText aromas;
@@ -114,5 +115,13 @@ public class AdvancedSearchActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	public void onClick(View source) {
+		// TODO Auto-generated method stub
+//		switch(source){
+//		case: 
+//		}
 	}
 }
