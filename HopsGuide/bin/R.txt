@@ -282,7 +282,7 @@ int id ifRoom 0x7f05000a
 int id image 0x7f050027
 int id imageView1 0x7f05004b
 int id imgLogo 0x7f050053
-int id informationButton 0x7f050052
+int id informationButton 0x7f050050
 int id inputTextBox 0x7f050066
 int id listMode 0x7f050001
 int id listView1 0x7f050067
@@ -298,7 +298,7 @@ int id normal 0x7f050000
 int id progress_circular 0x7f050018
 int id progress_horizontal 0x7f050019
 int id radio 0x7f05002f
-int id searchButton 0x7f050050
+int id searchButton 0x7f050052
 int id search_badge 0x7f050032
 int id search_bar 0x7f050031
 int id search_button 0x7f050033
@@ -654,7 +654,7 @@ int styleable MenuItem_android_title 7
 int styleable MenuItem_android_titleCondensed 8
 int styleable MenuItem_android_visible 4
 int styleable MenuItem_showAsAction 13
-int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x01010435 }
+int[] styleable MenuView { 0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e, 0x0101012f, 0x01010130, 0x01010131, 0x01010438 }
 int styleable MenuView_android_headerBackground 4
 int styleable MenuView_android_horizontalDivider 2
 int styleable MenuView_android_itemBackground 5
