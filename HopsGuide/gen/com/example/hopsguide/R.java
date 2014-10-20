@@ -1127,7 +1127,7 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f05004b;
         public static final int imgLogo=0x7f050053;
-        public static final int informationButton=0x7f050052;
+        public static final int informationButton=0x7f050050;
         public static final int inputTextBox=0x7f050066;
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f050067;
@@ -1143,7 +1143,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int searchButton=0x7f050050;
+        public static final int searchButton=0x7f050052;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -2720,7 +2720,7 @@ containing a value of this type.
          */
         public static final int[] MenuView = {
             0x010100ae, 0x0101012c, 0x0101012d, 0x0101012e,
-            0x0101012f, 0x01010130, 0x01010131, 0x01010435
+            0x0101012f, 0x01010130, 0x01010131, 0x01010438
         };
         /**
           <p>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.126+C:\development\sourcetree\.metadata\.plugins\org.eclipse.jdt.core
 155476060.index
 3138379453.index
@@ -7,3 +8,12 @@ INDEX VERSION 1.126+C:\development\sourcetree\.metadata\.plugins\org.eclipse.jdt
 2856457738.index
 3515282563.index
 425434941.index
+=======
+INDEX VERSION 1.126+C:\Users\Sindre\Documents\Hops_guide_repository\.metadata\.plugins\org.eclipse.jdt.core
+3515282563.index
+257436486.index
+3026501717.index
+2618930923.index
+2856457738.index
+2155916752.index
+>>>>>>> abe48ebf083692f7f553ecb0404a2daf06d4b4eb

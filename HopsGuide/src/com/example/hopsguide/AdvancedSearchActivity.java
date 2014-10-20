@@ -119,6 +119,7 @@ public class AdvancedSearchActivity extends ActionBarActivity implements View.On
 		return super.onOptionsItemSelected(item);
 	}
 
+	//legget il en kommentar
 	@Override
 	public void onClick(View source) {
 		// TODO Auto-generated method stub
