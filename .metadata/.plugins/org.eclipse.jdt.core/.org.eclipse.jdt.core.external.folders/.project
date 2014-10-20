@@ -12,12 +12,16 @@
 		<link>
 			<name>.link0</name>
 			<type>2</type>
+<<<<<<< HEAD
 			<location>/Users/eivindkorssjoen/Programmer/adt-bundle-mac-x86_64-20140702/sdk/sources/android-20</location>
 		</link>
 		<link>
 			<name>.link1</name>
 			<type>2</type>
 			<location>/Users/eivindkorssjoen/Programmer/adt-bundle-mac-x86_64-20140702/sdk/sources/android-19</location>
+=======
+			<location>C:/development/adt-bundle-windows-x86_64-20140702/sdk/sources/android-19</location>
+>>>>>>> 37462d86abd3efa43bf55872f14a53e54da56eb1
 		</link>
 	</linkedResources>
 </projectDescription>
