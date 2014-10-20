@@ -100,7 +100,7 @@ public class HopDescActivity extends Activity {
                 //setTitle("Hop Description - " + hopsName);
                 hop = SearchActivity.getHops(hopsName);
  
-                name.setText("Name");
+                
                 nameDesc.setText(hopsName);
                 country.setText("Country");
                 countryDesc.setText(hop.getCountry());
@@ -122,7 +122,7 @@ public class HopDescActivity extends Activity {
                 aromaDesc.setText(hop.getAroma());
                 information.setText("Information");
                 informationDesc.setText(hop.getInformation());
-                
+                name.setText("Name");
                 
                 Typeface typeface = Typeface.createFromAsset(getAssets(),
                                 "fonts/MyriadPro_Regular.ttf");
