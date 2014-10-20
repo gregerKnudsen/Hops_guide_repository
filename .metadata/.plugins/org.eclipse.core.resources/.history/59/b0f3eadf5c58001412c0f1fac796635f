@@ -20,7 +20,6 @@ import android.widget.Spinner;
 public class AdvancedSearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	//legger til en kommentar
-	//legger til en kommentar til
 	private Spinner countries;
 	private EditText aromas;
 	private Spinner typicalForValues;
