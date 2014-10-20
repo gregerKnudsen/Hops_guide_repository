@@ -1078,13 +1078,8 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int app_icon_v2=0x7f020057;
-        public static final int humleikon=0x7f020058;
-        public static final int humleikon2=0x7f020059;
-        public static final int ic_launcher=0x7f02005a;
-        public static final int informasjonsikon=0x7f02005b;
-        public static final int mylistsbutton=0x7f02005c;
-        public static final int searchbutton=0x7f02005d;
-        public static final int splash=0x7f02005e;
+        public static final int ic_launcher=0x7f020058;
+        public static final int informasjonsikon=0x7f020059;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1251,17 +1246,16 @@ containing a value of this type.
         public static final int activity_main=0x7f03001c;
         public static final int activity_splash=0x7f03001d;
         public static final int alphavalues=0x7f03001e;
-        public static final int aromanames=0x7f03001f;
-        public static final int betavalues=0x7f030020;
-        public static final int countrynames=0x7f030021;
-        public static final int hopsdescription=0x7f030022;
-        public static final int hopsnames=0x7f030023;
-        public static final int listcontent=0x7f030024;
-        public static final int listnames=0x7f030025;
-        public static final int search_activity=0x7f030026;
-        public static final int support_simple_spinner_dropdown_item=0x7f030027;
-        public static final int types=0x7f030028;
-        public static final int typicalforvalues=0x7f030029;
+        public static final int betavalues=0x7f03001f;
+        public static final int countrynames=0x7f030020;
+        public static final int hopsdescription=0x7f030021;
+        public static final int hopsnames=0x7f030022;
+        public static final int listcontent=0x7f030023;
+        public static final int listnames=0x7f030024;
+        public static final int search_activity=0x7f030025;
+        public static final int support_simple_spinner_dropdown_item=0x7f030026;
+        public static final int types=0x7f030027;
+        public static final int typicalforvalues=0x7f030028;
     }
     public static final class menu {
         public static final int advanced_search=0x7f0c0000;
