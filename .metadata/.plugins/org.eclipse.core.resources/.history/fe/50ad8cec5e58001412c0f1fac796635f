@@ -8,6 +8,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hopsguide.MainActivity" 
  	android:background="#F2F2F2" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:contentDescription="@string/welcome"
+        android:src="@drawable/app_icon_v2" />
+
+    <ImageView
+        android:id="@+id/searchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginTop="60dp"/>
     
     <ImageView
         android:id="@+id/myListsButton"
@@ -15,8 +33,7 @@
         android:layout_height="50dp"
         android:layout_alignLeft="@+id/searchButton"
         android:layout_below="@+id/searchButton"
-        android:layout_marginTop="25dp"
-        android:src="@drawable/mylistsbutton"/>
+        android:layout_marginTop="25dp"/>
 
     <ImageView
         android:id="@+id/informationButton"
@@ -31,23 +48,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/informasjonsikon" />
 
-    <ImageView
-        android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginTop="24dp"
-        android:src="@drawable/searchbutton" />
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/informationButton"
-        android:layout_marginTop="45dp"
-        android:contentDescription="@string/welcome"
-        android:src="@drawable/app_icon_v2" />
+    
 
 </RelativeLayout>
