@@ -1080,6 +1080,8 @@ containing a value of this type.
         public static final int app_icon_v2=0x7f020057;
         public static final int ic_launcher=0x7f020058;
         public static final int informasjonsikon=0x7f020059;
+        public static final int mylistsbutton=0x7f02005a;
+        public static final int searchbutton=0x7f02005b;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1125,7 +1127,7 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f05004b;
         public static final int imgLogo=0x7f050053;
-        public static final int informationButton=0x7f050052;
+        public static final int informationButton=0x7f050050;
         public static final int inputTextBox=0x7f050066;
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f050067;
@@ -1141,7 +1143,7 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int searchButton=0x7f050050;
+        public static final int searchButton=0x7f050052;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;

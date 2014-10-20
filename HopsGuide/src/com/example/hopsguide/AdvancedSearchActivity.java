@@ -20,6 +20,7 @@ import android.widget.Spinner;
 public class AdvancedSearchActivity extends ActionBarActivity implements View.OnClickListener {
 
 	//legger til en kommentar
+	//legger til en kommentar til
 	private Spinner countries;
 	private EditText aromas;
 	private Spinner typicalForValues;
@@ -118,6 +119,7 @@ public class AdvancedSearchActivity extends ActionBarActivity implements View.On
 		return super.onOptionsItemSelected(item);
 	}
 
+	//legget il en kommentar
 	@Override
 	public void onClick(View source) {
 		// TODO Auto-generated method stub
