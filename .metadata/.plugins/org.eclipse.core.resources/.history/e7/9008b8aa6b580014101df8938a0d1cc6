@@ -9,7 +9,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hopsguide.MainActivity" >
 
-
+    <ImageView
+        android:id="@+id/informationButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/informationButtonDescription"
+        android:maxWidth="39dip"
+        android:onClick="informationButtonClick"
+        android:scaleType="centerCrop"
+        android:src="@drawable/informasjonsikon" />
 
     <ImageView
         android:id="@+id/myListsButton"

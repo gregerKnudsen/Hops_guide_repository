@@ -54,6 +54,6 @@ public class SQLQueryFactory {
 		return "SELECT Name FROM Hops WHERE Country = '"+ countryName +"';";
 	}
 	public static String selectHopsByTag(String tag) {
-		return "SELECT Name FROM Hops WHERE typicalFor = '"+tag+"';";
+		return "SELECT Name FROM Hops WHERE TypicalFor = '"+tag+"';";
 	}
 }
