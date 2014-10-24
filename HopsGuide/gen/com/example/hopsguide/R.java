@@ -1097,7 +1097,7 @@ containing a value of this type.
         public static final int action_mode_close_button=0x7f050024;
         public static final int action_settings=0x7f050069;
         public static final int activity_chooser_view_content=0x7f050025;
-        public static final int addbutton=0x7f05004f;
+        public static final int addbutton=0x7f050050;
         public static final int advancedSearchButton=0x7f05004a;
         public static final int alphaLabel=0x7f050042;
         public static final int alphaSpinner=0x7f050043;
@@ -1112,7 +1112,7 @@ containing a value of this type.
         public static final int countryLabel=0x7f05003d;
         public static final int countrySpinner=0x7f05003c;
         public static final int default_activity_button=0x7f050028;
-        public static final int deletebutton=0x7f05004e;
+        public static final int deletebutton=0x7f05004f;
         public static final int dialog=0x7f05000e;
         public static final int disableHome=0x7f050008;
         public static final int dropdown=0x7f05000f;
@@ -1127,16 +1127,16 @@ containing a value of this type.
         public static final int image=0x7f050027;
         public static final int imageView1=0x7f05004b;
         public static final int imgLogo=0x7f050053;
-        public static final int informationButton=0x7f050050;
+        public static final int informationButton=0x7f05004c;
         public static final int inputTextBox=0x7f050066;
         public static final int listMode=0x7f050001;
         public static final int listView1=0x7f050067;
         public static final int listView2=0x7f050068;
-        public static final int listViewResult=0x7f05004c;
+        public static final int listViewResult=0x7f05004d;
         public static final int list_item=0x7f050029;
         public static final int middle=0x7f050012;
         public static final int myListsButton=0x7f050051;
-        public static final int mylistview=0x7f05004d;
+        public static final int mylistview=0x7f05004e;
         public static final int never=0x7f050009;
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
