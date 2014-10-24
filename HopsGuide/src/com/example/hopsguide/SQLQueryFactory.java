@@ -50,5 +50,10 @@ public class SQLQueryFactory {
 	public static String selectCountryNames(){
 		return "SELECT DISTINCT country FROM Hops";
 	}
-	
+	public static String selectHopsByCountry(String countryName){
+		return "SELECT Name FROM Hops WHERE Country = '"+ countryName +"';";
+	}
+	public static String selectHopsByTag(String tag) {
+		return "SELECT Name FROM Hops WHERE typicalFor = '"+tag+"';";
+	}
 }

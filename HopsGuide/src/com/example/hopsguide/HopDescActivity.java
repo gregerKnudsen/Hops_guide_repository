@@ -93,6 +93,7 @@ public class HopDescActivity extends Activity {
                 informationDesc = (TextView) findViewById(R.id.textView20);
                 allTextViews.add(informationDesc);
                
+                
                 Intent intent = getIntent();
                 String hopsName = intent.getStringExtra("Hopsname");
                
@@ -121,7 +122,8 @@ public class HopDescActivity extends Activity {
                 aromaDesc.setText(hop.getAroma());
                 information.setText("Information");
                 informationDesc.setText(hop.getInformation());
- 
+                
+                
                 Typeface typeface = Typeface.createFromAsset(getAssets(),
                                 "fonts/MyriadPro_Regular.ttf");
                 for (View view : allTextViews) {

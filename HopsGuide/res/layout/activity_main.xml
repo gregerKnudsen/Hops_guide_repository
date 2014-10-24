@@ -9,6 +9,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.hopsguide.MainActivity" >
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 1d8732c361bd50351f61654da6dde934e6d15326
     <ImageView
         android:id="@+id/myListsButton"
         android:layout_width="wrap_content"

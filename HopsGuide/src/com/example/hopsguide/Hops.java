@@ -28,7 +28,7 @@ public class Hops {
 		this.aroma = aroma;
 		this.information = information;
 	}
-
+	//comment
 	public String getName() {
 		return name;
 	}

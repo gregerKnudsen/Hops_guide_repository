@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="464" key="DIALOG_X_ORIGIN"/>
+		<item value="68" key="DIALOG_Y_ORIGIN"/>
+	</section>
 	<section name="org.eclipse.ui.internal.QuickAccess">
+<<<<<<< HEAD
 		<item value="537" key="dialogHeight"/>
 		<item value="1025" key="dialogWidth"/>
+=======
+		<item value="624" key="dialogHeight"/>
+		<item value="900" key="dialogWidth"/>
+>>>>>>> 1d8732c361bd50351f61654da6dde934e6d15326
 		<list key="textEntries">
 		</list>
 		<list key="orderedElements">
@@ -13,16 +22,25 @@
 		</list>
 	</section>
 	<section name="ImportExportAction">
-		<item value="org.eclipse.ui.wizards.import.ExternalProject" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
+		<item value="org.eclipse.egit.ui.internal.clone.GitCloneWizard" key="ImportExportPage.STORE_SELECTED_IMPORT_WIZARD_ID"/>
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
+			<item value="org.eclipse.egit.ui.internal.clone.gitclonecategory"/>
 		</list>
 	</section>
 	<section name="ShowViewDialog">
+<<<<<<< HEAD
 		<item value="280" key="DIALOG_WIDTH"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 		<item value="414" key="DIALOG_HEIGHT"/>
 		<item value="547" key="DIALOG_X_ORIGIN"/>
 		<item value="98" key="DIALOG_Y_ORIGIN"/>
+=======
+		<item value="311" key="DIALOG_WIDTH"/>
+		<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+		<item value="439" key="DIALOG_HEIGHT"/>
+		<item value="178" key="DIALOG_X_ORIGIN"/>
+		<item value="142" key="DIALOG_Y_ORIGIN"/>
+>>>>>>> 1d8732c361bd50351f61654da6dde934e6d15326
 	</section>
 </section>

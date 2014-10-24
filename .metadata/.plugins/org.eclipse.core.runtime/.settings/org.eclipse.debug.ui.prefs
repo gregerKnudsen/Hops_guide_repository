@@ -1,3 +1,10 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<launchPerspectives/>\n
+=======
+<<<<<<< HEAD
+=======
 org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<launchPerspectives/>\r\n
+>>>>>>> abe48ebf083692f7f553ecb0404a2daf06d4b4eb
+>>>>>>> 37462d86abd3efa43bf55872f14a53e54da56eb1
 preferredTargets=org.eclipse.cdt.debug.ui.toggleCBreakpointTarget\:org.eclipse.cdt.debug.ui.toggleCBreakpointTarget|default\:default|

@@ -1,2 +1,10 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1413810918822" defaultVMConnector\="">\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\n<vm id\="1413810918822" name\="jre8" path\="/Users/eivindkorssjoen/Programmer/adt-bundle-mac-x86_64-20140702/eclipse/Eclipse.app/Contents/MacOS/C\:\\Program Files\\Java\\jre8"/>\n</vmType>\n</vmSettings>\n
+=======
+<<<<<<< HEAD
+org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1413812591815" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1413810918822" name\="jre8" path\="C\:\\Program Files\\Java\\jre8"/>\r\n<vm id\="1413812591815" name\="jre1.8.0_20" path\="C\:\\Program Files\\Java\\jre1.8.0_20"/>\r\n</vmType>\r\n</vmSettings>\r\n
+=======
 org.eclipse.jdt.launching.PREF_VM_XML=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\r\n<vmSettings defaultVM\="57,org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType13,1413810918822" defaultVMConnector\="">\r\n<vmType id\="org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType">\r\n<vm id\="1413810918822" name\="jre8" path\="C\:\\Program Files\\Java\\jre8"/>\r\n</vmType>\r\n</vmSettings>\r\n
+>>>>>>> abe48ebf083692f7f553ecb0404a2daf06d4b4eb
+>>>>>>> 37462d86abd3efa43bf55872f14a53e54da56eb1
